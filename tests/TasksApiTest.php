@@ -33,6 +33,13 @@ class TasksApiTest extends TestCase
         $task = factory(App\Task::class)->create();
         $this->json('GET', $this->uri . '/' . $task->id)
 //            ->dump();
-            ->seeJson();
+            ->seeJsonStructure(
+                    [ "id", "name", "done", "priority" ]
+            )
+            ->seeJsonContains([
+                "name" => $task->name,
+                "done" => $task->done,
+                "priority" => $task->priority,
+            ]);
     }
 }
