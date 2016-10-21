@@ -14,7 +14,14 @@ class TasksApiTest extends TestCase
     public function testShowAllTasks()
     {
         $this->json('GET','/api/task')
-            ->dump();
-            //->seeJson();
+//            ->dump();
+            ->seeJson();
+    }
+
+    public function testShowOneTask()
+    {
+        $id=1;
+        $this->json('GET','/api/task' . '/' . $id)
+            ->seeJson();
     }
 }
