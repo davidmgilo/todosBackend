@@ -10,6 +10,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class TasksApiTest extends TestCase
 {
 
+    protected $uri = '/api/task';
     use DatabaseMigrations;
 
     /**
@@ -19,7 +20,7 @@ class TasksApiTest extends TestCase
      */
     public function testShowAllTasks()
     {
-        $this->json('GET','/api/task')
+        $this->json('GET',$this->uri)
 //            ->dump();
             ->seeJson();
     }
@@ -30,8 +31,7 @@ class TasksApiTest extends TestCase
     public function testShowOneTask()
     {
         $task = factory(App\Task::class)->create();
-        $id=1;
-        $this->json('GET','/api/task' . '/' . $id)
+        $this->json('GET', $this->uri . '/' . $task->id)
 //            ->dump();
             ->seeJson();
     }
