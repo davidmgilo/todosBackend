@@ -4,8 +4,14 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
+/**
+ * Class TasksApiTest
+ */
 class TasksApiTest extends TestCase
 {
+
+    use DatabaseMigrations;
+
     /**
      * A basic test example.
      *
@@ -18,8 +24,12 @@ class TasksApiTest extends TestCase
             ->seeJson();
     }
 
+    /**
+     * @group failing
+     */
     public function testShowOneTask()
     {
+        $task = factory(App\Task::class)->create();
         $id=1;
         $this->json('GET','/api/task' . '/' . $id)
 //            ->dump();
