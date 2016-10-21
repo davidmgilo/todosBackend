@@ -11,8 +11,10 @@ class TasksApiTest extends TestCase
      *
      * @return void
      */
-    public function testExample()
+    public function testShowAllTasks()
     {
-        $this->assertTrue(true);
+        $this->json('GET','/api/task')
+            //->dump();
+            ->seeJson();
     }
 }
