@@ -22,6 +22,7 @@ class TasksApiTest extends TestCase
     {
         $id=1;
         $this->json('GET','/api/task' . '/' . $id)
+//            ->dump();
             ->seeJson();
     }
 }
