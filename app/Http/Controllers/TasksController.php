@@ -38,7 +38,7 @@ class TasksController extends Controller
     public function store(Request $request)
     {
 //        $request->input('name')
-        Task::create($request->input());
+        Task::create($request->all());
     }
 
     /**
