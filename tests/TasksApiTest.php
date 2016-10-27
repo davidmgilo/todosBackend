@@ -22,7 +22,11 @@ class TasksApiTest extends TestCase
     {
         $this->json('GET',$this->uri)
 //            ->dump();
-            ->seeJson();
+                ->seeJson();
+//         ->assertCount(30)
+        $this->assertCount(30,$this->json('GET',$this->uri)->decodeResponseJson());
+//        $this->assertCount(19,$this->json('GET',$this->uri)->decodeResponseJson());
+//        echo count($this->json('GET',$this->uri)->decodeResponseJson());
     }
 
     /**
