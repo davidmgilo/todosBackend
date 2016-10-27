@@ -39,6 +39,10 @@ class TasksController extends Controller
     {
 //        $request->input('name')
         Task::create($request->all());
+        return response(array(
+            'error' => false,
+            'message' =>'Task created successfully',
+        ),200);
     }
 
     /**
@@ -72,7 +76,8 @@ class TasksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Task::findOrFail($id)->update($request->all());
+        return Task::findOrFail($id)->update($request->all());
+
     }
 
     /**
@@ -83,6 +88,6 @@ class TasksController extends Controller
      */
     public function destroy($id)
     {
-        Task::findOrFail($id)->delete();
+       return Task::findOrFail($id)->delete();
     }
 }
