@@ -43,7 +43,7 @@ class Controller extends BaseController
         return $paginationData;
     }
 
-    private function transform($resource)
+    protected function transform($resource)
     {
         return [
             'name' => $resource['name'],
@@ -53,7 +53,7 @@ class Controller extends BaseController
         ];
     }
 
-    private function transformCollections($resources)
+    protected function transformCollections($resources)
     {
         //Collections : Laravel collections
 
