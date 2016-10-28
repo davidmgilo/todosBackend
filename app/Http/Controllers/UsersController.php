@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -16,16 +17,7 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::paginate(15);
-        return Response::json([
-            'propietari'    => 'David Martinez',
-            'total'         => $users->total(),
-            'per_page'      => $users->perPage(),
-            'current_page'  => $users->currentPage(),
-            'last_page'     => $users->lastPage(),
-            'next_page_url' => $users->nextPageUrl(),
-            'prev_page_url' => $users->previousPageUrl(),
-            'data' => $users->toArray()
-        ],200);
+        return $this->generatePaginatedResponse($users, ['propietari' => 'David Martinez',]);
     }
 
     /**
