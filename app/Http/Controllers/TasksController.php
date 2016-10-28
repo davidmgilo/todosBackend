@@ -22,7 +22,7 @@ class TasksController extends Controller
         //No error message
         //Transformations: hem de transformar el que ensenyem
         $tasks = Task::paginate(15);
-        return $this->generatePaginatedResponse($tasks);
+        return $this->generatePaginatedResponse($tasks, ['propietari' => 'David Martinez',]);
 //        return Task::paginate($request->input('per_page'));
     }
 
@@ -117,20 +117,33 @@ class TasksController extends Controller
     }
 
     /**
-     * @param $tasks
+     * @param $resource
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function generatePaginatedResponse($tasks)
+    protected function generatePaginatedResponse($resource, array $metadata = [])
     {
-        return Response::json([
-            'propietari' => 'David Martinez',
-            'total' => $tasks->total(),
-            'per_page' => $tasks->perPage(),
-            'current_page' => $tasks->currentPage(),
-            'last_page' => $tasks->lastPage(),
-            'next_page_url' => $tasks->nextPageUrl(),
-            'prev_page_url' => $tasks->previousPageUrl(),
-            'data' => $tasks->toArray()
-        ], 200);
+        $paginationData = $this->generatePaginationData($resource);
+        $data = [
+            'data' => $resource->toArray()
+        ];
+
+        return Response::json(array_merge($metadata,$paginationData,$data), 200);
+    }
+
+    /**
+     * @param $resource
+     * @return array
+     */
+    protected function generatePaginationData($resource)
+    {
+        $paginationData = [
+            'total' => $resource->total(),
+            'per_page' => $resource->perPage(),
+            'current_page' => $resource->currentPage(),
+            'last_page' => $resource->lastPage(),
+            'next_page_url' => $resource->nextPageUrl(),
+            'prev_page_url' => $resource->previousPageUrl(),
+        ];
+        return $paginationData;
     }
 }
