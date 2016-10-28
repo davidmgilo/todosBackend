@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Task;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -61,7 +62,7 @@ class TasksController extends Controller
     public function show($id)
     {
 //        try {
-            return Task::findOrFail($id);
+//            return Task::findOrFail($id);
 //        } catch (\Exception $e) {
 //            return Response::json([
 //               'error' => 'Hi ha hagut una excepció',
@@ -79,6 +80,9 @@ class TasksController extends Controller
 //               'error' => 'Hi ha hagut una excepció',
 //               'code'  => 10
 //            ],404);
+        $task = Task::findOrFail($id);
+
+        return $this->transform($task);
     }
 
     /**
@@ -114,6 +118,16 @@ class TasksController extends Controller
     public function destroy($id)
     {
        return Task::findOrFail($id)->delete();
+    }
+
+    private function transform(Model $task)
+    {
+        return [
+            'name'     => $task->name,
+            'done'     => (boolean) $task->done,
+            'priority' => (integer) $task->priority,
+
+        ];
     }
 
 
