@@ -15,7 +15,7 @@ class TasksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //No metadata
         //Pagination
@@ -26,7 +26,7 @@ class TasksController extends Controller
 //            'propietari' => 'David Martinez',
 //            'data' => $tasks->toArray()
 //            ],200);
-        return Task::paginate();
+        return Task::paginate($request->input('per_page'));
     }
 
     /**
