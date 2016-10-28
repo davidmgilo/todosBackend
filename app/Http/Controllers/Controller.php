@@ -16,11 +16,11 @@ class Controller extends BaseController
      * @param $resource
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function generatePaginatedResponse($resource, array $metadata = [])
+    protected function generatePaginatedResponse($resources, array $metadata = [])
     {
-        $paginationData = $this->generatePaginationData($resource);
+        $paginationData = $this->generatePaginationData($resources);
         $data = [
-            'data' => $resource->toArray()
+            'data' => $this->transformCollections($resources->items())
         ];
 
         return Response::json(array_merge($metadata, $paginationData, $data), 200);
@@ -30,16 +30,35 @@ class Controller extends BaseController
      * @param $resource
      * @return array
      */
-    protected function generatePaginationData($resource)
+    protected function generatePaginationData($resources)
     {
         $paginationData = [
-            'total' => $resource->total(),
-            'per_page' => $resource->perPage(),
-            'current_page' => $resource->currentPage(),
-            'last_page' => $resource->lastPage(),
-            'next_page_url' => $resource->nextPageUrl(),
-            'prev_page_url' => $resource->previousPageUrl(),
+            'total' => $resources->total(),
+            'per_page' => $resources->perPage(),
+            'current_page' => $resources->currentPage(),
+            'last_page' => $resources->lastPage(),
+            'next_page_url' => $resources->nextPageUrl(),
+            'prev_page_url' => $resources->previousPageUrl(),
         ];
         return $paginationData;
+    }
+
+    private function transform($resource)
+    {
+        return [
+            'name' => $resource['name'],
+            'done' => (boolean)$resource['done'],
+            'priority' => (integer)$resource['priority'],
+
+        ];
+    }
+
+    private function transformCollections($resources)
+    {
+        //Collections : Laravel collections
+
+        return array_map(function ($resource) {
+            return $this->transform($resource);
+        }, $resources);
     }
 }
