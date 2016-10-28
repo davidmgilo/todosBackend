@@ -21,12 +21,18 @@ class TasksController extends Controller
         //Pagination
         //No error message
         //Transformations: hem de transformar el que ensenyem
-//        $tasks = Task::all();
-//        return Response::json([
-//            'propietari' => 'David Martinez',
-//            'data' => $tasks->toArray()
-//            ],200);
-        return Task::paginate($request->input('per_page'));
+        $tasks = Task::paginate(15);
+        return Response::json([
+            'propietari'    => 'David Martinez',
+            'total'         => $tasks->total(),
+            'per_page'      => $tasks->perPage(),
+            'current_page'  => $tasks->currentPage(),
+            'last_page'     => $tasks->lastPage(),
+            'next_page_url' => $tasks->nextPageUrl(),
+            'prev_page_url' => $tasks->previousPageUrl(),
+            'data' => $tasks->toArray()
+            ],200);
+//        return Task::paginate($request->input('per_page'));
     }
 
     /**
