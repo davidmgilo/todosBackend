@@ -22,6 +22,7 @@ class TasksController extends Controller
         //Pagination
         //No error message
         //Transformations: hem de transformar el que ensenyem
+        dd($this->transformCollections(Task::all()));
         $tasks = Task::paginate(15);
         return $this->generatePaginatedResponse($tasks, ['propietari' => 'David Martinez',]);
 //        return Task::paginate($request->input('per_page'));
@@ -128,6 +129,14 @@ class TasksController extends Controller
             'priority' => (integer) $task->priority,
 
         ];
+    }
+
+    private function transformCollections($tasks){
+        //Collections : Laravel collections
+
+        return array_map(function ($task){
+            return 'hello';
+        }, $tasks->toArray());
     }
 
 
