@@ -6,6 +6,7 @@ use App\Task;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Response;
 
 class TasksController extends Controller
 {
@@ -16,7 +17,15 @@ class TasksController extends Controller
      */
     public function index()
     {
-        return Task::all();
+        //No metadata
+        //Pagination
+        //No error message
+        //Transformations: hem de transformar el que ensenyem
+        $tasks = Task::all();
+        return Response::json([
+            'propietari' => 'David Martinez',
+            'data' => $tasks->toArray()
+            ],200);
     }
 
     /**
