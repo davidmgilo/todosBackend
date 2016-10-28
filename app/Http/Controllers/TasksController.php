@@ -121,12 +121,12 @@ class TasksController extends Controller
        return Task::findOrFail($id)->delete();
     }
 
-    private function transform(Model $task)
+    private function transform($task)
     {
         return [
-            'name'     => $task->name,
-            'done'     => (boolean) $task->done,
-            'priority' => (integer) $task->priority,
+            'name'     => $task['name'],
+            'done'     => (boolean) $task['done'],
+            'priority' => (integer) $task['priority'],
 
         ];
     }
@@ -135,12 +135,7 @@ class TasksController extends Controller
         //Collections : Laravel collections
 
         return array_map(function ($task){
-            return [
-                'name'     => $task['name'],
-                'done'     => (boolean) $task['done'],
-                'priority' => (integer) $task['priority'],
-
-            ];;
+            return $this->transform($task);
         }, $tasks->toArray());
     }
 
