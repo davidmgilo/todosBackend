@@ -135,7 +135,12 @@ class TasksController extends Controller
         //Collections : Laravel collections
 
         return array_map(function ($task){
-            return 'hello';
+            return [
+                'name'     => $task['name'],
+                'done'     => (boolean) $task['done'],
+                'priority' => (integer) $task['priority'],
+
+            ];;
         }, $tasks->toArray());
     }
 
