@@ -69,14 +69,25 @@ class TasksController extends Controller
      */
     public function show($id)
     {
-        try {
-            return Task::findOrFail($id);
-        } catch (\Exception $e) {
-            return Response::json([
+//        try {
+//            return Task::findOrFail($id);
+//        } catch (\Exception $e) {
+//            return Response::json([
+//               'error' => 'Hi ha hagut una excepció',
+//               'code'  => 10
+//            ],404);
+//        }
+
+        $task = Task::find($id);
+
+        if($task != null){
+            return $task;
+        }
+
+        return Response::json([
                'error' => 'Hi ha hagut una excepció',
                'code'  => 10
             ],404);
-        }
     }
 
     /**
