@@ -15,23 +15,14 @@ class TasksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         //No metadata
         //Pagination
         //No error message
         //Transformations: hem de transformar el que ensenyem
         $tasks = Task::paginate(15);
-        return Response::json([
-            'propietari'    => 'David Martinez',
-            'total'         => $tasks->total(),
-            'per_page'      => $tasks->perPage(),
-            'current_page'  => $tasks->currentPage(),
-            'last_page'     => $tasks->lastPage(),
-            'next_page_url' => $tasks->nextPageUrl(),
-            'prev_page_url' => $tasks->previousPageUrl(),
-            'data' => $tasks->toArray()
-            ],200);
+        return $this->generatePaginatedResponse($tasks);
 //        return Task::paginate($request->input('per_page'));
     }
 
@@ -123,5 +114,23 @@ class TasksController extends Controller
     public function destroy($id)
     {
        return Task::findOrFail($id)->delete();
+    }
+
+    /**
+     * @param $tasks
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function generatePaginatedResponse($tasks)
+    {
+        return Response::json([
+            'propietari' => 'David Martinez',
+            'total' => $tasks->total(),
+            'per_page' => $tasks->perPage(),
+            'current_page' => $tasks->currentPage(),
+            'last_page' => $tasks->lastPage(),
+            'next_page_url' => $tasks->nextPageUrl(),
+            'prev_page_url' => $tasks->previousPageUrl(),
+            'data' => $tasks->toArray()
+        ], 200);
     }
 }
