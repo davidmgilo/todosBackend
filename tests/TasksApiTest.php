@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 /**
  * Class TasksApiTest
@@ -10,45 +9,245 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class TasksApiTest extends TestCase
 {
 
-    protected $uri = '/api/task';
     use DatabaseMigrations;
 
     /**
-     * A basic test example.
+     * RESOURCE URL ON API.
      *
-     * @return void
+     * @var string
      */
-    public function testShowAllTasks()
+    protected $uri = '/api/tasks';
+
+    /**
+     * Default number of tasks created in database
+     */
+    const DEFAULT_NUMBER_OF_TASKS = 5;
+
+    /**
+     * Seed database with tasks.
+     *
+     * @param int $numberOfTasks to create
+     */
+    protected function seedDatabaseWithTasks($numberOfTasks = self::DEFAULT_NUMBER_OF_TASKS)
     {
-        factory(App\Task::class,10)->create();
-        $this->json('GET',$this->uri)
-//            ->dump();
-                ->seeJson();
-//         ->assertCount(30)
-        $this->assertCount(10,$this->decodeResponseJson());
-//        $this->assertCount(19,$this->json('GET',$this->uri)->decodeResponseJson());
-//        echo count($this->json('GET',$this->uri)->decodeResponseJson());
-        $this->seeJsonStructure([
-            '*' =>  [ "id", "name", "done", "priority" ]
-        ]);
-        //You may use the * to assert that the returned JSON structure has a list where each list item contains at least the attributes found in the set of values:
+        factory(App\Task::class,$numberOfTasks)->create();
     }
 
     /**
-     * @group failing
+     * Create task.
+     *
+     * @return mixed
      */
-    public function testShowOneTask()
+    protected function createTask()
     {
-        $task = factory(App\Task::class)->create();
-        $this->json('GET', $this->uri . '/' . $task->id)
-//            ->dump();
+        return factory(App\Task::class)->make();
+    }
+
+    /**
+     * Convert task to array.
+     *
+     * @param $task
+     * @return array
+     */
+    protected function convertTaskToArray(Model $task)
+    {
+//        return $task->toArray();
+        return [
+            "name" => $task->name,
+            "done" => $task->done,
+            "priority" => $task->priority,
+        ];
+    }
+
+    /**
+     * Create and persist task on database.
+     *
+     * @return mixed
+     */
+    protected function createAndPersistTask()
+    {
+        return factory(App\Task::class)->create();
+    }
+
+    //TODO ADD TEST FOR AUTHENTICATION AND REFACTOR EXISTING TESTS
+    //NOT AUTHORIZED: $this->assertEquals(301, $response->status());
+
+    /**
+     * Test Retrieve all tasks.
+     *
+     * @group failing
+     * @return void
+     */
+    public function testRetrieveAllTasks()
+    {
+        //Seed database
+        $this->seedDatabaseWithTasks();
+
+        $this->json('GET', $this->uri)
+             ->seeJsonStructure([
+                '*' => [
+                    'id', 'name', 'done', 'priority'
+                ]
+            ])
+            ->assertEquals(
+                self::DEFAULT_NUMBER_OF_TASKS,
+                count($this->decodeResponseJson())
+            );
+    }
+
+    /**
+     * Test Retrieve one task.
+     *
+     * @return void
+     */
+    public function testRetrieveOneTask()
+    {
+        //Create task in database
+        $task = $this->createAndPersistTask();
+
+        $this->json('GET', $this->uri . $task->id)
             ->seeJsonStructure(
-                    [ "id", "name", "done", "priority" ]
-            )
+                [ "id","name", "done", "priority", "created_at", "updated_at"])
+//TODO  Needs Transformers to work: convert string to booelan and string to integer
             ->seeJsonContains([
                 "name" => $task->name,
-//                "done" => $task->done,
-//                "priority" => $task->priority,
+                "done" => $task->done,
+                "priority" => $task->priority,
+                "created_at" => $task->created_at,
+                "updated_at" => $task->updated_at,
             ]);
+    }
+
+    /**
+     * Test Create new task.
+     *
+     * @return void
+     */
+    public function testCreateNewTask()
+    {
+        $task = $this->createTask();
+        $this->json('POST', $this->uri, $atask = $this->convertTaskToArray($task))
+            ->seeJson([
+                'created' => true,
+            ])
+            ->seeInDatabase('tasks',$atask);
+    }
+
+    /**
+     * Test update existing task.
+     *
+     * @return void
+     */
+    public function testUpdateExistingTask()
+    {
+        $task = $this->createAndPersistTask();
+        $task->done = !$task->done;
+        $task->name = "New task name";
+        $this->json('PUT', $this->uri . "/" . $task->id , $atask = $this->convertTaskToArray($task))
+            ->seeJson([
+                'updated' => true,
+            ])
+            ->seeInDatabase('tasks',$atask);
+    }
+
+    /**
+     * Test delete existing task.
+     *
+     * @return void
+     */
+    public function testDeleteExistingTask()
+    {
+        $task = $this->createAndPersistTask();
+        $this->json('DELETE', $this->uri . "/" . $task->id , $atask = $this->convertTaskToArray($task))
+            ->seeJson([
+                'deleted' => true,
+            ])
+            ->notSeeInDatabase('tasks',$atask);
+    }
+
+    /**
+     * Test not exists.
+     *
+     * @param $http_method
+     */
+    protected function testNotExists($http_method)
+    {
+        $this->json($http_method, $this->uri . '/99999999')
+            ->seeJson([
+                'status' => 404,
+            ])
+            ->assertEquals(404, $this->response->status());
+    }
+
+    /**
+     * Test get not existing task.
+     *
+     * @return void
+     */
+    public function testGetNotExistingTask()
+    {
+        $this->testNotExists('GET');
+    }
+
+    /**
+     * Test delete not existing task.
+     *
+     * @return void
+     */
+    public function testUpdateNotExistingTask()
+    {
+        $this->testNotExists('PUT');
+    }
+
+    /**
+     * Test delete not existing task.
+     *
+     * @return void
+     */
+    public function testDeleteNotExistingTask()
+    {
+        $this->testNotExists('DELETE');
+    }
+
+    /**
+     * Test pagination
+     *
+     * @return void
+     */
+    public function testPagination()
+    {
+        //TODO
+    }
+
+    //TODO: Test validation
+
+    /**
+     * Test name is required and done is set to false and priority to 1
+     *
+     * @return void
+     */
+    public function testNameIsRequiredAndDefaultValues()
+    {
+        //TODO
+    }
+
+    /**
+     * Test priority has to be an integer.
+     *
+     * @return void
+     */
+    public function testPriorityHaveToBeAnInteger()
+    {
+        //TODO
+    }
+
+    /**
+     * Test done has to be a boolean.
+     *
+     * @return void
+     */
+    public function testDoneHaveToBeBoolean()
+    {
+        //TODO
     }
 }
