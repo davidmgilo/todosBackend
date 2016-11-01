@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 /**
  * Class TasksApiTest
  */
-class TasksApiTest extends TestCase
+class TasksApiTestOld extends TestCase
 {
 
     protected $uri = '/api/v1/task';
@@ -35,7 +35,7 @@ class TasksApiTest extends TestCase
     }
 
     /**
-     * @group failing
+     * @group hh
      */
     public function testShowOneTask()
     {

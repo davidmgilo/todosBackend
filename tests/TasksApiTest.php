@@ -16,7 +16,7 @@ class TasksApiTest extends TestCase
      *
      * @var string
      */
-    protected $uri = '/api/tasks';
+    protected $uri = '/api/v1/tasks';
 
     /**
      * Default number of tasks created in database
@@ -81,8 +81,12 @@ class TasksApiTest extends TestCase
     public function testRetrieveAllTasks()
     {
         //Seed database
-        $this->seedDatabaseWithTasks();
+//        $this->seedDatabaseWithTasks();
+        $tasks = factory(App\Task::class,5)->create();
 
+//      dd($tasks);
+//        dd($this->json('GET',$this->uri)->seeJson());
+        dd($this->json('GET', $this->uri)->dump());
         $this->json('GET', $this->uri)
              ->seeJsonStructure([
                 '*' => [
@@ -93,6 +97,7 @@ class TasksApiTest extends TestCase
                 self::DEFAULT_NUMBER_OF_TASKS,
                 count($this->decodeResponseJson())
             );
+
     }
 
     /**
@@ -105,7 +110,7 @@ class TasksApiTest extends TestCase
         //Create task in database
         $task = $this->createAndPersistTask();
 
-        $this->json('GET', $this->uri . $task->id)
+        $this->json('GET', $this->uri .'/'. $task->id)
             ->seeJsonStructure(
                 [ "id","name", "done", "priority", "created_at", "updated_at"])
 //TODO  Needs Transformers to work: convert string to booelan and string to integer
