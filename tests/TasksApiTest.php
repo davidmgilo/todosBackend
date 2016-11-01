@@ -89,10 +89,13 @@ class TasksApiTest extends TestCase
 //        dd($this->json('GET', $this->uri)->dump());
         $this->json('GET', $this->uri)
              ->seeJsonStructure([
-//                '*' => [
-//                    'id', 'name', 'done', 'priority'
-//                ]
-             'propietari','total','per_page','current_page','last_page','next_page_url','prev_page_url','data'
+//
+             'propietari','total','per_page','current_page','last_page','next_page_url','prev_page_url',
+                 'data' => [
+                     '*' => [
+                        'name', 'done', 'priority'
+                     ]
+                 ]
             ]);
 //            ->assertEquals(
 //                self::DEFAULT_NUMBER_OF_TASKS,
