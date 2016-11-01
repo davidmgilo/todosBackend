@@ -16,7 +16,7 @@ class TasksApiTest extends TestCase
      *
      * @var string
      */
-    protected $uri = '/api/v1/tasks';
+    protected $uri = '/api/v1/task';
 
     /**
      * Default number of tasks created in database
