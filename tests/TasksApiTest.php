@@ -81,12 +81,13 @@ class TasksApiTest extends TestCase
     public function testRetrieveAllTasks()
     {
         //Seed database
-//        $this->seedDatabaseWithTasks();
-        $tasks = factory(App\Task::class,5)->create();
+        $this->seedDatabaseWithTasks();
+//        $tasks = factory(App\Task::class,5)->create();
 
 //      dd($tasks);
 //        dd($this->json('GET',$this->uri)->seeJson());
 //        dd($this->json('GET', $this->uri)->dump());
+
         $this->json('GET', $this->uri)
              ->seeJsonStructure([
 //
@@ -96,11 +97,12 @@ class TasksApiTest extends TestCase
                         'name', 'done', 'priority'
                      ]
                  ]
-            ]);
-//            ->assertEquals(
-//                self::DEFAULT_NUMBER_OF_TASKS,
-//                count($this->decodeResponseJson())
-//            );
+            ])
+            ->assertEquals(
+                self::DEFAULT_NUMBER_OF_TASKS,
+                count($this->decodeResponseJson()['data'])
+            );
+//        dd($this->decodeResponseJson());
 
     }
 
