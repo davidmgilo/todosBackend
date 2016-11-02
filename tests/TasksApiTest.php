@@ -76,7 +76,7 @@ class TasksApiTest extends TestCase
     /**
      * Test Retrieve all tasks.
      *
-     * @group failing
+     * @group ok
      * @return void
      */
     public function testRetrieveAllTasks()
@@ -109,7 +109,7 @@ class TasksApiTest extends TestCase
 
     /**
      * Test Retrieve one task.
-     * @group failing
+     * @group ok
      * @return void
      */
     public function testRetrieveOneTask()
@@ -133,7 +133,7 @@ class TasksApiTest extends TestCase
 
     /**
      * Test Create new task.
-     * @group failing
+     * @group ok
      * @return void
      */
     public function testCreateNewTask()
@@ -149,7 +149,7 @@ class TasksApiTest extends TestCase
 
     /**
      * Test update existing task.
-     *
+     * @group ok
      * @return void
      */
     public function testUpdateExistingTask()
