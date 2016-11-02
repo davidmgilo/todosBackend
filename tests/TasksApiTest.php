@@ -49,13 +49,14 @@ class TasksApiTest extends TestCase
      * @param $task
      * @return array
      */
-    protected function convertTaskToArray(Model $task)
+    protected function convertTaskToArray($task)
     {
 //        return $task->toArray();
         return [
-            "name" => $task->name,
-            "done" => $task->done,
-            "priority" => $task->priority,
+            'name' => $task['name'],
+            'done' => (boolean)$task['done'],
+            'priority' => (integer)$task['priority'],
+
         ];
     }
 
@@ -132,7 +133,7 @@ class TasksApiTest extends TestCase
 
     /**
      * Test Create new task.
-     *
+     * @group failing
      * @return void
      */
     public function testCreateNewTask()
