@@ -144,6 +144,7 @@ class TasksApiTest extends TestCase
                 'created' => true,
             ])
             ->seeInDatabase('tasks',$atask);
+//            ->dump();
     }
 
     /**
