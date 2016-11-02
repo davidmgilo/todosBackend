@@ -166,7 +166,7 @@ class TasksApiTest extends TestCase
 
     /**
      * Test delete existing task.
-     *
+     * @group ok
      * @return void
      */
     public function testDeleteExistingTask()

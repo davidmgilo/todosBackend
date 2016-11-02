@@ -123,7 +123,12 @@ class TasksController extends Controller
      */
     public function destroy($id)
     {
-       return Task::findOrFail($id)->delete();
+       Task::findOrFail($id)->delete();
+        return response(array(
+            'error' => false,
+            'deleted' => true,
+            'message' =>'Task deleted successfully',
+        ),200);
     }
 
 
