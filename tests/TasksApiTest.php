@@ -248,12 +248,16 @@ class TasksApiTest extends TestCase
 
     /**
      * Test priority has to be an integer.
-     *
+     * @group ok
      * @return void
      */
-    public function testPriorityHaveToBeAnInteger()
+    public function testPriorityHasToBeAnInteger()
     {
-        //TODO
+        $task = $this->createAndPersistTask();
+
+        $this->json('GET', $this->uri .'/'. $task->id);
+        $pri = $this->decodeResponseJson()['priority'];
+        $this->assertInternalType("int",$pri);
     }
 
     /**
