@@ -162,6 +162,7 @@ class TasksApiTest extends TestCase
                 'updated' => true,
             ])
             ->seeInDatabase('tasks',$atask);
+
     }
 
     /**
@@ -195,7 +196,7 @@ class TasksApiTest extends TestCase
 
     /**
      * Test get not existing task.
-     *
+     * @group ok
      * @return void
      */
     public function testGetNotExistingTask()

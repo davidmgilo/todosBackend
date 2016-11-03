@@ -110,7 +110,7 @@ class TasksController extends Controller
         return response(array(
             'error' => false,
             'updated' => true,
-            'message' =>'Task updated successfully',
+            'message' =>'Task updated successfully'
         ),200);
 
     }
