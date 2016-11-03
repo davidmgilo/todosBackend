@@ -258,11 +258,16 @@ class TasksApiTest extends TestCase
 
     /**
      * Test done has to be a boolean.
-     *
+     * @group ok
      * @return void
      */
-    public function testDoneHaveToBeBoolean()
+    public function testDoneHasToBeBoolean()
     {
-        //TODO
+        $task = $this->createAndPersistTask();
+
+        $this->json('GET', $this->uri .'/'. $task->id);
+        $done = $this->decodeResponseJson()['done'];
+//        $this->assertInternalType("int",$done);
+        $this->assertInternalType("boolean",$done);
     }
 }
