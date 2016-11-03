@@ -206,7 +206,7 @@ class TasksApiTest extends TestCase
 
     /**
      * Test delete not existing task.
-     *
+     * @group ok
      * @return void
      */
     public function testUpdateNotExistingTask()
@@ -216,7 +216,7 @@ class TasksApiTest extends TestCase
 
     /**
      * Test delete not existing task.
-     *
+     * @group ok
      * @return void
      */
     public function testDeleteNotExistingTask()
