@@ -38,7 +38,12 @@ class UsersController extends UserTransformController
      */
     public function store(Request $request)
     {
-        //
+        User::create($request->all());
+        return response(array(
+            'error' => false,
+            'created' => true,
+            'message' =>'User created successfully',
+        ),200);
     }
 
     /**
@@ -49,7 +54,9 @@ class UsersController extends UserTransformController
      */
     public function show($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        return $this->transform($user);
     }
 
     /**
@@ -72,7 +79,12 @@ class UsersController extends UserTransformController
      */
     public function update(Request $request, $id)
     {
-        //
+        User::findOrFail($id)->update($request->all());
+        return response(array(
+            'error' => false,
+            'updated' => true,
+            'message' =>'User updated successfully'
+        ),200);
     }
 
     /**
@@ -83,6 +95,11 @@ class UsersController extends UserTransformController
      */
     public function destroy($id)
     {
-        //
+        User::findOrFail($id)->delete();
+        return response(array(
+            'error' => false,
+            'deleted' => true,
+            'message' =>'User deleted successfully',
+        ),200);
     }
 }
