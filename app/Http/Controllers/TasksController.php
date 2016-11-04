@@ -9,9 +9,19 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Response;
+use App\Transformers\TaskTransformer;
 
-class TasksController extends TaskTransformController
+class TasksController extends Controller
 {
+    /**
+     * TasksController constructor.
+     */
+    public function __construct(TaskTransformer $transformer)
+    {
+        parent::__construct($transformer);
+    }
+
+
     /**
      * Display a listing of the resource.
      *

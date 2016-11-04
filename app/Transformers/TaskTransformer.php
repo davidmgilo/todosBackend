@@ -1,10 +1,14 @@
 <?php
+
+namespace App\Transformers;
+
 use App\Exceptions\IncorrectModelException;
+use App\Transformers\Contracts\Transformer;
 
 
-class TaskTransformer
+class TaskTransformer implements Transformer
 {
-    protected function transform($resource)
+    public function transform($resource)
     {
         if(! $resource instanceof \App\Task){
             throw new IncorrectModelException();
