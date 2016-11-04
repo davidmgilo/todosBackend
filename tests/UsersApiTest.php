@@ -50,8 +50,8 @@ class UsersApiTest extends TestCase
     {
 //        return $user->toArray();
         return [
-            'name' => $user->name,
-            'email' => $user->email,
+            'name' => $user['name'],
+            'email' => $user['email'],
 
         ];
     }
