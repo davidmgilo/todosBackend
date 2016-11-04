@@ -7,10 +7,23 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Response;
+use Transformer;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    protected $transformer;
+
+    /**
+     * Controller constructor.
+     * @param $transformer
+     */
+    public function __construct(Transformer $transformer)
+    {
+        $this->transformer = $transformer;
+    }
+
 
     /**
      * @param $resource
