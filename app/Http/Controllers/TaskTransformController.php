@@ -6,10 +6,10 @@
  * Time: 13:06
  */
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
 
-use App\Http\Controllers\Controller;
+
 
 class TaskTransformController extends Controller
 {

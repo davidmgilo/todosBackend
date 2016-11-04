@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Auth\TaskTransformController;
+
 use App\Task;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
