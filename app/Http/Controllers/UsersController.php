@@ -2,13 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Transformers\UserTransformer;
 use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class UsersController extends UserTransformController
+class UsersController extends Controller
 {
+    /**
+     * UsersController constructor.
+     */
+    public function __construct(UserTransformer $transformer)
+    {
+        parent::__construct($transformer);
+    }
+
+
     /**
      * Display a listing of the resource.
      *
