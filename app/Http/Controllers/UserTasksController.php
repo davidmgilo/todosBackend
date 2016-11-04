@@ -2,14 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Transformers\TaskTransformer;
 use App\User;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class UserTasksController extends BaseController
+class UserTasksController extends Controller
 {
+
+    public function __construct(TaskTransformer $transformer)
+    {
+        parent::__construct($transformer);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +27,9 @@ class UserTasksController extends BaseController
 //        dd($id);
         $user = User::findOrFail($id);
 
-        dd($user->tasks);
+        $tasks = $user->tasks()->paginate(5);
+
+        return $this->generatePaginatedResponse($tasks, ['propietari' => 'David Martinez',]);
     }
 
     /**
