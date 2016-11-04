@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Auth\TaskTransformController;
 use App\Task;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -9,7 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Response;
 
-class TasksController extends Controller
+class TasksController extends TaskTransformController
 {
     /**
      * Display a listing of the resource.

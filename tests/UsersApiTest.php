@@ -201,7 +201,7 @@ class UsersApiTest extends TestCase
 
     /**
      * Test delete not existing user.
-     * @group ok
+     *
      * @return void
      */
     public function testDeleteNotExistingUser()
