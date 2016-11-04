@@ -94,7 +94,7 @@ class TasksController extends Controller
 //            ],404);
         $task = Task::findOrFail($id);
 
-        return $this->transform($task);
+        return $this->transformer->transform($task);
     }
 
     /**
