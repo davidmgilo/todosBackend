@@ -4,6 +4,6 @@ namespace App\Transformers\Contracts;
 
 interface Transformer
 {
-    public function transform();
+    public function transform($resource);
 
 }

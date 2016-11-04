@@ -71,7 +71,7 @@ class Controller extends BaseController
         //Collections : Laravel collections
 
         return array_map(function ($resource) {
-            return $this->transform($resource);
+            return $this->transformer->transform($resource);
         }, $resources);
     }
 }
