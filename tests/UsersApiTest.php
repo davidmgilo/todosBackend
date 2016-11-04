@@ -50,8 +50,8 @@ class UsersApiTest extends TestCase
     {
 //        return $user->toArray();
         return [
-            'name' => $user['name'],
-            'email' => $user['email'],
+            'name' => $user->name,
+            'email' => $user->email,
 
         ];
     }
@@ -98,7 +98,7 @@ class UsersApiTest extends TestCase
 
     /**
      * Test Retrieve one user.
-     *
+     * @group failing
      * @return void
      */
     public function testRetrieveOneUser()
@@ -119,23 +119,24 @@ class UsersApiTest extends TestCase
 
     /**
      * Test Create new user.
-     *
+     * @group failing
      * @return void
      */
     public function testCreateNewUser()
     {
         $user = $this->createUser();
+//        $this->json('POST', $this->uri, $auser = $this->convertUserToArray($user))->dump();
         $this->json('POST', $this->uri, $auser = $this->convertUserToArray($user))
             ->seeJson([
                 'created' => true,
             ])
             ->seeInDatabase('users',$auser);
-//            ->dump();
+
     }
 
     /**
      * Test update existing user.
-     *
+     * @group failing
      * @return void
      */
     public function testUpdateExistingUser()
@@ -152,7 +153,7 @@ class UsersApiTest extends TestCase
 
     /**
      * Test delete existing user.
-     *
+     * @group failing
      * @return void
      */
     public function testDeleteExistingUser()
@@ -181,7 +182,7 @@ class UsersApiTest extends TestCase
 
     /**
      * Test get not existing user.
-     *
+     * @group failing
      * @return void
      */
     public function testGetNotExistingUser()
@@ -191,7 +192,7 @@ class UsersApiTest extends TestCase
 
     /**
      * Test delete not existing user.
-     *
+     * @group failing
      * @return void
      */
     public function testUpdateNotExistingUser()
@@ -201,7 +202,7 @@ class UsersApiTest extends TestCase
 
     /**
      * Test delete not existing user.
-     *
+     * @group failing
      * @return void
      */
     public function testDeleteNotExistingUser()
