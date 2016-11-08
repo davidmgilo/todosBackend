@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Transformers\Contracts\Transformer;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller as BaseController;
 use Response;
 
 class Controller extends BaseController
@@ -17,6 +17,7 @@ class Controller extends BaseController
 
     /**
      * Controller constructor.
+     *
      * @param $transformer
      */
     public function __construct(Transformer $transformer)
@@ -24,16 +25,16 @@ class Controller extends BaseController
         $this->transformer = $transformer;
     }
 
-
     /**
      * @param $resource
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     protected function generatePaginatedResponse($resources, array $metadata = [])
     {
         $paginationData = $this->generatePaginationData($resources);
         $data = [
-            'data' => $this->transformCollections($resources->items())
+            'data' => $this->transformCollections($resources->items()),
         ];
 
         return Response::json(array_merge($metadata, $paginationData, $data), 200);
@@ -41,18 +42,20 @@ class Controller extends BaseController
 
     /**
      * @param $resource
+     *
      * @return array
      */
     protected function generatePaginationData($resources)
     {
         $paginationData = [
-            'total' => $resources->total(),
-            'per_page' => $resources->perPage(),
-            'current_page' => $resources->currentPage(),
-            'last_page' => $resources->lastPage(),
+            'total'         => $resources->total(),
+            'per_page'      => $resources->perPage(),
+            'current_page'  => $resources->currentPage(),
+            'last_page'     => $resources->lastPage(),
             'next_page_url' => $resources->nextPageUrl(),
             'prev_page_url' => $resources->previousPageUrl(),
         ];
+
         return $paginationData;
     }
 
