@@ -7,6 +7,7 @@
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/davidmgilo/todosBackend/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/davidmgilo/todosBackend/?branch=master)
 [![Build Status](https://travis-ci.org/davidmgilo/todosBackend.svg?branch=master)](https://travis-ci.org/davidmgilo/todosBackend)
+[![StyleCI](https://styleci.io/repos/71568846/shield?branch=master)](https://styleci.io/repos/71568846)
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
 
