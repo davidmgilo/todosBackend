@@ -1,14 +1,12 @@
 <?php
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 /**
- * Class TasksApiTest
+ * Class TasksApiTest.
  */
 class TasksApiTest extends TestCase
 {
-
     use DatabaseMigrations;
 
     /**
@@ -19,7 +17,7 @@ class TasksApiTest extends TestCase
     protected $uri = '/api/v1/task';
 
     /**
-     * Default number of tasks created in database
+     * Default number of tasks created in database.
      */
     const DEFAULT_NUMBER_OF_TASKS = 5;
 
@@ -30,7 +28,7 @@ class TasksApiTest extends TestCase
      */
     protected function seedDatabaseWithTasks($numberOfTasks = self::DEFAULT_NUMBER_OF_TASKS)
     {
-        factory(App\Task::class,$numberOfTasks)->create();
+        factory(App\Task::class, $numberOfTasks)->create();
     }
 
     /**
@@ -47,15 +45,16 @@ class TasksApiTest extends TestCase
      * Convert task to array.
      *
      * @param $task
+     *
      * @return array
      */
     protected function convertTaskToArray($task)
     {
-//        return $task->toArray();
+        //        return $task->toArray();
         return [
-            'name' => $task['name'],
-            'done' => (boolean)$task['done'],
-            'priority' => (integer)$task['priority'],
+            'name'     => $task['name'],
+            'done'     => (bool) $task['done'],
+            'priority' => (int) $task['priority'],
 
         ];
     }
@@ -77,6 +76,7 @@ class TasksApiTest extends TestCase
      * Test Retrieve all tasks.
      *
      * @group ok
+     *
      * @return void
      */
     public function testRetrieveAllTasks()
@@ -92,39 +92,40 @@ class TasksApiTest extends TestCase
         $this->json('GET', $this->uri)
              ->seeJsonStructure([
 //
-             'propietari','total','per_page','current_page','last_page','next_page_url','prev_page_url',
+             'propietari', 'total', 'per_page', 'current_page', 'last_page', 'next_page_url', 'prev_page_url',
                  'data' => [
                      '*' => [
-                        'name', 'done', 'priority'
-                     ]
-                 ]
+                        'name', 'done', 'priority',
+                     ],
+                 ],
             ])
             ->assertEquals(
                 self::DEFAULT_NUMBER_OF_TASKS,
                 count($this->decodeResponseJson()['data'])
             );
 //        dd($this->decodeResponseJson());
-
     }
 
     /**
      * Test Retrieve one task.
+     *
      * @group ok
+     *
      * @return void
      */
     public function testRetrieveOneTask()
     {
         //Create task in database
         $task = $this->createAndPersistTask();
-        $this->json('GET', $this->uri .'/'. $task->id)
+        $this->json('GET', $this->uri.'/'.$task->id)
             ->seeJsonStructure(
-                [ "name", "done", "priority",])
+                ['name', 'done', 'priority'])
 //DONE @see Controller.transform
 //  Needs Transformers to work: convert string to booelan and string to integer
             ->seeJsonContains([
-                "name" => $task->name,
-                "done" => $task->done,
-                "priority" => $task->priority,
+                'name'     => $task->name,
+                'done'     => $task->done,
+                'priority' => $task->priority,
 //                "created_at" => $task->created_at,
 //                "updated_at" => $task->updated_at,
             ]);
@@ -132,7 +133,9 @@ class TasksApiTest extends TestCase
 
     /**
      * Test Create new task.
+     *
      * @group ok
+     *
      * @return void
      */
     public function testCreateNewTask()
@@ -142,41 +145,44 @@ class TasksApiTest extends TestCase
             ->seeJson([
                 'created' => true,
             ])
-            ->seeInDatabase('tasks',$atask);
+            ->seeInDatabase('tasks', $atask);
 //            ->dump();
     }
 
     /**
      * Test update existing task.
+     *
      * @group ok
+     *
      * @return void
      */
     public function testUpdateExistingTask()
     {
         $task = $this->createAndPersistTask();
         $task->done = !$task->done;
-        $task->name = "New task name";
-        $this->json('PUT', $this->uri . "/" . $task->id , $atask = $this->convertTaskToArray($task))
+        $task->name = 'New task name';
+        $this->json('PUT', $this->uri.'/'.$task->id, $atask = $this->convertTaskToArray($task))
             ->seeJson([
                 'updated' => true,
             ])
-            ->seeInDatabase('tasks',$atask);
-
+            ->seeInDatabase('tasks', $atask);
     }
 
     /**
      * Test delete existing task.
+     *
      * @group ok
+     *
      * @return void
      */
     public function testDeleteExistingTask()
     {
         $task = $this->createAndPersistTask();
-        $this->json('DELETE', $this->uri . "/" . $task->id , $atask = $this->convertTaskToArray($task))
+        $this->json('DELETE', $this->uri.'/'.$task->id, $atask = $this->convertTaskToArray($task))
             ->seeJson([
                 'deleted' => true,
             ])
-            ->notSeeInDatabase('tasks',$atask);
+            ->notSeeInDatabase('tasks', $atask);
     }
 
     /**
@@ -186,7 +192,7 @@ class TasksApiTest extends TestCase
      */
     protected function testNotExists($http_method)
     {
-        $this->json($http_method, $this->uri . '/99999999')
+        $this->json($http_method, $this->uri.'/99999999')
             ->seeJson([
                 'status' => 404,
             ])
@@ -195,7 +201,9 @@ class TasksApiTest extends TestCase
 
     /**
      * Test get not existing task.
+     *
      * @group ok
+     *
      * @return void
      */
     public function testGetNotExistingTask()
@@ -205,7 +213,9 @@ class TasksApiTest extends TestCase
 
     /**
      * Test delete not existing task.
+     *
      * @group ok
+     *
      * @return void
      */
     public function testUpdateNotExistingTask()
@@ -215,7 +225,9 @@ class TasksApiTest extends TestCase
 
     /**
      * Test delete not existing task.
+     *
      * @group ok
+     *
      * @return void
      */
     public function testDeleteNotExistingTask()
@@ -224,7 +236,7 @@ class TasksApiTest extends TestCase
     }
 
     /**
-     * Test pagination
+     * Test pagination.
      *
      * @return void
      */
@@ -236,7 +248,7 @@ class TasksApiTest extends TestCase
     //TODO: Test validation
 
     /**
-     * Test name is required and done is set to false and priority to 1
+     * Test name is required and done is set to false and priority to 1.
      *
      * @return void
      */
@@ -252,7 +264,7 @@ class TasksApiTest extends TestCase
      */
     public function testPriorityHasToBeAnInteger()
     {
-//        $task = $this->createAndPersistTask();
+        //        $task = $this->createAndPersistTask();
 //
 //        $this->json('GET', $this->uri .'/'. $task->id);
 //        $pri = $this->decodeResponseJson()['priority'];
@@ -266,7 +278,7 @@ class TasksApiTest extends TestCase
      */
     public function testDoneHasToBeBoolean()
     {
-//        $task = $this->createAndPersistTask();
+        //        $task = $this->createAndPersistTask();
 //
 //        $this->json('GET', $this->uri .'/'. $task->id);
 //        $done = $this->decodeResponseJson()['done'];
