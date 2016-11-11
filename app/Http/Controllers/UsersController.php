@@ -73,7 +73,7 @@ class UsersController extends Controller
     {
         $user = $this->repository->find($id);
 
-        return $this->transform($user);
+        return $this->transformer->transform($user);
     }
 
     /**
