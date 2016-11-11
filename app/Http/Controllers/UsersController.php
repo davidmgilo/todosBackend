@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Respositories\UserRepository;
+use App\Repositories\UserRepository;
 use App\Transformers\UserTransformer;
 use App\User;
 use Illuminate\Http\Request;

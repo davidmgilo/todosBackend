@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Respositories;
+namespace App\Repositories;
 
-use App\Respositories\Contracts\Repository;
+use App\Repositories\Contracts\Repository;
 use App\Task;
 
 class TaskRepository implements Repository

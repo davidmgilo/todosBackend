@@ -28,7 +28,7 @@ class TasksApiTest extends TestCase
      */
     protected function seedDatabaseWithTasks($numberOfTasks = self::DEFAULT_NUMBER_OF_TASKS)
     {
-        factory(App\Task::class, $numberOfTasks)->create();
+        factory(App\Task::class, $numberOfTasks)->create(['user_id' => 0]);
     }
 
     /**

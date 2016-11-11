@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Respositories\TaskRepository;
+use App\Repositories\TaskRepository;
 use App\Task;
 use App\Transformers\TaskTransformer;
 use Illuminate\Http\Request;
