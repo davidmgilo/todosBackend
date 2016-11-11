@@ -28,7 +28,7 @@ class TasksApiTest extends TestCase
      */
     protected function seedDatabaseWithTasks($numberOfTasks = self::DEFAULT_NUMBER_OF_TASKS)
     {
-        factory(App\Task::class, $numberOfTasks)->create(['user_id' => 0]);
+        factory(App\Task::class, $numberOfTasks)->create(['user_id' => 1]);
     }
 
     /**
@@ -38,7 +38,7 @@ class TasksApiTest extends TestCase
      */
     protected function createTask()
     {
-        return factory(App\Task::class)->make();
+        return factory(App\Task::class)->make(['user_id' => 1]);
     }
 
     /**
@@ -55,6 +55,7 @@ class TasksApiTest extends TestCase
             'name'     => $task['name'],
             'done'     => (bool) $task['done'],
             'priority' => (int) $task['priority'],
+            'user_id'  => (int) $task['user_id']
 
         ];
     }
@@ -66,7 +67,7 @@ class TasksApiTest extends TestCase
      */
     protected function createAndPersistTask()
     {
-        return factory(App\Task::class)->create();
+        return factory(App\Task::class)->create(['user_id' => 0]);
     }
 
     //TODO ADD TEST FOR AUTHENTICATION AND REFACTOR EXISTING TESTS
@@ -141,6 +142,7 @@ class TasksApiTest extends TestCase
     public function testCreateNewTask()
     {
         $task = $this->createTask();
+//        dd($this->convertTaskToArray($task));
         $this->json('POST', $this->uri, $atask = $this->convertTaskToArray($task))
             ->seeJson([
                 'created' => true,

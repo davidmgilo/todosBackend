@@ -16,6 +16,7 @@ class TaskTransformer extends Transformer
             'name'     => $resource['name'],
             'done'     => (bool) $resource['done'],
             'priority' => (int) $resource['priority'],
+            'user_id'  => (int) $resource['user_id']
 
         ];
     }
