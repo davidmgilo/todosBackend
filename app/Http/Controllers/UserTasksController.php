@@ -6,7 +6,6 @@ use App\Transformers\TaskTransformer;
 use App\User;
 use Illuminate\Http\Request;
 
-
 class UserTasksController extends Controller
 {
     public function __construct(TaskTransformer $transformer)

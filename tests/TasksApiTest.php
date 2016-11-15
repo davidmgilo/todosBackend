@@ -55,7 +55,7 @@ class TasksApiTest extends TestCase
             'name'     => $task['name'],
             'done'     => (bool) $task['done'],
             'priority' => (int) $task['priority'],
-            'user_id'  => (int) $task['user_id']
+            'user_id'  => (int) $task['user_id'],
 
         ];
     }

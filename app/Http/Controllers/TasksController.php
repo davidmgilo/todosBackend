@@ -9,27 +9,24 @@ use Illuminate\Http\Request;
 use Response;
 
 /**
- * Class TasksController
+ * Class TasksController.
  *
  * lorem ipsum gwewg wegaqwf eqwfqwf qweffq
- *
- * @package App\Http\Controllers
  */
 class TasksController extends Controller
 {
     /**
-     * Respository object
+     * Respository object.
      *
      * @var TaskRepository
      */
     protected $repository;
 
-
     /**
      * TasksController constructor.
      *
      * @param TaskTransformer $transformer
-     * @param TaskRepository $repository
+     * @param TaskRepository  $repository
      */
     public function __construct(TaskTransformer $transformer, TaskRepository $repository)
     {
@@ -79,7 +76,7 @@ class TasksController extends Controller
 
         return response([
             'error'   => false,
-            'created' => (bool)true,
+            'created' => (bool) true,
             'message' => 'Task created successfully',
         ], 200);
     }
@@ -93,7 +90,6 @@ class TasksController extends Controller
      */
     public function show($id)
     {
-
         $task = $this->repository->find($id);
 
         return $this->transformer->transform($task);
