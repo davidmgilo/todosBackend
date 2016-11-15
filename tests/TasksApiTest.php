@@ -67,7 +67,7 @@ class TasksApiTest extends TestCase
      */
     protected function createAndPersistTask()
     {
-        return factory(App\Task::class)->create(['user_id' => 0]);
+        return factory(App\Task::class)->create(['user_id' => 1]);
     }
 
     //TODO ADD TEST FOR AUTHENTICATION AND REFACTOR EXISTING TESTS
