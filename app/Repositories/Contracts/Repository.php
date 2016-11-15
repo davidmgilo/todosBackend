@@ -4,5 +4,5 @@ namespace App\Repositories\Contracts;
 
 interface Repository
 {
-    public function find($id, $columns = array('*'));
+    public function find($id, $columns = ['*']);
 }

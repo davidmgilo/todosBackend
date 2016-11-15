@@ -7,8 +7,7 @@ use App\User;
 
 class UserRepository implements Repository
 {
-
-    public function find($id, $columns = array('*'))
+    public function find($id, $columns = ['*'])
     {
         return User::findOrFail($id);
     }

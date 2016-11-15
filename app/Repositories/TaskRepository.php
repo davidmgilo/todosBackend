@@ -7,8 +7,7 @@ use App\Task;
 
 class TaskRepository implements Repository
 {
-
-    public function find($id, $columns = array('*'))
+    public function find($id, $columns = ['*'])
     {
         return Task::findOrFail($id);
     }
