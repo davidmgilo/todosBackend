@@ -10,8 +10,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Response;
 
 /**
- * Class Controller
- * @package App\Http\Controllers
+ * Class Controller.
  */
 class Controller extends BaseController
 {
@@ -32,7 +31,9 @@ class Controller extends BaseController
     /**
      * @param $resources
      * @param array $metadata
+     *
      * @return \Illuminate\Http\JsonResponse
+     *
      * @internal param $resource
      */
     protected function generatePaginatedResponse($resources, array $metadata = [])
@@ -47,7 +48,9 @@ class Controller extends BaseController
 
     /**
      * @param $resources
+     *
      * @return array
+     *
      * @internal param $resource
      */
     protected function generatePaginationData($resources)
@@ -73,6 +76,4 @@ class Controller extends BaseController
 //
 //        ];
 //    }
-
-
 }
