@@ -5,8 +5,7 @@ namespace App\Transformers;
 use App\Exceptions\IncorrectModelException;
 
 /**
- * Class TaskTransformer
- * @package App\Transformers
+ * Class TaskTransformer.
  */
 class TaskTransformer extends Transformer
 {
@@ -14,8 +13,10 @@ class TaskTransformer extends Transformer
      * Transform a task.
      *
      * @param $resource
-     * @return array
+     *
      * @throws IncorrectModelException
+     *
+     * @return array
      */
     public function transform($resource)
     {
@@ -27,9 +28,8 @@ class TaskTransformer extends Transformer
             'name'     => $resource['name'],
             'done'     => (bool) $resource['done'],
             'priority' => (int) $resource['priority'],
-            'user_id'  => (int) $resource['user_id']
+            'user_id'  => (int) $resource['user_id'],
 
         ];
     }
-
 }

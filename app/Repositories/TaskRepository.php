@@ -6,18 +6,17 @@ use App\Repositories\Contracts\Repository;
 use App\Task;
 
 /**
- * Class TaskRepository
- * @package App\Repositories
+ * Class TaskRepository.
  */
 class TaskRepository implements Repository
 {
-
     /**
      * @param $id
      * @param array $columns
+     *
      * @return mixed
      */
-    public function find($id, $columns = array('*'))
+    public function find($id, $columns = ['*'])
     {
         return Task::findOrFail($id);
     }
