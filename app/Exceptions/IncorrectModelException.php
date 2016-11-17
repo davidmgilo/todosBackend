@@ -8,8 +8,7 @@
 namespace App\Exceptions;
 
 /**
- * Class IncorrectModelException
- * @package App\Exceptions
+ * Class IncorrectModelException.
  */
 class IncorrectModelException extends \Exception
 {

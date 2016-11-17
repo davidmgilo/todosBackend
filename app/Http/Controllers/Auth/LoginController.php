@@ -6,8 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 /**
- * Class LoginController
- * @package App\Http\Controllers\Auth
+ * Class LoginController.
  */
 class LoginController extends Controller
 {
@@ -33,7 +32,6 @@ class LoginController extends Controller
 
     /**
      * Create a new controller instance.
-     *
      */
     public function __construct()
     {
