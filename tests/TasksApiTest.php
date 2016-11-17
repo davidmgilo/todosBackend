@@ -192,7 +192,7 @@ class TasksApiTest extends TestCase
      *
      * @param $http_method
      */
-    protected function testNotExists($http_method)
+    protected function atestNotExists($http_method)
     {
         $this->json($http_method, $this->uri.'/99999999')
             ->seeJson([
@@ -210,7 +210,7 @@ class TasksApiTest extends TestCase
      */
     public function testGetNotExistingTask()
     {
-        $this->testNotExists('GET');
+        $this->atestNotExists('GET');
     }
 
     /**
@@ -222,7 +222,7 @@ class TasksApiTest extends TestCase
      */
     public function testUpdateNotExistingTask()
     {
-        $this->testNotExists('PUT');
+        $this->atestNotExists('PUT');
     }
 
     /**
@@ -234,7 +234,7 @@ class TasksApiTest extends TestCase
      */
     public function testDeleteNotExistingTask()
     {
-        $this->testNotExists('DELETE');
+        $this->atestNotExists('DELETE');
     }
 
     /**

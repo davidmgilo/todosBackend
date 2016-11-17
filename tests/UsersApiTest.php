@@ -176,7 +176,7 @@ class UsersApiTest extends TestCase
      *
      * @param $http_method
      */
-    protected function testNotExists($http_method)
+    protected function atestNotExists($http_method)
     {
         $this->json($http_method, $this->uri.'/99999999')
             ->seeJson([
@@ -194,7 +194,7 @@ class UsersApiTest extends TestCase
      */
     public function testGetNotExistingUser()
     {
-        $this->testNotExists('GET');
+        $this->atestNotExists('GET');
     }
 
     /**
@@ -206,7 +206,7 @@ class UsersApiTest extends TestCase
      */
     public function testUpdateNotExistingUser()
     {
-        $this->testNotExists('PUT');
+        $this->atestNotExists('PUT');
     }
 
     /**
@@ -218,7 +218,7 @@ class UsersApiTest extends TestCase
      */
     public function testDeleteNotExistingUser()
     {
-        $this->testNotExists('DELETE');
+        $this->atestNotExists('DELETE');
     }
 
     /**
