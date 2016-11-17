@@ -63,13 +63,16 @@ class UserTasksController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $id
-     *
+     * @param $iduser
+     * @param $idtask
      * @return \Illuminate\Http\Response
+     *
      */
-    public function show($id)
+    public function show($iduser, $idtask)
     {
-        //
+        $user = User::findOrFail($iduser);
+        $task = $user->tasks()->where('id','=',"$idtask")->paginate(1);
+        return $this->generatePaginatedResponse($task, ['propietari' => 'David Martinez']);
     }
 
     /**
