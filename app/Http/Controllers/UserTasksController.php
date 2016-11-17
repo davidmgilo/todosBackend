@@ -71,8 +71,10 @@ class UserTasksController extends Controller
     public function show($iduser, $idtask)
     {
         $user = User::findOrFail($iduser);
-        $task = $user->tasks()->findOrFail($idtask)->paginate(1);
-        return $this->generatePaginatedResponse($task, ['propietari' => 'David Martinez']);
+        $task = $user->tasks()->findOrFail($idtask);
+        return $this->transformer->transform($task);
+//        $task = $user->tasks()->findOrFail($idtask)->paginate(1);
+//        return $this->generatePaginatedResponse($task, ['propietari' => 'David Martinez']);
     }
 
     /**
