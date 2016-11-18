@@ -53,7 +53,7 @@ class Handler extends ExceptionHandler
     {
         if ($exception instanceof ModelNotFoundException) {
             return Response::json([
-                'error'  => 'Hi ha hagut una excepció '.$exception->getMessage(),
+                'error'  => 'Hi ha hagut una excepció ' . $exception->getMessage(),
                 'code'   => 10,
                 'status' => 404,
             ], 404);

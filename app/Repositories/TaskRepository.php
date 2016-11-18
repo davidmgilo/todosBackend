@@ -11,7 +11,7 @@ use App\Task;
 class TaskRepository implements Repository
 {
     /**
-     * @param $id
+     * @param integer $id
      * @param array $columns
      *
      * @return mixed

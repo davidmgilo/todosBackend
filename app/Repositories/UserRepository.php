@@ -11,7 +11,7 @@ use App\User;
 class UserRepository implements Repository
 {
     /**
-     * @param $id
+     * @param integer $id
      * @param array $columns
      *
      * @return mixed
