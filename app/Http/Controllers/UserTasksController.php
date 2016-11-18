@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Task;
 use App\Transformers\TaskTransformer;
 use App\User;
 use Illuminate\Http\Request;
@@ -26,7 +27,7 @@ class UserTasksController extends Controller
      *
      * @param $id
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index($id)
     {
@@ -55,9 +56,16 @@ class UserTasksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $iduser)
     {
-        //
+        $user = User::findOrFail($iduser);
+        Task::create($request->only(['name', 'done', 'priority', $user->id]));
+
+        return response([
+            'error'   => false,
+            'created' => true,
+            'message' => 'Task from user created successfully',
+        ], 200);
     }
 
     /**
@@ -97,9 +105,17 @@ class UserTasksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $iduser, $idtask)
     {
-        //
+        $user = User::findOrFail($iduser);
+        $task = $user->tasks()->findOrFail($idtask);
+        $task->update($request->only(['name', 'done', 'priority', 'user_id']));
+
+        return response([
+            'error'   => false,
+            'updated' => true,
+            'message' => 'Task from user updated successfully',
+        ], 200);
     }
 
     /**
@@ -109,8 +125,16 @@ class UserTasksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($iduser, $idtask)
     {
-        //
+        $user = User::findOrFail($iduser);
+        $task = $user->tasks()->findOrFail($idtask);
+        $task->delete();
+
+        return response([
+            'error'   => false,
+            'deleted' => true,
+            'message' => 'Task from user deleted successfully',
+        ], 200);
     }
 }
