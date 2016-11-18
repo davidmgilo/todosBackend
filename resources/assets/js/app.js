@@ -44,11 +44,11 @@ const app = new Vue({
         },
         fetchData: function (){
             //Axios
-            var req = new XMLHttpRequest();
-            req.open('GET', 'http://localhost:8082/api/v1/task', false);
-            req.send(null);
-            if (req.status == 200)
-                console.log(req.responseText);
+            // var req = new XMLHttpRequest();
+            // req.open('GET', 'http://localhost:8082/api/v1/task', false);
+            // req.send(null);
+            // if (req.status == 200)
+            //     console.log(req.responseText);
         }
     },
     created: function() {
