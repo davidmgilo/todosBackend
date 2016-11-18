@@ -20,23 +20,8 @@ const app = new Vue({
     data: {
         message: 'Hello Vue!',
         seen: false,
-        todos: [
-            {
-                name: 'Learn Javascript',
-                done: true,
-                priority: 4
-            },
-            {
-                name: 'Learn PHP',
-                done: false,
-                priority: 5
-            },
-            {
-                name: 'Comprar pa',
-                done: false,
-                priority: 1
-            }
-        ]
+        todos: []
+
     },
     methods: {
         reverseMessage: function(){
@@ -44,11 +29,14 @@ const app = new Vue({
         },
         fetchData: function (){
             //Axios
-            // var req = new XMLHttpRequest();
-            // req.open('GET', 'http://localhost:8082/api/v1/task', false);
-            // req.send(null);
-            // if (req.status == 200)
-            //     console.log(req.responseText);
+            // GET someUrl
+            this.$http.get('/api/v1/task').then((response) => {
+                this.todos = response.data.data;
+            }, (response) => {
+                // error callback
+                sweetAlert("Oops...", "Something went wrong!", "error");
+                console.log(response);
+            });
         }
     },
     created: function() {
