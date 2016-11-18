@@ -53,8 +53,8 @@ class UserTasksController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     *
      * @param $iduser
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, $iduser)
@@ -74,13 +74,14 @@ class UserTasksController extends Controller
      *
      * @param $iduser
      * @param $idtask
-     * @return \Illuminate\Http\Response
      *
+     * @return \Illuminate\Http\Response
      */
     public function show($iduser, $idtask)
     {
         $user = User::findOrFail($iduser);
         $task = $user->tasks()->findOrFail($idtask);
+
         return $this->transformer->transform($task);
 //        $task = $user->tasks()->findOrFail($idtask)->paginate(1);
 //        return $this->generatePaginatedResponse($task, ['propietari' => 'David Martinez']);
@@ -104,9 +105,8 @@ class UserTasksController extends Controller
      * @param \Illuminate\Http\Request $request
      * @param $iduser
      * @param $idtask
+     *
      * @return \Illuminate\Http\Response
-     *
-     *
      */
     public function update(Request $request, $iduser, $idtask)
     {
@@ -126,9 +126,8 @@ class UserTasksController extends Controller
      *
      * @param $iduser
      * @param $idtask
+     *
      * @return \Illuminate\Http\Response
-     *
-     *
      */
     public function destroy($iduser, $idtask)
     {
