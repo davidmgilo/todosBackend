@@ -24,7 +24,7 @@ window.Vue = require('vue');
 // require('vue-resource');
 
 window.axios = require('axios');
-Vue.prototype.$htpp = axios;
+Vue.prototype.$http = axios;
 
 require('sweetalert');
 
