@@ -54,6 +54,7 @@ class UserTasksController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      *
+     * @param $iduser
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, $iduser)
@@ -101,9 +102,11 @@ class UserTasksController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param int                      $id
-     *
+     * @param $iduser
+     * @param $idtask
      * @return \Illuminate\Http\Response
+     *
+     *
      */
     public function update(Request $request, $iduser, $idtask)
     {
@@ -121,9 +124,11 @@ class UserTasksController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
-     *
+     * @param $iduser
+     * @param $idtask
      * @return \Illuminate\Http\Response
+     *
+     *
      */
     public function destroy($iduser, $idtask)
     {
