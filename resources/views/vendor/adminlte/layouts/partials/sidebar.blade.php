@@ -35,6 +35,7 @@
             <!-- Optionally, you can add icons to the links -->
             <li class="active"><a href="{{ url('home') }}"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
             <li><a href="{{url('tasks')}}"><i class='fa fa-link'></i> <span>Tasques</span></a></li>
+            <li><a href="{{url('profile/tokens')}}"><i class='fa fa-link'></i> <span>Oauth</span></a></li>
 
         </ul><!-- /.sidebar-menu -->
     </section>
