@@ -12,18 +12,17 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1.</td>
-                <td>Update software</td>
-                <td>
-                </td>
+            <tr v-for="todo in todos">
+                <td>{{ todo.name }}</td>
+                <td>{{ todo.priority }}</td>
+                <td>{{ todo.done }}</td>
             </tr>
 
             </tbody>
         </table>
-        <ol>
-            <li v-for="todo in todos">{{ todo.name }} | {{ todo.priority }} | {{ todo.done }}</li>
-        </ol>
+        <!--<ol>-->
+            <!--<li v-for="todo in todos">{{ todo.name }} | {{ todo.priority }} | {{ todo.done }}</li>-->
+        <!--</ol>-->
         <!--Hola-->
     </div>
 </template>
