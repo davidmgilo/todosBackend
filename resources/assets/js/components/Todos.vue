@@ -3,7 +3,24 @@
         <p v-show="seen">{{message}}</p>
         <input type="text" v-model="message">
         <button v-on:click="reverseMessage"> Reverse </button>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th style="width: 10px">Priority</th>
+                <th style="width: 10px">Done</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1.</td>
+                <td>Update software</td>
+                <td>
+                </td>
+            </tr>
 
+            </tbody>
+        </table>
         <ol>
             <li v-for="todo in todos">{{ todo.name }} | {{ todo.priority }} | {{ todo.done }}</li>
         </ol>
