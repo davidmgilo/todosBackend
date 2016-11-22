@@ -16,7 +16,8 @@ use Illuminate\Http\Request;
 //Route::get('/user', function (Request $request) {
 //    return $request->user();
 //})->middleware('auth:api');
-Route::group(['prefix' => 'v1'], function () {
+// Les APIs han de ser Stateless. Cada petició ha de ser autenticada. Auth.basic no ho fa del tot.
+Route::group(['prefix' => 'v1', 'middleware' => 'auth.basic'], function () {
     Route::resource('task', 'TasksController');
     Route::resource('user', 'UsersController');
     Route::resource('user.task', 'UserTasksController');
