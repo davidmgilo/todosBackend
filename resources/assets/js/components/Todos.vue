@@ -6,16 +6,26 @@
         <table class="table table-bordered">
             <thead>
             <tr>
+                <th style="width: 10px">#</th>
                 <th>Name</th>
-                <th style="width: 10px">Priority</th>
-                <th style="width: 10px">Done</th>
+                <th>Priority</th>
+                <th>Done</th>
+                <th>Progress</th>
+                <th style="width: 40px">Label</th>
             </tr>
             </thead>
             <tbody>
             <tr v-for="todo in todos">
+                <td>#</td>
                 <td>{{ todo.name }}</td>
                 <td>{{ todo.priority }}</td>
                 <td>{{ todo.done }}</td>
+                <td>
+                    <div class="progress progress-xs">
+                        <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
+                    </div>
+                </td>
+                <td><span class="badge bg-red">55%</span></td>
             </tr>
 
             </tbody>
@@ -27,9 +37,7 @@
     </div>
 </template>
 <style>
-    body{
-        background-color:#ff0000;
-    }
+
 </style>
 <script>
     export default {
