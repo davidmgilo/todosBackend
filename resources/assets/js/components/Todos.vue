@@ -20,8 +20,8 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="todo in todos">
-                        <td>#</td>
+                    <tr v-for="(todo, index) in todos">
+                        <td>{{index + 1}}</td>
                         <td>{{ todo.name }}</td>
                         <td>{{ todo.priority }}</td>
                         <td>{{ todo.done }}</td>
@@ -35,6 +35,15 @@
 
                     </tbody>
                 </table>
+            </div>
+            <div class="box-footer clearfix">
+                <ul class="pagination pagination-sm no-margin pull-right">
+                    <li><a href="#">&laquo;</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">&raquo;</a></li>
+                </ul>
             </div>
         </div>
 
