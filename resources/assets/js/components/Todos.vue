@@ -6,6 +6,18 @@
         <div class="box">
             <div class="box-header with-border">
                 <h3 class="box-title">Tasques</h3>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default">Filters</button>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">All</a></li>
+                        <li><a href="#">Active</a></li>
+                        <li><a href="#">Done</a></li>
+                    </ul>
+                </div>
             </div>
             <div class="box-body">
                 <table class="table table-bordered">
