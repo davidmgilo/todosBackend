@@ -62,23 +62,47 @@
             return {
                 message: 'Hola que tal',
                 seen: false,
-                todos: []
+                todos: [],
+                visibility: 'all', //'active', 'completed'
             }
         },
         computed: {
             filteredTodos: function () {
+
+                var filters = {
+                    all : function(todos){
+                        return todos;
+                    },
+                    active : function(todos){
+                        return todos.filter(function(todo){
+                            return !todo.done;
+                        });
+                    },
+                    completed : function(todos){
+                        return todos.filter(function(todo){
+                            return todo.done;
+                        });
+                    },
+                }
+
+                return filters[this.visibility](this.todos);
+
                 // Filters
 //               return this.todos;
                 //active
                 //la funció és fa a cada item de la colecció.
-                return this.todos.filter(function(todo){
-                    return !todo.done;
+ //               return this.todos.filter(function(todo){
+ //                   return !todo.done;
                     //Equivalent
  //                   <!--if (todo.done == true) {-->
  //                       <!--return null;-->
  //                   <!--}-->
  //                   <!--return;-->
-                });
+ //               });
+                //done
+//                return this.todos.filter(function(todo){
+//                    return todo.done;
+//                });
             },
 
 
