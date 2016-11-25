@@ -51,6 +51,7 @@ class UsersApiTest extends TestCase
         return [
             'name'  => $user['name'],
             'email' => $user['email'],
+            'api_token' => $user['api_token'],
 
         ];
     }

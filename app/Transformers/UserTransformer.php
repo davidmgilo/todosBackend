@@ -25,6 +25,7 @@ class UserTransformer extends Transformer
         return [
             'name'  => $resource['name'],
             'email' => $resource['email'],
+//            'api_token' => $resource['api_token'],
 
         ];
     }
