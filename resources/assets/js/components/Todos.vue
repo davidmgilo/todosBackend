@@ -20,7 +20,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="(todo, index) in todos">
+                    <tr v-for="(todo, index) in filteredTodos">
                         <td>{{index + 1}}</td>
                         <td>{{ todo.name }}</td>
                         <td>{{ todo.priority }}</td>
@@ -64,6 +64,24 @@
                 seen: false,
                 todos: []
             }
+        },
+        computed: {
+            filteredTodos: function () {
+                // Filters
+//               return this.todos;
+                //active
+                //la funció és fa a cada item de la colecció.
+                return this.todos.filter(function(todo){
+                    return !todo.done;
+                    //Equivalent
+ //                   <!--if (todo.done == true) {-->
+ //                       <!--return null;-->
+ //                   <!--}-->
+ //                   <!--return;-->
+                });
+            },
+
+
         },
         created() {
             console.log('Component created');
