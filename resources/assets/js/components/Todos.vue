@@ -13,9 +13,9 @@
                         <span class="sr-only">Toggle Dropdown</span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">All</a></li>
-                        <li><a href="#">Active</a></li>
-                        <li><a href="#">Done</a></li>
+                        <li><a href="#" v-on:click="setVisibility('all')">All</a></li> <!-- Equivalents -->
+                        <li><a href="#" @click="setVisibility('active')">Active</a></li>
+                        <li><a href="#" @click="setVisibility('completed')">Done</a></li>
                     </ul>
                 </div>
             </div>
@@ -137,7 +137,11 @@
                 sweetAlert("Oops...", "Something went wrong!", "error");
                 console.log(response);
             });
-            }
+            },
+            setVisibility: function(visibility){
+                console.log("Han fet click");
+                this.visibility = visibility;
+            },
         }
     }
 </script>
