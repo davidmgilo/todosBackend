@@ -52,7 +52,7 @@
                     <tbody>
                     <tr v-for="(todo, index) in filteredTodos">
                         <td>{{index + 1}}</td>
-                        <td>{{ todo.name }}</td>
+                        <td><div v-show="nom" @dblclick="canviaVisiNom()">{{ todo.name }}</div> <input type="text" v-model="filteredTodos[index].name" v-show="!nom" @dblclick="canviaVisiNom()"></td>
                         <td>{{ todo.priority }}</td>
                         <td>{{ todo.done }}</td>
                         <td>
@@ -94,6 +94,7 @@
                 todos: [],
                 visibility: 'all', //'active', 'completed'
                 newTodo: '',
+                nom : true,
             }
         },
         computed: {
@@ -162,6 +163,9 @@
             eliminar: function(index) {
                 this.filteredTodos.splice(index, 1);
             },
+            canviaVisiNom: function() {
+                this.nom = !this.nom;
+            }
         }
     }
 </script>
