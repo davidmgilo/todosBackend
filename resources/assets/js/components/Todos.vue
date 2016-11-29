@@ -46,6 +46,7 @@
                         <th>Done</th>
                         <th>Progress</th>
                         <th style="width: 40px">Label</th>
+                        <th>Eliminar</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -60,6 +61,7 @@
                             </div>
                         </td>
                         <td><span class="badge bg-red">55%</span></td>
+                        <td><button class="btn btn-warning btn-block" v-on:click=" eliminar(index)">E</button></td>
                     </tr>
 
                     </tbody>
@@ -115,22 +117,7 @@
 
                 return filters[this.visibility](this.todos);
 
-                // Filters
-//               return this.todos;
-                //active
-                //la funció és fa a cada item de la colecció.
- //               return this.todos.filter(function(todo){
- //                   return !todo.done;
-                    //Equivalent
- //                   <!--if (todo.done == true) {-->
- //                       <!--return null;-->
- //                   <!--}-->
- //                   <!--return;-->
- //               });
-                //done
-//                return this.todos.filter(function(todo){
-//                    return todo.done;
-//                });
+
             },
 
 
@@ -171,6 +158,9 @@
             setVisibility: function(visibility){
                 console.log("Han fet click");
                 this.visibility = visibility;
+            },
+            eliminar: function(index) {
+                this.filteredTodos.splice(index, 1);
             },
         }
     }
