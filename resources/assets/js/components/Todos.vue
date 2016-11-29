@@ -52,8 +52,10 @@
                     <tbody>
                     <tr v-for="(todo, index) in filteredTodos">
                         <td>{{index + 1}}</td>
-                        <td><div v-show="nom" @dblclick="canviaVisiNom()">{{ todo.name }}</div> <input type="text" v-model="filteredTodos[index].name" v-show="!nom" @dblclick="canviaVisiNom()"></td>
-                        <td>{{ todo.priority }}</td>
+                        <td><div v-show="nom" @dblclick="canviaVisiNom()">{{ todo.name }}</div>
+                            <input type="text" v-model="filteredTodos[index].name" v-show="!nom" @dblclick="canviaVisiNom()"></td>
+                        <td><div v-show="prioritat" @dblclick="canviaVisiPrioritat()">{{ todo.priority }}</div>
+                            <input type="text" v-model="filteredTodos[index].priority" v-show="!prioritat" @dblclick="canviaVisiPrioritat()"></td>
                         <td>{{ todo.done }}</td>
                         <td>
                             <div class="progress progress-xs">
@@ -95,6 +97,7 @@
                 visibility: 'all', //'active', 'completed'
                 newTodo: '',
                 nom : true,
+                prioritat : true,
             }
         },
         computed: {
@@ -165,6 +168,9 @@
             },
             canviaVisiNom: function() {
                 this.nom = !this.nom;
+            },
+            canviaVisiPrioritat: function() {
+                this.prioritat = !this.prioritat;
             }
         }
     }
