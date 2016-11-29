@@ -73,6 +73,15 @@ class TasksApiTest extends TestCase
     //TODO ADD TEST FOR AUTHENTICATION AND REFACTOR EXISTING TESTS
     //NOT AUTHORIZED: $this->assertEquals(301, $response->status());
 
+    protected function login (){
+
+        $user = factory(App\User::class)->create();
+
+        $this->actingAs($user,'api');
+
+//        return $this;
+    }
+
     /**
      * Test Retrieve all tasks.
      *
@@ -90,6 +99,9 @@ class TasksApiTest extends TestCase
 //        dd($this->json('GET',$this->uri)->seeJson());
 //        dd($this->json('GET', $this->uri)->dump());
 
+//        $user = factory(App\User::class)->create();
+
+        $this->login();
         $this->json('GET', $this->uri)
              ->seeJsonStructure([
 //
