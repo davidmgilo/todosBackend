@@ -62,7 +62,7 @@ class Handler extends ExceptionHandler
         if ($exception instanceof IncorrectModelException) {
             return Response::json([
                 'error'  => 'Hi ha hagut una excepció. El model introduit en el transformador és incorrecte.',
-                'code'   => 10,
+                'code'   => 11,
                 'status' => 404,
             ], 404);
         }
