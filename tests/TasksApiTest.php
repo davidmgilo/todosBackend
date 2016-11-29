@@ -70,7 +70,13 @@ class TasksApiTest extends TestCase
         return factory(App\Task::class)->create(['user_id' => 1]);
     }
 
-    //TODO ADD TEST FOR AUTHENTICATION AND REFACTOR EXISTING TESTS
+    /**
+     * @group ppp
+     */
+    public function testUserNotAuthenticated(){
+        $this->json('GET', $this->uri)
+            ->assertResponseStatus(401);
+    }
     //NOT AUTHORIZED: $this->assertEquals(301, $response->status());
 
     protected function login (){
