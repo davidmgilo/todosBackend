@@ -71,7 +71,7 @@
             </div>
             <div class="box-footer clearfix">
                 <span class="pull-left">Showing {{ from }} to {{ to }} of {{ total }} entries.</span>
-                <paginator></paginator>
+                <pagination></pagination>
             </div>
         </div>
 
@@ -85,7 +85,11 @@
 
 </style>
 <script>
+
+import Pagination from './Pagination.vue'
+
     export default {
+        components : { Pagination },
         data() {
             return {
                 todos: [],
