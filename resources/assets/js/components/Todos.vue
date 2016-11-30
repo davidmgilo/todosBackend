@@ -71,7 +71,7 @@
             </div>
             <div class="box-footer clearfix">
                 <span class="pull-left">Showing {{ from }} to {{ to }} of {{ total }} entries.</span>
-                <pagination></pagination>
+                <pagination :current-page="1"></pagination>
             </div>
         </div>
 
