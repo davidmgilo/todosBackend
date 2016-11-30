@@ -149,9 +149,12 @@
                 this.message = this.message.split('').reverse().join('');
             },
             fetchData: function (){
-                //Axios
+                return this.fetchPage(1);
+            },
+            fetchPage : function (page){
+                    //Axios
                 // GET someUrl
-                this.$http.get('/api/v1/task').then((response) => {
+            this.$http.get('/api/v1/task?page=' + page).then((response) => {
                 this.todos = response.data.data;
             }, (response) => {
                 // error callback
