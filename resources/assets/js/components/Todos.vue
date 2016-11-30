@@ -1,4 +1,4 @@
-<template>
+<template xmlns:v-on="http://www.w3.org/1999/xhtml">
     <div>
         <div class="box box-primary">
             <div class="box-header with-border">
@@ -71,13 +71,7 @@
             </div>
             <div class="box-footer clearfix">
                 <span class="pull-left">Showing {{ from }} to {{ to }} of {{ total }} entries.</span>
-                <ul class="pagination pagination-sm no-margin pull-right">
-                    <li><a href="#">&laquo;</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">&raquo;</a></li>
-                </ul>
+                <paginator></paginator>
             </div>
         </div>
 
