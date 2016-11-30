@@ -51,7 +51,7 @@
                     </thead>
                     <tbody>
                     <tr v-for="(todo, index) in filteredTodos">
-                        <td>{{index + 1}}</td>
+                        <td>{{index + from}}</td>
                         <td><div v-show="nom" @dblclick="canviaVisiNom()">{{ todo.name }}</div>
                             <input type="text" v-model="filteredTodos[index].name" v-show="!nom" @dblclick="canviaVisiNom()"></td>
                         <td><div v-show="prioritat" @dblclick="canviaVisiPrioritat()">{{ todo.priority }}</div>
@@ -70,6 +70,7 @@
                 </table>
             </div>
             <div class="box-footer clearfix">
+                <span class="pull-left">Showing {{ from }} to {{ to }} of {{ total }} entries.</span>
                 <ul class="pagination pagination-sm no-margin pull-right">
                     <li><a href="#">&laquo;</a></li>
                     <li><a href="#">1</a></li>
@@ -98,6 +99,9 @@
                 newTodo: '',
                 nom : true,
                 prioritat : true,
+                from: 0,
+                to : 0,
+                total: 0,
             }
         },
         computed: {
@@ -156,6 +160,9 @@
                 // GET someUrl
             this.$http.get('/api/v1/task?page=' + page).then((response) => {
                 this.todos = response.data.data;
+                this.to = response.data.to;
+                this.from = response.data.from;
+                this.total = response.data.total;
             }, (response) => {
                 // error callback
                 sweetAlert("Oops...", "Something went wrong!", "error");

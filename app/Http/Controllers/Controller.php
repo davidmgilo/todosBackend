@@ -62,6 +62,8 @@ class Controller extends BaseController
             'last_page'     => $resources->lastPage(),
             'next_page_url' => $resources->nextPageUrl(),
             'prev_page_url' => $resources->previousPageUrl(),
+            'from'          => $resources->firstItem(),
+            'to'            => $resources->lastItem(),
         ];
 
         return $paginationData;
