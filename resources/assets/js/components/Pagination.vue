@@ -2,7 +2,7 @@
     <ul class="pagination pagination-sm no-margin pull-right">
         <li><a href="#">&laquo;</a></li>
         <li v-for="n in paginationRange" >
-            <a href="#">{{n}}</a>
+            <a href="#" @click.prevent="">{{n}}</a>
         </li>
         <li><a href="#">&raquo;</a></li>
     </ul>
