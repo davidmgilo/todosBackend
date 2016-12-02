@@ -76,6 +76,7 @@ class TasksApiTest extends TestCase
     public function testUserNotAuthenticated(){
         $this->json('GET', $this->uri)
             ->assertResponseStatus(401);
+        $this->json('GET', $this->uri)->dump();
     }
     //NOT AUTHORIZED: $this->assertEquals(301, $response->status());
 
