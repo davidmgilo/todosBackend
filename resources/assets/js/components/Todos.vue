@@ -72,10 +72,10 @@
             <div class="box-footer clearfix">
                 <span class="pull-left">Showing {{ from }} to {{ to }} of {{ total }} entries.</span>
                 <pagination
-                        :current-page="1"
+                        :current-page="page"
                         :items-per-page="perPage"
                         :total-items="total"
-                    @page-changed="fetchPage"
+                    @page-changed="pageChanged"
                 ></pagination>
             </div>
         </div>
@@ -106,6 +106,7 @@ import Pagination from './Pagination.vue'
                 to : 0,
                 total: 0,
                 perPage: 5,
+                page: 1,
             }
         },
         computed: {
@@ -186,6 +187,10 @@ import Pagination from './Pagination.vue'
             },
             canviaVisiPrioritat: function() {
                 this.prioritat = !this.prioritat;
+            },
+            pageChanged : function (pageNum) {
+                 this.page = pageNum;
+                 this.fetchPage(pageNum);
             }
         }
     }

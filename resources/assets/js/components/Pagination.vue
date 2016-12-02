@@ -1,12 +1,12 @@
 <template>
     <ul class="pagination pagination-sm no-margin pull-right">
-        <li><a href="#" @click.prevent="pageChanged(1)" aria-label="Previous">&laquo;</a></li>
-        <li><a href="#" @click.prevent="pageChanged(page-1)">&lt;</a></li>
-        <li v-for="n in paginationRange" >
+        <li><a href="#" @click.prevent="pageChanged(1)" aria-label="First"><span aria-hidden="true">&laquo;</span></a></li>
+        <li><a href="#" @click.prevent="pageChanged(page-1)" aria-label="Previous">&lt;</a></li>
+        <li v-for="n in paginationRange" :class="activePage(n)">
             <a href="#" @click.prevent="pageChanged(n)">{{n}}</a>
         </li>
-        <li><a href="#" @click.prevent="pageChanged(page+1)">&gt;</a></li>
-        <li><a href="#" @click.prevent="pageChanged(lastPage)">&raquo;</a></li>
+        <li><a href="#" @click.prevent="pageChanged(page+1)" aria-label="Next">&gt;</a></li>
+        <li><a href="#" @click.prevent="pageChanged(lastPage)" aria-label="Last">&raquo;</a></li>
     </ul>
 </template>
 <style>
@@ -41,8 +41,14 @@ export default {
             return num >= limit ? num : limit
         },
         pageChanged (pageNum) {
+            if(pageNum<=1) pageNum=1;
+            if(pageNum>=this.lastPage) pageNum=this.lastPage;
+
             this.page = pageNum;
             this.$emit('page-changed',pageNum)
+        },
+        activePage (pageNum) {
+            return this.currentPage === pageNum ? 'active' : ''
         },
     },
     computed: {
