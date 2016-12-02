@@ -1,10 +1,12 @@
 <template>
     <ul class="pagination pagination-sm no-margin pull-right">
-        <li><a href="#">&laquo;</a></li>
+        <li><a href="#" @click.prevent="pageChanged(1)" aria-label="Previous">&laquo;</a></li>
+        <li><a href="#" @click.prevent="pageChanged(page-1)">&lt;</a></li>
         <li v-for="n in paginationRange" >
             <a href="#" @click.prevent="pageChanged(n)">{{n}}</a>
         </li>
-        <li><a href="#">&raquo;</a></li>
+        <li><a href="#" @click.prevent="pageChanged(page+1)">&gt;</a></li>
+        <li><a href="#" @click.prevent="pageChanged(lastPage)">&raquo;</a></li>
     </ul>
 </template>
 <style>
@@ -12,6 +14,11 @@
 </style>
 <script>
 export default {
+    data () {
+        return {
+            page : 1,
+        }
+    },
     props : {
         // Current Page
         currentPage: {
@@ -34,6 +41,7 @@ export default {
             return num >= limit ? num : limit
         },
         pageChanged (pageNum) {
+            this.page = pageNum;
             this.$emit('page-changed',pageNum)
         },
     },
@@ -58,6 +66,9 @@ export default {
             }
             return range
         },
+    },
+    created (){
+        this.page = this.currentPage
     }
 }
 
