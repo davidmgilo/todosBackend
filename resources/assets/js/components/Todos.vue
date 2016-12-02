@@ -146,19 +146,35 @@ import Pagination from './Pagination.vue'
                 if(!value){
                     return;
                 }
-                this.filteredTodos.push(
-                {
+                var todo = {
                          name : value,
                          priority: 1,
-                         done:false,
-                });
+                         done: false,
+                }
+                this.filteredTodos.push(todo);
                 this.newTodo = '';
+                this.addTodoToApi(todo);
+                this.fetchPage(this.page);
             },
             reverseMessage: function(){
                 this.message = this.message.split('').reverse().join('');
             },
             fetchData: function (){
                 return this.fetchPage(1);
+            },
+            addTodoToApi : function (todo) {
+             this.$http.post('/api/v1/task',{
+                name : todo.name,
+                priority : todo.priority,
+                done : todo.done,
+             }).then((response) => {
+
+
+            }, (response) => {
+                // error callback
+                sweetAlert("Oops...", "Something went wrong!", "error");
+                console.log(response);
+            });
             },
             fetchPage : function (page){
                     //Axios
