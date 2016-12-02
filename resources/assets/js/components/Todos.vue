@@ -71,7 +71,7 @@
             </div>
             <div class="box-footer clearfix">
                 <span class="pull-left">Showing {{ from }} to {{ to }} of {{ total }} entries.</span>
-                <pagination :current-page="1"></pagination>
+                <pagination :current-page="1" :items-per-page="perPage" :total-items="total"></pagination>
             </div>
         </div>
 
@@ -100,6 +100,7 @@ import Pagination from './Pagination.vue'
                 from: 0,
                 to : 0,
                 total: 0,
+                perPage: 5,
             }
         },
         computed: {
@@ -161,6 +162,7 @@ import Pagination from './Pagination.vue'
                 this.to = response.data.to;
                 this.from = response.data.from;
                 this.total = response.data.total;
+                this.perPage = response.data.per_page;
             }, (response) => {
                 // error callback
                 sweetAlert("Oops...", "Something went wrong!", "error");
