@@ -136,6 +136,7 @@ class TasksApiTest extends TestCase
     {
         //Create task in database
         $task = $this->createAndPersistTask();
+        $this->login();
         $this->json('GET', $this->uri.'/'.$task->id)
             ->seeJsonStructure(
                 ['name', 'done', 'priority'])
@@ -161,6 +162,7 @@ class TasksApiTest extends TestCase
     {
         $task = $this->createTask();
 //        dd($this->convertTaskToArray($task));
+        $this->login();
         $this->json('POST', $this->uri, $atask = $this->convertTaskToArray($task))
             ->seeJson([
                 'created' => true,
@@ -179,6 +181,7 @@ class TasksApiTest extends TestCase
     public function testUpdateExistingTask()
     {
         $task = $this->createAndPersistTask();
+        $this->login();
         $task->done = !$task->done;
         $task->name = 'New task name';
         $this->json('PUT', $this->uri.'/'.$task->id, $atask = $this->convertTaskToArray($task))
@@ -198,6 +201,7 @@ class TasksApiTest extends TestCase
     public function testDeleteExistingTask()
     {
         $task = $this->createAndPersistTask();
+        $this->login();
         $this->json('DELETE', $this->uri.'/'.$task->id, $atask = $this->convertTaskToArray($task))
             ->seeJson([
                 'deleted' => true,
@@ -212,6 +216,7 @@ class TasksApiTest extends TestCase
      */
     protected function atestNotExists($http_method)
     {
+        $this->login();
         $this->json($http_method, $this->uri.'/99999999')
             ->seeJson([
                 'status' => 404,
@@ -279,30 +284,33 @@ class TasksApiTest extends TestCase
 
     /**
      * Test priority has to be an integer.
-     *
+     * @group ok
      * @return void
      */
     public function testPriorityHasToBeAnInteger()
     {
-        //        $task = $this->createAndPersistTask();
-//
-//        $this->json('GET', $this->uri .'/'. $task->id);
-//        $pri = $this->decodeResponseJson()['priority'];
-//        $this->assertInternalType("int",$pri);
+        $task = $this->createAndPersistTask();
+        $this->login();
+
+        $this->json('GET', $this->uri .'/'. $task->id);
+        $pri = $this->decodeResponseJson()['priority'];
+
+        $this->assertInternalType("int",$pri);
     }
 
     /**
      * Test done has to be a boolean.
-     *
+     * @group ok
      * @return void
      */
     public function testDoneHasToBeBoolean()
     {
-        //        $task = $this->createAndPersistTask();
-//
-//        $this->json('GET', $this->uri .'/'. $task->id);
-//        $done = $this->decodeResponseJson()['done'];
-////        $this->assertInternalType("int",$done);
-//        $this->assertInternalType("boolean",$done);
+        $task = $this->createAndPersistTask();
+        $this->login();
+
+        $this->json('GET', $this->uri .'/'. $task->id);
+        $done = $this->decodeResponseJson()['done'];
+//        $this->assertInternalType("int",$done);
+        $this->assertInternalType("boolean",$done);
     }
 }
