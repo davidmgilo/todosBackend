@@ -66,8 +66,24 @@ class UsersApiTest extends TestCase
         return factory(App\User::class)->create();
     }
 
-    //TODO ADD TEST FOR AUTHENTICATION AND REFACTOR EXISTING TESTS
+    /**
+     * @group failing
+     */
+    public function testUserNotAuthenticated(){
+        $this->json('GET', $this->uri)
+            ->assertResponseStatus(401);
+    }
     //NOT AUTHORIZED: $this->assertEquals(301, $response->status());
+
+    protected function login (){
+
+        $user = factory(App\User::class)->create();
+
+        $this->actingAs($user,'api');
+
+//        return $this;
+    }
+
 
     /**
      * Test Retrieve all users.
@@ -81,6 +97,8 @@ class UsersApiTest extends TestCase
         //Seed database
         $this->seedDatabaseWithUsers();
 
+        $this->login();
+
         $this->json('GET', $this->uri)
             ->seeJsonStructure([
                 'propietari', 'total', 'per_page', 'current_page', 'last_page', 'next_page_url', 'prev_page_url',
@@ -91,7 +109,7 @@ class UsersApiTest extends TestCase
                 ],
             ])
             ->assertEquals(
-                self::DEFAULT_NUMBER_OF_USERS,
+                self::DEFAULT_NUMBER_OF_USERS + 1,
                 count($this->decodeResponseJson()['data'])
             );
     }
@@ -105,6 +123,7 @@ class UsersApiTest extends TestCase
      */
     public function testRetrieveOneUser()
     {
+        $this->login();
         //Create user in database
         $user = $this->createAndPersistUser();
 
@@ -128,6 +147,7 @@ class UsersApiTest extends TestCase
      */
     public function testCreateNewUser()
     {
+        $this->login();
         $user = $this->createUser();
 //        $this->json('POST', $this->uri, $auser = $this->convertUserToArray($user))->dump();
         $this->json('POST', $this->uri, $auser = $this->convertUserToArray($user))
@@ -146,6 +166,7 @@ class UsersApiTest extends TestCase
      */
     public function testUpdateExistingUser()
     {
+        $this->login();
         $user = $this->createAndPersistUser();
         $user->name = 'New user name';
         $this->json('PUT', $this->uri.'/'.$user->id, $auser = $this->convertUserToArray($user))
@@ -164,6 +185,7 @@ class UsersApiTest extends TestCase
      */
     public function testDeleteExistingUser()
     {
+        $this->login();
         $user = $this->createAndPersistUser();
         $this->json('DELETE', $this->uri.'/'.$user->id, $auser = $this->convertUserToArray($user))
             ->seeJson([
@@ -179,6 +201,7 @@ class UsersApiTest extends TestCase
      */
     protected function atestNotExists($http_method)
     {
+        $this->login();
         $this->json($http_method, $this->uri.'/99999999')
             ->seeJson([
                 'status' => 404,

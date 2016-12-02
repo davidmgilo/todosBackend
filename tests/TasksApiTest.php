@@ -71,7 +71,7 @@ class TasksApiTest extends TestCase
     }
 
     /**
-     * @group ppp
+     * @group ok
      */
     public function testUserNotAuthenticated(){
         $this->json('GET', $this->uri)
