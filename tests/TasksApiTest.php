@@ -74,8 +74,8 @@ class TasksApiTest extends TestCase
      * @group ok
      */
     public function testUserNotAuthenticated(){
-        $this->json('GET', $this->uri)->dump();
-        $this->json('GET', $this->uri)
+//        $this->json('GET', $this->uri)->dump();
+        $this->get($this->uri, ['HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'])
             ->assertResponseStatus(401);
 
     }
