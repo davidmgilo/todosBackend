@@ -7,7 +7,7 @@ php:
 before_script:
   - composer install --prefer-source --no-interaction --dev
   - cp .env.testing .env
-  - php artisan migrate && php artisan passport:install
+  - php artisan migrate --database='database' && php artisan passport:install
 
 script: phpunit --coverage-text --coverage-clover=coverage.clover
 
