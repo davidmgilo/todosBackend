@@ -8,9 +8,9 @@ before_script:
   - composer install --prefer-source --no-interaction --dev
   - cp .env.testing .env
 #  - php artisan migrate:install
-  - export DB_CONNECTION="sqlite"
-  - export DB_DATABASE=":memory:"
-  - php artisan migrate:refresh --seed
+#  - export DB_CONNECTION="sqlite"
+#  - export DB_DATABASE=":memory:"
+  - php artisan migrate
   - php artisan passport:install
 
 script: phpunit --coverage-text --coverage-clover=coverage.clover
