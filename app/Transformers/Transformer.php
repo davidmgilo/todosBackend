@@ -5,6 +5,7 @@
  * Date: 11/11/16
  * Time: 15:48.
  */
+
 namespace App\Transformers;
 
 use App\Transformers\Contracts\Transformer as TransformerContract;

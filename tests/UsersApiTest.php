@@ -49,8 +49,8 @@ class UsersApiTest extends TestCase
     {
         //        return $user->toArray();
         return [
-            'name'  => $user['name'],
-            'email' => $user['email'],
+            'name'      => $user['name'],
+            'email'     => $user['email'],
             'api_token' => $user['api_token'],
 
         ];
@@ -69,21 +69,22 @@ class UsersApiTest extends TestCase
     /**
      * @group failing
      */
-    public function testUserNotAuthenticated(){
+    public function testUserNotAuthenticated()
+    {
         $this->json('GET', $this->uri)
             ->assertResponseStatus(401);
     }
+
     //NOT AUTHORIZED: $this->assertEquals(301, $response->status());
 
-    protected function login (){
-
+    protected function login()
+    {
         $user = factory(App\User::class)->create();
 
-        $this->actingAs($user,'api');
+        $this->actingAs($user, 'api');
 
 //        return $this;
     }
-
 
     /**
      * Test Retrieve all users.

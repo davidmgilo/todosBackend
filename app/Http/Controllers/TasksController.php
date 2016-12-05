@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use App\Repositories\TaskRepository;
 use App\Task;
 use App\Transformers\TaskTransformer;
-use Illuminate\Http\Request;
 use Auth;
-
+use Illuminate\Http\Request;
 
 /**
  * Class TasksController.
@@ -43,7 +42,7 @@ class TasksController extends Controller
      */
     public function index()
     {
-//        abort(500);
+        //        abort(500);
         //No metadata
         //Pagination
         //No error message
