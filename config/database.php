@@ -79,8 +79,6 @@ return [
             'sslmode'  => 'prefer',
         ],
 
-
-
     ],
 
     /*

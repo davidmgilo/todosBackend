@@ -73,19 +73,20 @@ class TasksApiTest extends TestCase
     /**
      * @group ok
      */
-    public function testUserNotAuthenticated(){
-//        $this->json('GET', $this->uri)->dump();
+    public function testUserNotAuthenticated()
+    {
+        //        $this->json('GET', $this->uri)->dump();
         $this->json('GET', $this->uri)
             ->assertResponseStatus(401);
-
     }
+
     //NOT AUTHORIZED: $this->assertEquals(301, $response->status());
 
-    protected function login (){
-
+    protected function login()
+    {
         $user = factory(App\User::class)->create();
 
-        $this->actingAs($user,'api');
+        $this->actingAs($user, 'api');
 
 //        return $this;
     }
@@ -286,7 +287,9 @@ class TasksApiTest extends TestCase
 
     /**
      * Test priority has to be an integer.
+     *
      * @group ok
+     *
      * @return void
      */
     public function testPriorityHasToBeAnInteger()
@@ -294,15 +297,17 @@ class TasksApiTest extends TestCase
         $task = $this->createAndPersistTask();
         $this->login();
 
-        $this->json('GET', $this->uri .'/'. $task->id);
+        $this->json('GET', $this->uri.'/'.$task->id);
         $pri = $this->decodeResponseJson()['priority'];
 
-        $this->assertInternalType("int",$pri);
+        $this->assertInternalType('int', $pri);
     }
 
     /**
      * Test done has to be a boolean.
+     *
      * @group ok
+     *
      * @return void
      */
     public function testDoneHasToBeBoolean()
@@ -310,9 +315,9 @@ class TasksApiTest extends TestCase
         $task = $this->createAndPersistTask();
         $this->login();
 
-        $this->json('GET', $this->uri .'/'. $task->id);
+        $this->json('GET', $this->uri.'/'.$task->id);
         $done = $this->decodeResponseJson()['done'];
 //        $this->assertInternalType("int",$done);
-        $this->assertInternalType("boolean",$done);
+        $this->assertInternalType('boolean', $done);
     }
 }
