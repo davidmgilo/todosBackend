@@ -1,4 +1,5 @@
 filter:
+    paths: ["app/*"]
     excluded_paths: [tests/*,public/plugins/*]
 
 checks:
