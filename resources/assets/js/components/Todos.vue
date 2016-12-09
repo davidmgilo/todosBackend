@@ -205,8 +205,23 @@ import Pagination from './Pagination.vue'
             },
             modificaNom: function(index,todo){
                 this.filteredTodos[index].name = todo.name;
+                this.updateApi(todo);
                 console.log(todo);
                 console.log(this.filteredTodos[index].name);
+            },
+            updateApi: function (todo){
+            this.$http.put('/api/v1/task/' + todo.id,{
+                name : todo.name,
+                priority : todo.priority,
+                done : todo.done,
+             }).then((response) => {
+                console.log(response);
+
+            }, (response) => {
+                // error callback
+                sweetAlert("Oops...", "Something went wrong!", "error");
+                console.log(response);
+            });
             },
             canviaVisiPrioritat: function() {
                 this.prioritat = !this.prioritat;
