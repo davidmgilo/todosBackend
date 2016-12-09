@@ -52,8 +52,8 @@
                     <tbody>
                     <tr v-for="(todo, index) in filteredTodos">
                         <td>{{index + from}}</td>
-                        <td><div v-show="nom" @dblclick="canviaVisiNom(index,todo)">{{ todo.name }}</div>
-                            <input type="text" v-model="todo.name" v-show="!nom" @keyup.enter="canviaVisiNom(index,todo)"></td>
+                        <td><div v-show="nom[index]" @dblclick="canviaVisiNom(index,todo)">{{ todo.name }}</div>
+                            <input type="text" v-model="todo.name" v-show="!nom[index]" @keyup.enter="canviaVisiNom(index,todo)"></td>
                         <td><div v-show="prioritat" @dblclick="canviaVisiPrioritat()">{{ todo.priority }}</div>
                             <input type="text" v-model="filteredTodos[index].priority" v-show="!prioritat" @dblclick="canviaVisiPrioritat()"></td>
                         <td>{{ todo.done }}</td>
@@ -100,7 +100,7 @@ import Pagination from './Pagination.vue'
                 todos: [],
                 visibility: 'all', //'active', 'completed'
                 newTodo: '',
-                nom : true,
+                nom : [ true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
                 prioritat : true,
                 from: 0,
                 to : 0,
@@ -199,8 +199,9 @@ import Pagination from './Pagination.vue'
                 this.filteredTodos.splice(index, 1);
             },
             canviaVisiNom: function(index, todo) {
-                this.nom = !this.nom;
-                if (this.nom) this.modificaNom(index,todo);
+                this.nom[index] = !this.nom[index];
+                if (this.nom[index]) this.modificaNom(index,todo);
+                this.fetchPage(this.page);
 
             },
             modificaNom: function(index,todo){
