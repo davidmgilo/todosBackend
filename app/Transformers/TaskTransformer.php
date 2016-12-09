@@ -25,6 +25,7 @@ class TaskTransformer extends Transformer
         }
 
         return [
+            'id'       => (int) $resource['id'],
             'name'     => $resource['name'],
             'done'     => (bool) $resource['done'],
             'priority' => (int) $resource['priority'],
