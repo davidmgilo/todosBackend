@@ -52,8 +52,8 @@
                     <tbody>
                     <tr v-for="(todo, index) in filteredTodos">
                         <td>{{index + from}}</td>
-                        <td><div v-show="nom" @dblclick="canviaVisiNom()">{{ todo.name }}</div>
-                            <input type="text" v-model="filteredTodos[index].name" v-show="!nom" @dblclick="canviaVisiNom()"></td>
+                        <td><div v-show="nom" @dblclick="canviaVisiNom(index,todo)">{{ todo.name }}</div>
+                            <input type="text" v-model="todo.name" v-show="!nom" @keyup.enter="canviaVisiNom(index,todo)"></td>
                         <td><div v-show="prioritat" @dblclick="canviaVisiPrioritat()">{{ todo.priority }}</div>
                             <input type="text" v-model="filteredTodos[index].priority" v-show="!prioritat" @dblclick="canviaVisiPrioritat()"></td>
                         <td>{{ todo.done }}</td>
@@ -168,7 +168,7 @@ import Pagination from './Pagination.vue'
                 priority : todo.priority,
                 done : todo.done,
              }).then((response) => {
-
+                console.log(response);
 
             }, (response) => {
                 // error callback
@@ -198,8 +198,15 @@ import Pagination from './Pagination.vue'
             eliminar: function(index) {
                 this.filteredTodos.splice(index, 1);
             },
-            canviaVisiNom: function() {
+            canviaVisiNom: function(index, todo) {
                 this.nom = !this.nom;
+                if (this.nom) this.modificaNom(index,todo);
+
+            },
+            modificaNom: function(index,todo){
+                this.filteredTodos[index].name = todo.name;
+                console.log(todo);
+                console.log(this.filteredTodos[index].name);
             },
             canviaVisiPrioritat: function() {
                 this.prioritat = !this.prioritat;
@@ -213,29 +220,3 @@ import Pagination from './Pagination.vue'
 </script>
 
 
-<!--data: {-->
-<!--message: 'Hello Vue!',-->
-<!--seen: false,-->
-<!--todos: []-->
-
-<!--},-->
-<!--methods: {-->
-<!--reverseMessage: function(){-->
-<!--this.message = this.message.split('').reverse().join('');-->
-<!--},-->
-<!--fetchData: function (){-->
-<!--//Axios-->
-<!--// GET someUrl-->
-<!--this.$http.get('/api/v1/task').then((response) => {-->
-<!--this.todos = response.data.data;-->
-<!--}, (response) => {-->
-<!--// error callback-->
-<!--sweetAlert("Oops...", "Something went wrong!", "error");-->
-<!--console.log(response);-->
-<!--});-->
-<!--}-->
-<!--},-->
-<!--created: function() {-->
-<!--console.log('App created');-->
-<!--this.fetchData()-->
-<!--}-->
