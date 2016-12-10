@@ -5,7 +5,7 @@
 [![StyleCI](https://styleci.io/repos/71568846/shield?branch=master)](https://styleci.io/repos/71568846)
 [![Code Coverage](https://scrutinizer-ci.com/g/davidmgilo/todosBackend/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/davidmgilo/todosBackend/?branch=master)
 
-Respository of an API that implements CRUD operations of todos ans users.
+Respository of an API that implements CRUD operations of todos and users.
 
 FrontEnd project with vue.js.
 
