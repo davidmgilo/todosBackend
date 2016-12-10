@@ -54,9 +54,15 @@
                         <td>{{index + from}}</td>
                         <td><div v-show="!nom[index]" @dblclick="canviaVisiNom(index,todo)">{{ todo.name }}</div>
                             <input type="text" v-model="todo.name" v-show="nom[index]" @keyup.enter="canviaVisiNom(index,todo)"></td>
-                        <td><div v-show="prioritat" @dblclick="canviaVisiPrioritat()">{{ todo.priority }}</div>
-                            <input type="text" v-model="filteredTodos[index].priority" v-show="!prioritat" @dblclick="canviaVisiPrioritat()"></td>
-                        <td>{{ todo.done }}</td>
+                        <td><div v-show="!prioritat[index]" @dblclick="canviaVisiPrioritat(index,todo)">{{ todo.priority }}</div>
+                            <input type="text" v-model="todo.priority" v-show="prioritat[index]" @keyup.enter="canviaVisiPrioritat(index,todo)"></td>
+                        <td><span v-if="todo.done">
+                                <input type="checkbox" class="minimal" checked="">
+                            </span>
+                            <span v-else>
+                                <input type="checkbox" class="minimal">
+                            </span>
+                        </td>
                         <td>
                             <div class="progress progress-xs">
                                 <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
@@ -101,7 +107,7 @@ import Pagination from './Pagination.vue'
                 visibility: 'all', //'active', 'completed'
                 newTodo: '',
                 nom : [],
-                prioritat : true,
+                prioritat : [],
                 from: 0,
                 to : 0,
                 total: 0,
@@ -224,8 +230,14 @@ import Pagination from './Pagination.vue'
                 console.log(response);
             });
             },
-            canviaVisiPrioritat: function() {
-                this.prioritat = !this.prioritat;
+            canviaVisiPrioritat: function(index,todo) {
+                this.prioritat[index] = !this.prioritat[index];
+                if (!this.prioritat[index]) this.modificaPrioritat(index,todo);
+                this.fetchPage(this.page);
+            },
+            modificaPrioritat: function(index,todo){
+                this.filteredTodos[index].prioritat = todo.prioritat;
+                this.updateApi(todo);
             },
             pageChanged : function (pageNum) {
                  this.page = pageNum;
