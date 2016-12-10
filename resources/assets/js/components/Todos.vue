@@ -57,10 +57,10 @@
                         <td><div v-show="!prioritat[index]" @dblclick="canviaVisiPrioritat(index,todo)">{{ todo.priority }}</div>
                             <input type="text" v-model="todo.priority" v-show="prioritat[index]" @keyup.enter="canviaVisiPrioritat(index,todo)"></td>
                         <td><span v-if="todo.done">
-                                <input type="checkbox" class="minimal" checked="">
+                                <input type="checkbox" class="minimal" checked="" @click="modificaDone(index,todo)">
                             </span>
                             <span v-else>
-                                <input type="checkbox" class="minimal">
+                                <input type="checkbox" class="minimal" @click="modificaDone(index,todo)">
                             </span>
                         </td>
                         <td>
@@ -238,6 +238,11 @@ import Pagination from './Pagination.vue'
             modificaPrioritat: function(index,todo){
                 this.filteredTodos[index].prioritat = todo.prioritat;
                 this.updateApi(todo);
+            },
+            modificaDone: function(index,todo){
+                todo.done = !todo.done;
+                this.updateApi(todo);
+                this.fetchPage(this.page);
             },
             pageChanged : function (pageNum) {
                  this.page = pageNum;
