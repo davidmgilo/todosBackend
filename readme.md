@@ -33,7 +33,7 @@ Set up the environment:
 $ cp .env.example .env
 ```
 
-Decomment the variable DB_CONNECTION and set it to sqlite.
+Comment every DB variable  except DB_CONNECTION and set it to sqlite.
 
 Create the database:
 
