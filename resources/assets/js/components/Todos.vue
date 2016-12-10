@@ -69,7 +69,7 @@
                             </div>
                         </td>
                         <td><span class="badge bg-red">55%</span></td>
-                        <td><button class="btn btn-warning btn-block" v-on:click=" eliminar(index)">E</button></td>
+                        <td><button class="btn btn-warning btn-block" v-on:click=" eliminar(index,todo.id)">E</button></td>
                     </tr>
 
                     </tbody>
@@ -201,8 +201,19 @@ import Pagination from './Pagination.vue'
                 console.log("Han fet click");
                 this.visibility = visibility;
             },
-            eliminar: function(index) {
+            eliminar: function(index,id) {
                 this.filteredTodos.splice(index, 1);
+                this.deleteFromApi(id);
+                this.fetchPage(this.page);
+            },
+            deleteFromApi: function(id) {
+            this.$http.delete('/api/v1/task/' + id).then((response) => {
+                console.log(response);
+            }, (response) => {
+                // error callback
+                sweetAlert("Oops...", "Something went wrong!", "error");
+                console.log(response);
+            });
             },
             canviaVisiNom: function(index, todo) {
                 this.nom[index] = !this.nom[index];
