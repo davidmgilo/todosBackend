@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Task extends Model
 {
-    protected $fillable = ['id','name', 'done', 'priority', 'user_id'];
+    protected $fillable = ['id', 'name', 'done', 'priority', 'user_id'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

@@ -118,7 +118,7 @@ class TasksApiTest extends TestCase
              'propietari', 'total', 'per_page', 'current_page', 'last_page', 'next_page_url', 'prev_page_url',
                  'data' => [
                      '*' => [
-                        'id','name', 'done', 'priority',
+                        'id', 'name', 'done', 'priority',
                      ],
                  ],
             ])
@@ -143,7 +143,7 @@ class TasksApiTest extends TestCase
         $this->login();
         $this->json('GET', $this->uri.'/'.$task->id)
             ->seeJsonStructure(
-                ['id','name', 'done', 'priority'])
+                ['id', 'name', 'done', 'priority'])
 //DONE @see Controller.transform
 //  Needs Transformers to work: convert string to booelan and string to integer
             ->seeJsonContains([
