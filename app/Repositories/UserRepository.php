@@ -16,7 +16,7 @@ class UserRepository implements Repository
      *
      * @return mixed
      */
-    public function find($id, $columns = ['*'])
+    public function findOrFail($id, $columns = ['*'])
     {
         return User::findOrFail($id);
     }

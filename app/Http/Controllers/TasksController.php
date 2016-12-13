@@ -94,7 +94,7 @@ class TasksController extends Controller
      */
     public function show($id)
     {
-        $task = $this->repository->find($id);
+        $task = $this->repository->findOrFail($id);
 
         return $this->transformer->transform($task);
     }
