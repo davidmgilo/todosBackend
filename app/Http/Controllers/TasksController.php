@@ -6,6 +6,7 @@ use App\Repositories\TaskRepository;
 use App\Task;
 use App\Transformers\TaskTransformer;
 use Auth;
+use Gate;
 use Illuminate\Http\Request;
 
 /**
@@ -42,15 +43,14 @@ class TasksController extends Controller
      */
     public function index()
     {
-        //        abort(500);
-        //No metadata
-        //Pagination
-        //No error message
-        //Transformations: hem de transformar el que ensenyem
-        $tasks = Task::paginate(15);
 
-        return $this->generatePaginatedResponse($tasks, ['propietari' => 'David Martinez']);
-//        return Task::paginate($request->input('per_page'));
+        if (Gate::allows('show-tasks')) {
+            $tasks = Task::paginate(15);
+
+            return $this->generatePaginatedResponse($tasks, ['propietari' => 'David Martinez']);
+        }
+        abort(403);
+
     }
 
     /**
