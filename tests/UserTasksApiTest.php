@@ -15,7 +15,7 @@ class UsersTasksApiTest extends TestCase
      * @var string
      */
     protected $uri = '/api/v1/user';
-    protected $uri2= '/task';
+    protected $uri2 = '/task';
 
     /**
      * Default number of tasks created in database.
@@ -97,7 +97,6 @@ class UsersTasksApiTest extends TestCase
         return factory(App\User::class)->create();
     }
 
-
     /**
      * @group fail
      */
@@ -136,7 +135,7 @@ class UsersTasksApiTest extends TestCase
         $this->createAndPersistTask($user->id);
 
         $this->login();
-        $this->json('GET', $this->uri . '/'. $user->id . $this->uri2)
+        $this->json('GET', $this->uri.'/'.$user->id.$this->uri2)
              ->seeJsonStructure([
 //
              'propietari', 'total', 'per_page', 'current_page', 'last_page', 'next_page_url', 'prev_page_url',
@@ -165,7 +164,7 @@ class UsersTasksApiTest extends TestCase
         $user = $this->createAndPersistUser();
         $task = $this->createAndPersistTask($user->id);
         $this->login();
-        $this->json('GET', $this->uri. '/'. $user->id . $this->uri2 .'/'.$task->id)
+        $this->json('GET', $this->uri.'/'.$user->id.$this->uri2.'/'.$task->id)
             ->seeJsonStructure(
                 ['id', 'name', 'done', 'priority'])
             ->seeJsonContains([
@@ -191,7 +190,7 @@ class UsersTasksApiTest extends TestCase
 
 //        dd($this->convertTaskToArray($task));
         $this->login();
-        $this->json('POST', $this->uri . '/'. $user->id . $this->uri2, $atask = $this->convertTaskToArray($task))
+        $this->json('POST', $this->uri.'/'.$user->id.$this->uri2, $atask = $this->convertTaskToArray($task))
             ->seeJson([
                 'created' => true,
             ])
@@ -213,7 +212,7 @@ class UsersTasksApiTest extends TestCase
         $this->login();
         $task->done = !$task->done;
         $task->name = 'New task name';
-        $this->json('PUT', $this->uri. '/'. $user->id . $this->uri2 .'/'.$task->id, $atask = $this->convertTaskToArray($task))
+        $this->json('PUT', $this->uri.'/'.$user->id.$this->uri2.'/'.$task->id, $atask = $this->convertTaskToArray($task))
             ->seeJson([
                 'updated' => true,
             ])
@@ -232,7 +231,7 @@ class UsersTasksApiTest extends TestCase
         $user = $this->createAndPersistUser();
         $task = $this->createAndPersistTask($user->id);
         $this->login();
-        $this->json('DELETE', $this->uri. '/'. $user->id . $this->uri2 .'/'.$task->id, $atask = $this->convertTaskToArray($task))
+        $this->json('DELETE', $this->uri.'/'.$user->id.$this->uri2.'/'.$task->id, $atask = $this->convertTaskToArray($task))
             ->seeJson([
                 'deleted' => true,
             ])
@@ -248,7 +247,7 @@ class UsersTasksApiTest extends TestCase
     {
         $user = $this->createAndPersistUser();
         $this->login();
-        $this->json($http_method, $this->uri. '/'. $user->id . $this->uri2 .'/99999999')
+        $this->json($http_method, $this->uri.'/'.$user->id.$this->uri2.'/99999999')
             ->seeJson([
                 'status' => 404,
             ])
@@ -322,7 +321,7 @@ class UsersTasksApiTest extends TestCase
      */
     public function testPriorityHasToBeAnInteger()
     {
-//        $task = $this->createAndPersistTask();
+        //        $task = $this->createAndPersistTask();
 //        $this->login();
 //
 //        $this->json('GET', $this->uri.'/'.$task->id);
@@ -340,6 +339,5 @@ class UsersTasksApiTest extends TestCase
      */
     public function testDoneHasToBeBoolean()
     {
-
     }
 }
