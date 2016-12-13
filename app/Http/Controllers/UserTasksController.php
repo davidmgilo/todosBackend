@@ -60,8 +60,8 @@ class UserTasksController extends Controller
     public function store(Request $request, $iduser)
     {
         $user = User::findOrFail($iduser);
-        $dades = array_merge($request->only(['name', 'done', 'priority']), ['user_id'=> $user->id]);
-        Task::create($dades);
+//        $dades = array_merge($request->only(['name', 'done', 'priority']), ['user_id'=> $user->id]);
+        Task::create($request->all());
 
         return response([
             'error'   => false,
