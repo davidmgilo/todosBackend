@@ -202,9 +202,30 @@ import Pagination from './Pagination.vue'
                 this.visibility = visibility;
             },
             eliminar: function(index,id) {
-                this.filteredTodos.splice(index, 1);
-                this.deleteFromApi(id);
-                this.fetchPage(this.page);
+                var funct = this;
+                swal({
+                    title: "Are you sure?",
+                    text: "You will not be able to recover this task!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, delete it!",
+                    cancelButtonText: "No, cancel plx!",
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                },
+                function(isConfirm){
+                    if (isConfirm) {
+                        funct.filteredTodos.splice(index, 1);
+                        funct.deleteFromApi(id);
+                        swal("Deleted!", "Your task has been deleted.", "success");
+                        funct.fetchPage(funct.page);
+
+                    } else {
+                        swal("Cancelled", "Your task is safe :)", "error");
+                    }
+                });
+
             },
             deleteFromApi: function(id) {
             this.$http.delete('/api/v1/task/' + id).then((response) => {
