@@ -12,7 +12,7 @@ use Illuminate\Auth\Access\HandlesAuthorization;
  */
 class TaskPolicy
 {
-    use HandlesAuthorization;
+    use HandlesAuthorization,HasAdmin;
 
     /**
      * Determine whether the user can list the tasks.
@@ -22,7 +22,7 @@ class TaskPolicy
      */
     public function show(User $user)
     {
-        if($user->hasRole('admin')) return true;
+//        if($user->hasPermissionTo('show-tasks')) return true;
         return false;
     }
 
