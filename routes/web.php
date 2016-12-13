@@ -1,7 +1,7 @@
 <?php
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::group(['middleware' => 'can:show-tasks'], function () {
+    Route::group(['middleware' => 'can:show,App\Task'], function () {
         Route::get('/tasks', function () {
             return view('tasks');
         });

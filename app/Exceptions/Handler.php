@@ -7,6 +7,7 @@ use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Response;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 /**
  * Class Handler.
@@ -63,6 +64,14 @@ class Handler extends ExceptionHandler
             return Response::json([
                 'error'  => 'Hi ha hagut una excepció. El model introduit en el transformador és incorrecte.',
                 'code'   => 11,
+                'status' => 404,
+            ], 404);
+        }
+
+        if ($exception instanceof HttpException) {
+            return Response::json([
+                'error'  => 'Hi ha hagut una excepció.'.$exception->getMessage(),
+                'code'   => 12,
                 'status' => 404,
             ], 404);
         }
