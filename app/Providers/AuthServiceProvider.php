@@ -58,9 +58,5 @@ class AuthServiceProvider extends ServiceProvider
             return $user->id == $task->user_id;
         });
 
-        Gate::define('show-tasks', function ($user) {
-            return true;
-        });
-
     }
 }

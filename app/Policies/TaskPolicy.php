@@ -15,6 +15,17 @@ class TaskPolicy
     use HandlesAuthorization;
 
     /**
+     * Determine whether the user can list the tasks.
+     *
+     * @param  \App\User  $user
+     * @return mixed
+     */
+    public function show(User $user)
+    {
+        return true;
+    }
+
+    /**
      * Determine whether the user can view the task.
      *
      * @param  \App\User  $user
