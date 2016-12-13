@@ -54,10 +54,10 @@
                         <td>{{index + from}}</td>
                         <td><div v-show="!nom[index]" @dblclick="canviaVisiNom(index,todo)">{{ todo.name }}</div>
                             <input type="text" v-model="todo.name" v-show="nom[index]" @keyup.enter="canviaVisiNom(index,todo)"
-                                   v-todo-focus="nom[index]"></td>
+                                   v-todo-focus="nom[index]" onfocus="this.select();"></td>
                         <td><div v-show="!prioritat[index]" @dblclick="canviaVisiPrioritat(index,todo)">{{ todo.priority }}</div>
                             <input type="text" v-model="todo.priority" v-show="prioritat[index]" @keyup.enter="canviaVisiPrioritat(index,todo)"
-                                   v-todo-focus="prioritat[index]"></td>
+                                   v-todo-focus="prioritat[index]" onfocus="this.select();"></td>
                         <td><span v-if="todo.done">
                                 <input type="checkbox" class="minimal" checked="" @click="modificaDone(index,todo)">
                             </span>
