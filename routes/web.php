@@ -24,7 +24,7 @@ Gate::define('update-task2', function ($user, $task) {
 });
 
 Gate::define('show-tasks', function ($user) {
-    return false;
+    return true;
 });
 
 Route::group(['middleware' => 'auth'], function () {
