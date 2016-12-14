@@ -46,11 +46,12 @@
                         <th>Done</th>
                         <th>Progress</th>
                         <th style="width: 40px">Label</th>
-                        <th>Eliminar</th>
+                        <th>Accions</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr v-for="(todo, index) in filteredTodos">
+                        <!--<todo></todo>-->
                         <td>{{index + from}}</td>
                         <td><div v-show="!nom[index]" @dblclick="canviaVisiNom(index,todo)">{{ todo.name }}</div>
                             <input type="text" v-model="todo.name" v-show="nom[index]" @keyup.enter="canviaVisiNom(index,todo)"
@@ -100,6 +101,7 @@
 <script>
 
 import Pagination from './Pagination.vue'
+//import Todo from './Todo.vue'
 
     export default {
         components : { Pagination },
