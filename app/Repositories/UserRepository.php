@@ -30,4 +30,9 @@ class UserRepository implements Repository
     {
         User::create($data);
     }
+
+    public function update(array $data, $element)
+    {
+        $element->update($data);
+    }
 }

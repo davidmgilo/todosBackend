@@ -103,7 +103,8 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        User::findOrFail($id)->update($request->all());
+        $user = $this->repository->findOrFail($id);
+        $this->repository->update($request->all(),$user);
 
         return response([
             'error'   => false,

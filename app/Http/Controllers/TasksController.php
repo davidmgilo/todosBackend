@@ -116,7 +116,8 @@ class TasksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Task::findOrFail($id)->update($request->all());
+        $task = $this->repository->findOrFail($id);
+        $this->repository->update($request->all(),$task);
 
         return response([
             'error'   => false,

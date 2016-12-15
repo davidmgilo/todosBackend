@@ -30,4 +30,9 @@ class TaskRepository implements Repository
     {
         Task::create($data);
     }
+
+    public function update(array $data, $element)
+    {
+        $element->update($data);
+    }
 }
