@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\UserTasksRepository;
 use App\Task;
 use App\Transformers\TaskTransformer;
 use App\User;
@@ -12,14 +13,18 @@ use Illuminate\Http\Request;
  */
 class UserTasksController extends Controller
 {
+    protected $repository;
+
     /**
      * UserTasksController constructor.
      *
      * @param TaskTransformer $transformer
      */
-    public function __construct(TaskTransformer $transformer)
+    public function __construct(TaskTransformer $transformer, UserTasksRepository $repository)
     {
         parent::__construct($transformer);
+
+        $this->repository = $repository;
     }
 
     /**
