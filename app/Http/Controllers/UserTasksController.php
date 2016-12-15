@@ -111,9 +111,7 @@ class UserTasksController extends Controller
      */
     public function update(Request $request, $iduser, $idtask)
     {
-        $user = User::findOrFail($iduser);
-        $task = $user->tasks()->findOrFail($idtask);
-        $task->update($request->only(['name', 'done', 'priority', 'user_id']));
+        $this->repository->update($request->only(['name', 'done', 'priority', 'user_id']),$iduser, $idtask);
 
         return response([
             'error'   => false,
@@ -132,9 +130,7 @@ class UserTasksController extends Controller
      */
     public function destroy($iduser, $idtask)
     {
-        $user = User::findOrFail($iduser);
-        $task = $user->tasks()->findOrFail($idtask);
-        $task->delete();
+        $this->repository->delete($iduser, $idtask);
 
         return response([
             'error'   => false,

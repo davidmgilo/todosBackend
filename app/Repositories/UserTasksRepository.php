@@ -37,13 +37,17 @@ class UserTasksRepository
         Task::create($data);
     }
 
-    public function update(array $data, $id)
+    public function update(array $data, $iduser, $idtask)
     {
-        // TODO: Implement update() method.
+        $user = User::findOrFail($iduser);
+        $task = $user->tasks()->findOrFail($idtask);
+        $task->update($data);
     }
 
-    public function delete($id)
+    public function delete($iduser,$idtask)
     {
-        // TODO: Implement delete() method.
+        $user = User::findOrFail($iduser);
+        $task = $user->tasks()->findOrFail($idtask);
+        $task->delete();
     }
 }
