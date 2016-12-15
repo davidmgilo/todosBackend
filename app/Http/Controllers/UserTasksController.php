@@ -37,9 +37,7 @@ class UserTasksController extends Controller
     public function index($id)
     {
         //        dd($id);
-        $user = User::findOrFail($id);
-
-        $tasks = $user->tasks()->paginate(5);
+        $tasks = $this->repository->paginate($id,5);
 
         return $this->generatePaginatedResponse($tasks, ['propietari' => 'David Martinez']);
     }

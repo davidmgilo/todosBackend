@@ -8,9 +8,9 @@ use App\User;
 /**
  * Class UserTasksRepository.
  */
-class UserTasksRepository implements Repository
+class UserTasksRepository
 {
-
+    //TODO interface
     /**
      * @param $id
      * @param array $columns
@@ -22,9 +22,11 @@ class UserTasksRepository implements Repository
         // TODO: Implement findOrFail() method.
     }
 
-    public function paginate($perPage = 15, $columns = array('*'))
+    public function paginate($id, $perPage = 15, $columns = array('*'))
     {
-        // TODO: Implement paginate() method.
+        $user = User::findOrFail($id);
+
+        return $user->tasks()->paginate($perPage);
     }
 
     public function create(array $data)
