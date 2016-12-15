@@ -31,8 +31,13 @@ class TaskRepository implements Repository
         Task::create($data);
     }
 
-    public function update(array $data, $element)
+    public function update(array $data, $id)
     {
-        $element->update($data);
+        Task::findOrFail($id)->update($data);
+    }
+
+    public function delete($id)
+    {
+        Task::findOrFail($id)->delete();
     }
 }

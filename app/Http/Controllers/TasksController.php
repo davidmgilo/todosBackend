@@ -116,8 +116,7 @@ class TasksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $task = $this->repository->findOrFail($id);
-        $this->repository->update($request->all(),$task);
+        $this->repository->update($request->all(),$id);
 
         return response([
             'error'   => false,
@@ -135,7 +134,7 @@ class TasksController extends Controller
      */
     public function destroy($id)
     {
-        Task::findOrFail($id)->delete();
+        $this->repository->delete($id);
 
         return response([
             'error'   => false,

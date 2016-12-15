@@ -31,8 +31,13 @@ class UserRepository implements Repository
         User::create($data);
     }
 
-    public function update(array $data, $element)
+    public function update(array $data, $id)
     {
-        $element->update($data);
+        User::findOrFail($id)->update($data);
+    }
+
+    public function delete($id)
+    {
+        User::findOrFail($id)->delete();
     }
 }

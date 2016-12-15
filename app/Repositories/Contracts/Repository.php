@@ -19,6 +19,8 @@ interface Repository
 
     public function create(array $data);
 
-    public function update(array $data, $element);
+    public function update(array $data, $id);
+
+    public function delete($id);
     //https://bosnadev.com/2015/03/07/using-repository-pattern-in-laravel-5/
 }
