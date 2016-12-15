@@ -25,4 +25,9 @@ class TaskRepository implements Repository
     {
         return Task::paginate($perPage);
     }
+
+    public function create(array $data)
+    {
+        Task::create($data);
+    }
 }

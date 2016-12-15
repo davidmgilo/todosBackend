@@ -16,5 +16,7 @@ interface Repository
     public function findOrFail($id, $columns = ['*']);
 
     public function paginate($perPage = 15, $columns = array('*'));
+
+    public function create(array $data);
     //https://bosnadev.com/2015/03/07/using-repository-pattern-in-laravel-5/
 }

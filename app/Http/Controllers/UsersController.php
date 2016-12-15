@@ -58,7 +58,7 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        User::create($request->all());
+        $this->repository->create($request->all());
 
         return response([
             'error'   => false,

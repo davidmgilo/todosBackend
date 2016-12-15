@@ -25,4 +25,9 @@ class UserRepository implements Repository
     {
         return User::paginate($perPage);
     }
+
+    public function create(array $data)
+    {
+        User::create($data);
+    }
 }
