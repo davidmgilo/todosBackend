@@ -2,7 +2,8 @@
 
 namespace App\Repositories;
 
-use App\Repositories\Contracts\Repository;
+
+use App\Task;
 use App\User;
 
 /**
@@ -17,9 +18,10 @@ class UserTasksRepository
      *
      * @return mixed
      */
-    public function findOrFail($id, $columns = ['*'])
+    public function findOrFail($iduser,$idtask, $columns = ['*'])
     {
-        // TODO: Implement findOrFail() method.
+        $user = User::findOrFail($iduser);
+        return $user->tasks()->findOrFail($idtask);
     }
 
     public function paginate($id, $perPage = 15, $columns = array('*'))
@@ -29,9 +31,10 @@ class UserTasksRepository
         return $user->tasks()->paginate($perPage);
     }
 
-    public function create(array $data)
+    public function create(array $data, $id)
     {
-        // TODO: Implement create() method.
+        User::findOrFail($id);
+        Task::create($data);
     }
 
     public function update(array $data, $id)

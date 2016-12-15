@@ -62,9 +62,7 @@ class UserTasksController extends Controller
      */
     public function store(Request $request, $iduser)
     {
-        User::findOrFail($iduser);
-//        $dades = array_merge($request->only(['name', 'done', 'priority']), ['user_id'=> $user->id]);
-        Task::create($request->all());
+        $this->repository->create($request->all(),$iduser);
 
         return response([
             'error'   => false,
@@ -83,8 +81,7 @@ class UserTasksController extends Controller
      */
     public function show($iduser, $idtask)
     {
-        $user = User::findOrFail($iduser);
-        $task = $user->tasks()->findOrFail($idtask);
+        $task = $this->repository->findOrFail($iduser, $idtask);
 
         return $this->transformer->transform($task);
 //        $task = $user->tasks()->findOrFail($idtask)->paginate(1);
