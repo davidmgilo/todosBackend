@@ -34,7 +34,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(15);
+        $users = $this->repository->paginate(15);
 
         return $this->generatePaginatedResponse($users, ['propietari' => 'David Martinez']);
     }

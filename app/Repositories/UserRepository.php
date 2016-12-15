@@ -20,4 +20,9 @@ class UserRepository implements Repository
     {
         return User::findOrFail($id);
     }
+
+    public function paginate($perPage = 15, $columns = array('*'))
+    {
+        return User::paginate($perPage);
+    }
 }

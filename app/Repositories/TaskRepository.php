@@ -20,4 +20,9 @@ class TaskRepository implements Repository
     {
         return Task::findOrFail($id);
     }
+
+    public function paginate($perPage = 15, $columns = array('*'))
+    {
+        return Task::paginate($perPage);
+    }
 }

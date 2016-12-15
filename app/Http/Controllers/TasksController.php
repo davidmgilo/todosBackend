@@ -43,7 +43,7 @@ class TasksController extends Controller
      */
     public function index()
     {
-        $tasks = Task::paginate(15);
+        $tasks = $this->repository->paginate(15);
 
         return $this->generatePaginatedResponse($tasks, ['propietari' => 'David Martinez']);
     }
