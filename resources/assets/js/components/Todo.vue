@@ -20,7 +20,7 @@
             </div>
         </td>
         <td><span class="badge bg-red">55%</span></td>
-        <td><button class="btn btn-warning btn-block" v-on:click=" eliminar(index,todo.id)"><i class="fa fa-trash-o"></i></button></td>
+        <td><button class="btn btn-warning btn-block" v-on:click=" deletetodo(index,todo.id)"><i class="fa fa-trash-o"></i></button></td>
     </tr>
     
 </template>
@@ -86,6 +86,9 @@
                 this.updateApi(todo);
               //  this.fetchPage(this.page);
             },
+            deletetodo: function(index,id){
+                this.$emit('todo-deleted', index, id);
+            }
         },
         directives: {
             'todo-focus': function (el, value) {

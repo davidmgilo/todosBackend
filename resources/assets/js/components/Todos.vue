@@ -55,6 +55,7 @@
                               v-bind:todo="todo"
                               :index="index"
                               :from="from"
+                              @todo-deleted="eliminar"
                         ></todo>
                         <!--<tr v-for>-->
                         <!--<td>{{index + from}}</td>-->
@@ -89,7 +90,7 @@
                         :current-page="page"
                         :items-per-page="perPage"
                         :total-items="total"
-                    @page-changed="pageChanged"
+                    @page-changed="eliminar"
                 ></pagination>
             </div>
         </div>
@@ -244,46 +245,6 @@ import Todo from './Todo.vue'
                 sweetAlert("Oops...", "Something went wrong!", "error");
                 console.log(response);
             });
-            },
-            canviaVisiNom: function(index, todo) {
-                this.nom[index] = !this.nom[index];
-                if (!this.nom[index]) this.modificaNom(index,todo);
-                this.fetchPage(this.page);
-
-            },
-            modificaNom: function(index,todo){
-                this.filteredTodos[index].name = todo.name;
-                this.updateApi(todo);
-                console.log(todo);
-                console.log(this.filteredTodos[index].name);
-            },
-            updateApi: function (todo){
-            this.$http.put('/api/v1/task/' + todo.id,{
-                name : todo.name,
-                priority : todo.priority,
-                done : todo.done,
-             }).then((response) => {
-                console.log(response);
-
-            }, (response) => {
-                // error callback
-                sweetAlert("Oops...", "Something went wrong!", "error");
-                console.log(response);
-            });
-            },
-            canviaVisiPrioritat: function(index,todo) {
-                this.prioritat[index] = !this.prioritat[index];
-                if (!this.prioritat[index]) this.modificaPrioritat(index,todo);
-                this.fetchPage(this.page);
-            },
-            modificaPrioritat: function(index,todo){
-                this.filteredTodos[index].prioritat = todo.prioritat;
-                this.updateApi(todo);
-            },
-            modificaDone: function(index,todo){
-                todo.done = !todo.done;
-                this.updateApi(todo);
-                this.fetchPage(this.page);
             },
             pageChanged : function (pageNum) {
                  this.page = pageNum;
