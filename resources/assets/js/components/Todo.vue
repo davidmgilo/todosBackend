@@ -3,10 +3,12 @@
         <td>{{index + from}}</td>
         <td><div v-show="!editing" @dblclick="canviaNom(index,todo)">{{ todo.name }}</div>
             <input type="text" v-model="todo.name" v-show="editing" @keyup.enter="canviaNom(index,todo)"
-                   v-todo-focus="editing" onfocus="this.select();"></td>
+                   v-todo-focus="editing" onfocus="this.select();"
+                    @keyup.esc="canceledit"></td>
         <td><div v-show="!editingPri" @dblclick="canviaVisiPrioritat(index,todo)">{{ todo.priority }}</div>
             <input type="text" v-model="todo.priority" v-show="editingPri" @keyup.enter="canviaVisiPrioritat(index,todo)"
-                   v-todo-focus="editingPri" onfocus="this.select();"></td>
+                   v-todo-focus="editingPri" onfocus="this.select();"
+                   @keyup.esc="canceledit"></td>
         <td><span v-if="todo.done">
                                 <input type="checkbox" class="minimal" checked="" @click="modificaDone(index,todo)">
                             </span>
@@ -49,14 +51,11 @@
             canviaNom: function(index, todo) {
                 this.editing = !this.editing;
                 if (!this.editing) this.modificaNom(index,todo);
-                //this.fetchPage(this.page);
 
             },
             modificaNom: function(index,todo){
-                //this.filteredTodos[index].name = todo.name;
                 this.updateApi(todo);
                 console.log(todo);
-                //console.log(this.filteredTodos[index].name);
             },
             updateApi: function (todo){
             this.$http.put('/api/v1/task/' + todo.id,{
@@ -75,19 +74,18 @@
             canviaVisiPrioritat: function(index,todo) {
                 this.editingPri = !this.editingPri;
                 if (!this.editingPri) this.modificaPrioritat(index,todo);
-               // this.fetchPage(this.page);
             },
             modificaPrioritat: function(index,todo){
-               // this.filteredTodos[index].prioritat = todo.prioritat;
                 this.updateApi(todo);
             },
             modificaDone: function(index,todo){
                 todo.done = !todo.done;
                 this.updateApi(todo);
-              //  this.fetchPage(this.page);
             },
             deletetodo: function(index,id){
                 this.$emit('todo-deleted', index, id);
+            },
+            canceledit: function(){
             }
         },
         directives: {

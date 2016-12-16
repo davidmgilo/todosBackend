@@ -116,8 +116,6 @@ import Todo from './Todo.vue'
                 todos: [],
                 visibility: 'all', //'active', 'completed'
                 newTodo: '',
-                nom : [],
-                prioritat : [],
                 from: 0,
                 to : 0,
                 total: 0,
@@ -226,7 +224,6 @@ import Todo from './Todo.vue'
                 },
                 function(isConfirm){
                     if (isConfirm) {
-                        funct.filteredTodos.splice(index, 1);
                         funct.deleteFromApi(id);
                         swal("Deleted!", "Your task has been deleted.", "success");
                         funct.fetchPage(funct.page);
