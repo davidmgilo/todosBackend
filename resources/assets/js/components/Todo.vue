@@ -1,10 +1,15 @@
 <template xmlns:v-on="http://www.w3.org/1999/xhtml">
     <tr>
         <td>{{index + from}}</td>
-        <td><div v-show="!editing" @dblclick="canviaNom(index,todo)">{{ todo.name }}</div>
+        <td><span v-show="!editing" @dblclick="canviaNom(index,todo)">{{ todo.name }}</span>
             <input type="text" v-model="todo.name" v-show="editing" @keyup.enter="canviaNom(index,todo)"
                    v-todo-focus="editing" onfocus="this.select();"
-                    @keyup.esc="canceleditName(todo)"></td>
+                    @keyup.esc="canceleditName(todo)"
+                   style="width:300px;">
+            <i class="fa fa-fw fa-edit " v-show="!editing" @click="canviaNom(index,todo)"></i>
+            <i class="fa fa-fw fa-check bg-green" @click="canviaNom(index,todo)" v-show="editing"></i>
+            <i class="fa fa-fw fa-close bg-red" v-show="editing" @click="canceleditName(todo)"></i>
+        </td>
         <td><div v-show="!editingPri" @dblclick="canviaVisiPrioritat(index,todo)">{{ todo.priority }}</div>
             <input type="text" v-model="todo.priority" v-show="editingPri" @keyup.enter="canviaVisiPrioritat(index,todo)"
                    v-todo-focus="editingPri" onfocus="this.select();"
@@ -22,7 +27,13 @@
             </div>
         </td>
         <td><span class="badge bg-red">55%</span></td>
-        <td><button class="btn btn-warning btn-block" v-on:click=" deletetodo(index,todo.id)"><i class="fa fa-trash-o"></i></button></td>
+        <td>
+            <span class="btn btn-md btn-info">
+                <i class="fa fa-fw fa-edit" @click="edittodo"></i>
+            </span>
+            <button class="btn btn-md btn-warning" v-on:click=" deletetodo(index,todo.id)"><i class="fa fa-trash-o"></i></button>
+
+        </td>
     </tr>
     
 </template>
@@ -96,6 +107,9 @@
             canceleditPri: function(todo){
                 todo.priority = this.bufferedTodopri;
                 this.editingPri = false;
+            },
+            edittodo: function (){
+                console.log('TODO');
             }
         },
         directives: {
