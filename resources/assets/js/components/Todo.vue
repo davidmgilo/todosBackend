@@ -4,8 +4,7 @@
         <td><span v-show="!editing" @dblclick="canviaNom(index,todo)">{{ todo.name }}</span>
             <input type="text" v-model="todo.name" v-show="editing" @keyup.enter="canviaNom(index,todo)"
                    v-todo-focus="editing" onfocus="this.select();"
-                    @keyup.esc="canceleditName(todo)"
-                   style="width:300px;">
+                    @keyup.esc="canceleditName(todo)">
             <i class="fa fa-fw fa-edit " v-show="!editing" @click="canviaNom(index,todo)"></i>
             <i class="fa fa-fw fa-check bg-green" @click="canviaNom(index,todo)" v-show="editing"></i>
             <i class="fa fa-fw fa-close bg-red" v-show="editing" @click="canceleditName(todo)"></i>
