@@ -25,6 +25,7 @@ elixir(function(mix) {
             './public/css/adminlte-less.css',
             './public/css/adminlte-app.css',
             './node_modules/icheck/skins/square/blue.css',
+            './node_modules/icheck/skins/square/green.css',
             './node_modules/sweetalert/dist/sweetalert.css',
             './public/css/toastr.css',
         ])
@@ -35,6 +36,8 @@ elixir(function(mix) {
         .copy('node_modules/admin-lte/dist/img','public/img')
         .copy('node_modules/admin-lte/plugins','public/plugins')
         .copy('node_modules/icheck/skins/square/blue.png','public/css')
+        .copy('node_modules/icheck/skins/square/green.png','public/css')
         .copy('node_modules/icheck/skins/square/blue@2x.png','public/css')
+        .copy('node_modules/icheck/skins/square/green@2x.png','public/css')
         .webpack('app.js');
 });

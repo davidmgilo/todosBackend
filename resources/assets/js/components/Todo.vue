@@ -14,10 +14,13 @@
                    v-todo-focus="editingPri" onfocus="this.select();"
                    @keyup.esc="canceleditPri(todo)"></td>
         <td><span v-if="todo.done">
-                                <input type="checkbox" class="minimal" checked="" @click="modificaDone(index,todo)">
+                                <input type="checkbox"
+                                       class="icheckbox_square-green"
+                                       checked=""
+                                       @click="modificaDone(index,todo)">
                             </span>
             <span v-else>
-                                <input type="checkbox" class="minimal" @click="modificaDone(index,todo)">
+                                <input type="checkbox" class="icheckbox_square-green" @click="modificaDone(index,todo)">
                             </span>
         </td>
         <td>
@@ -119,6 +122,13 @@
             }
         }
     }
+
+    $(document).ready(function(){
+    $('input').iCheck({
+    checkboxClass: 'icheckbox_square-green',
+    radioClass: 'iradio_square-green',
+  });
+});
 </script>
 
 
