@@ -46,34 +46,39 @@
                         <th>Done</th>
                         <th>Progress</th>
                         <th style="width: 40px">Label</th>
-                        <th>Accions</th>
+                        <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="(todo, index) in filteredTodos">
-                        <!--<todo></todo>-->
-                        <td>{{index + from}}</td>
-                        <td><div v-show="!nom[index]" @dblclick="canviaVisiNom(index,todo)">{{ todo.name }}</div>
-                            <input type="text" v-model="todo.name" v-show="nom[index]" @keyup.enter="canviaVisiNom(index,todo)"
-                                   v-todo-focus="nom[index]" onfocus="this.select();"></td>
-                        <td><div v-show="!prioritat[index]" @dblclick="canviaVisiPrioritat(index,todo)">{{ todo.priority }}</div>
-                            <input type="text" v-model="todo.priority" v-show="prioritat[index]" @keyup.enter="canviaVisiPrioritat(index,todo)"
-                                   v-todo-focus="prioritat[index]" onfocus="this.select();"></td>
-                        <td><span v-if="todo.done">
-                                <input type="checkbox" class="minimal" checked="" @click="modificaDone(index,todo)">
-                            </span>
-                            <span v-else>
-                                <input type="checkbox" class="minimal" @click="modificaDone(index,todo)">
-                            </span>
-                        </td>
-                        <td>
-                            <div class="progress progress-xs">
-                                <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                            </div>
-                        </td>
-                        <td><span class="badge bg-red">55%</span></td>
-                        <td><button class="btn btn-warning btn-block" v-on:click=" eliminar(index,todo.id)"><i class="fa fa-trash-o"></i></button></td>
-                    </tr>
+
+                        <todo v-for="(todo, index) in filteredTodos"
+                              v-bind:todo="todo"
+                              :index="index"
+                              :from="from"
+                        ></todo>
+                        <!--<tr v-for>-->
+                        <!--<td>{{index + from}}</td>-->
+                        <!--<td><div v-show="!nom[index]" @dblclick="canviaVisiNom(index,todo)">{{ todo.name }}</div>-->
+                            <!--<input type="text" v-model="todo.name" v-show="nom[index]" @keyup.enter="canviaVisiNom(index,todo)"-->
+                                   <!--v-todo-focus="nom[index]" onfocus="this.select();"></td>-->
+                        <!--<td><div v-show="!prioritat[index]" @dblclick="canviaVisiPrioritat(index,todo)">{{ todo.priority }}</div>-->
+                            <!--<input type="text" v-model="todo.priority" v-show="prioritat[index]" @keyup.enter="canviaVisiPrioritat(index,todo)"-->
+                                   <!--v-todo-focus="prioritat[index]" onfocus="this.select();"></td>-->
+                        <!--<td><span v-if="todo.done">-->
+                                <!--<input type="checkbox" class="minimal" checked="" @click="modificaDone(index,todo)">-->
+                            <!--</span>-->
+                            <!--<span v-else>-->
+                                <!--<input type="checkbox" class="minimal" @click="modificaDone(index,todo)">-->
+                            <!--</span>-->
+                        <!--</td>-->
+                        <!--<td>-->
+                            <!--<div class="progress progress-xs">-->
+                                <!--<div class="progress-bar progress-bar-danger" style="width: 55%"></div>-->
+                            <!--</div>-->
+                        <!--</td>-->
+                        <!--<td><span class="badge bg-red">55%</span></td>-->
+                        <!--<td><button class="btn btn-warning btn-block" v-on:click=" eliminar(index,todo.id)"><i class="fa fa-trash-o"></i></button></td>-->
+                        <!--</tr>-->
 
                     </tbody>
                 </table>
@@ -101,10 +106,10 @@
 <script>
 
 import Pagination from './Pagination.vue'
-//import Todo from './Todo.vue'
+import Todo from './Todo.vue'
 
     export default {
-        components : { Pagination },
+        components : { Pagination, Todo },
         data() {
             return {
                 todos: [],
