@@ -4,11 +4,11 @@
         <td><div v-show="!editing" @dblclick="canviaNom(index,todo)">{{ todo.name }}</div>
             <input type="text" v-model="todo.name" v-show="editing" @keyup.enter="canviaNom(index,todo)"
                    v-todo-focus="editing" onfocus="this.select();"
-                    @keyup.esc="canceledit"></td>
+                    @keyup.esc="canceleditName(todo)"></td>
         <td><div v-show="!editingPri" @dblclick="canviaVisiPrioritat(index,todo)">{{ todo.priority }}</div>
             <input type="text" v-model="todo.priority" v-show="editingPri" @keyup.enter="canviaVisiPrioritat(index,todo)"
                    v-todo-focus="editingPri" onfocus="this.select();"
-                   @keyup.esc="canceledit"></td>
+                   @keyup.esc="canceleditPri(todo)"></td>
         <td><span v-if="todo.done">
                                 <input type="checkbox" class="minimal" checked="" @click="modificaDone(index,todo)">
                             </span>
@@ -38,6 +38,8 @@
             return {
                 editing: false,
                 editingPri: false,
+                bufferedTodoname: null,
+                bufferedTodopri: 0 ,
             }
         },
         created() {
@@ -49,6 +51,7 @@
 
             },
             canviaNom: function(index, todo) {
+                this.bufferedTodoname = todo.name;
                 this.editing = !this.editing;
                 if (!this.editing) this.modificaNom(index,todo);
 
@@ -72,6 +75,7 @@
             });
             },
             canviaVisiPrioritat: function(index,todo) {
+                this.bufferedTodopri = todo.priority;
                 this.editingPri = !this.editingPri;
                 if (!this.editingPri) this.modificaPrioritat(index,todo);
             },
@@ -85,7 +89,13 @@
             deletetodo: function(index,id){
                 this.$emit('todo-deleted', index, id);
             },
-            canceledit: function(){
+            canceleditName: function(todo){
+                todo.name = this.bufferedTodoname;
+                this.editing = false;
+            },
+            canceleditPri: function(todo){
+                todo.priority = this.bufferedTodopri;
+                this.editingPri = false;
             }
         },
         directives: {
