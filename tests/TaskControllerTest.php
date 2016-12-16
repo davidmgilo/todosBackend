@@ -27,7 +27,7 @@ class TaskControllerTest extends TestCase
     {
         $this->login();
 
-        $this->get('tasks');
+        $this->get('tasks')->dump();
 
         $this->assertResponseStatus(403);
     }
