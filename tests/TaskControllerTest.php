@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class TaskControllerTest extends TestCase
@@ -26,8 +27,9 @@ class TaskControllerTest extends TestCase
     public function testNotAuthorizedIndex()
     {
         $this->login();
+        Permission::create(['name' => 'show-task']);
 
-        $this->get('tasks')->dump();
+        $this->get('tasks');
 
         $this->assertResponseStatus(403);
     }
