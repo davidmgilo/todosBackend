@@ -5,9 +5,9 @@
             <input type="text" v-model="todo.name" v-show="editing" @keyup.enter="canviaNom(index,todo)"
                    v-todo-focus="editing" onfocus="this.select();"
                     @keyup.esc="canceleditName(todo)">
-            <i class="fa fa-fw fa-edit " v-show="!editing" @click="canviaNom(index,todo)"></i>
-            <i class="fa fa-fw fa-check bg-green" @click="canviaNom(index,todo)" v-show="editing"></i>
-            <i class="fa fa-fw fa-close bg-red" v-show="editing" @click="canceleditName(todo)"></i>
+            <span @click="canviaNom(index,todo)"><i class="fa fa-fw fa-edit " v-show="!editing"></i></span>
+            <span @click="canviaNom(index,todo)"><i class="fa fa-fw fa-check bg-green" v-show="editing"></i></span>
+            <span @click="canceleditName(todo)"><i class="fa fa-fw fa-close bg-red" v-show="editing"></i></span>
         </td>
         <td><div v-show="!editingPri" @dblclick="canviaVisiPrioritat(index,todo)">{{ todo.priority }}</div>
             <input type="text" v-model="todo.priority" v-show="editingPri" @keyup.enter="canviaVisiPrioritat(index,todo)"
@@ -30,8 +30,8 @@
         </td>
         <td><span class="badge bg-red">55%</span></td>
         <td>
-            <span class="btn btn-md btn-info">
-                <i class="fa fa-fw fa-edit" @click="edittodo"></i>
+            <span class="btn btn-md btn-info" @click="edittodo">
+                <i class="fa fa-fw fa-edit" ></i>
             </span>
             <button class="btn btn-md btn-warning" v-on:click=" deletetodo(index,todo.id)"><i class="fa fa-trash-o"></i></button>
 
