@@ -30,6 +30,7 @@
         </td>
         <td><span class="badge bg-red">55%</span></td>
         <td>
+
             <span class="btn btn-md btn-info" @click="edittodo">
                 <i class="fa fa-fw fa-edit" ></i>
             </span>
