@@ -37,7 +37,7 @@ class BasePolicy
     }
 
     /**
-     * Determine whether the user can create tasks.
+     * Determine whether the user can create things.
      *
      * @param  \App\User  $user
      * @return mixed
@@ -49,7 +49,7 @@ class BasePolicy
     }
 
     /**
-     * Determine whether the user can update the task.
+     * Determine whether the user can update things.
      *
      * @param  \App\User  $user
      * @param  \App\Task  $task
@@ -62,7 +62,7 @@ class BasePolicy
     }
 
     /**
-     * Determine whether the user can delete the task.
+     * Determine whether the user can delete things.
      *
      * @param  \App\User  $user
      * @param  \App\Task  $task
