@@ -21,6 +21,7 @@
 
 #bloc1
 {
+	position: static;
 	max-width: 600px;
 	margin: 0 auto;
 	border: solid green 10px;
@@ -29,6 +30,7 @@
 
 #bloc2
 {
+	position: static;
 	max-width: 600px;
 	margin: 0 auto;
 	padding: 50px;
