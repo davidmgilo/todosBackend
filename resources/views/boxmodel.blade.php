@@ -41,11 +41,12 @@
 #bloc3
 {
 	position: fixed;
-	top: 0px;
-	left: 0px;
+	bottom: 0px;
+	right: 0px;
+	width: 600px;
 	margin: 20px auto;
 	padding: 50px;
-	border: solid blue 10px;
+	border: solid red 10px;
 	box-sizing: border-box;
 }
 </style>
