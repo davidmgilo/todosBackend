@@ -164,6 +164,14 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
+         * Acacha Llum Service Providers...
+         *
+         * See: https://github.com/acacha/llum
+         */
+        Spatie\Menu\Laravel\MenuServiceProvider::class,
+        #llum_providers
+
+        /*
          * Package Service Providers...
          */
 
@@ -259,6 +267,16 @@ return [
          */
         'AdminLTE' => Acacha\AdminLTETemplateLaravel\Facades\AdminLTE::class,
         //llum_aliases
+
+        /*
+         * Acacha Llum Aliases...
+         *
+         * See: https://github.com/acacha/llum
+         */
+        'Menu' => Spatie\Menu\Laravel\MenuFacade::class,
+        'Link' => Spatie\Menu\Laravel\Link::class,
+        'Html' => Spatie\Menu\Laravel\Html::class,
+        #llum_aliases
 
     ],
 
