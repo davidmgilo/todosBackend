@@ -12,24 +12,35 @@
 
 <style>
 
+body {
+	margin: 0px;
+	margin-bottom: 50px;
+}
+
 #nav {
+	position: absolute;
 	left: 0px;
-	max-width: 200px;
+	width: 200px;
 	border: solid black 1px;
+	background-color: lightgrey;
 }
 
 #section {
-	border: solid red 1px;
+	background-color: lightcoral;
 	margin-left:200px;
 	padding: 10px;
 }
 
 #footer{
-	border: solid blueviolet 1px;
+	position: fixed;
+	bottom: 0px;
+	height: 50px;
+	width: 100%;
+	background-color: lightblue;
 }
 
 #container{
-	position:relative;
+	position:relative
 }
 
 </style>
@@ -53,7 +64,61 @@
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consequatur iure maxime officia rem? Aspernatur assumenda atque consequatur deleniti, dolor excepturi magnam maxime minus mollitia officiis perferendis, sed vel voluptatibus.
 	</div>
 
+	<div id="section">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consequatur iure maxime officia rem? Aspernatur assumenda atque consequatur deleniti, dolor excepturi magnam maxime minus mollitia officiis perferendis, sed vel voluptatibus.
+	</div>
 
+	<div id="section">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consequatur iure maxime officia rem? Aspernatur assumenda atque consequatur deleniti, dolor excepturi magnam maxime minus mollitia officiis perferendis, sed vel voluptatibus.
+	</div>
+
+	<div id="section">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consequatur iure maxime officia rem? Aspernatur assumenda atque consequatur deleniti, dolor excepturi magnam maxime minus mollitia officiis perferendis, sed vel voluptatibus.
+	</div>
+
+	<div id="section">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consequatur iure maxime officia rem? Aspernatur assumenda atque consequatur deleniti, dolor excepturi magnam maxime minus mollitia officiis perferendis, sed vel voluptatibus.
+	</div>
+
+	<div id="section">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consequatur iure maxime officia rem? Aspernatur assumenda atque consequatur deleniti, dolor excepturi magnam maxime minus mollitia officiis perferendis, sed vel voluptatibus.
+	</div>
+
+	<div id="section">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consequatur iure maxime officia rem? Aspernatur assumenda atque consequatur deleniti, dolor excepturi magnam maxime minus mollitia officiis perferendis, sed vel voluptatibus.
+	</div>
+
+	<div id="section">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consequatur iure maxime officia rem? Aspernatur assumenda atque consequatur deleniti, dolor excepturi magnam maxime minus mollitia officiis perferendis, sed vel voluptatibus.
+	</div>
+
+	<div id="section">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consequatur iure maxime officia rem? Aspernatur assumenda atque consequatur deleniti, dolor excepturi magnam maxime minus mollitia officiis perferendis, sed vel voluptatibus.
+	</div>
+
+	<div id="section">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consequatur iure maxime officia rem? Aspernatur assumenda atque consequatur deleniti, dolor excepturi magnam maxime minus mollitia officiis perferendis, sed vel voluptatibus.
+	</div>
+
+	<div id="section">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consequatur iure maxime officia rem? Aspernatur assumenda atque consequatur deleniti, dolor excepturi magnam maxime minus mollitia officiis perferendis, sed vel voluptatibus.
+	</div>
+
+	<div id="section">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consequatur iure maxime officia rem? Aspernatur assumenda atque consequatur deleniti, dolor excepturi magnam maxime minus mollitia officiis perferendis, sed vel voluptatibus.
+	</div>
+
+	<div id="section">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consequatur iure maxime officia rem? Aspernatur assumenda atque consequatur deleniti, dolor excepturi magnam maxime minus mollitia officiis perferendis, sed vel voluptatibus.
+	</div>
+
+	<div id="section">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consequatur iure maxime officia rem? Aspernatur assumenda atque consequatur deleniti, dolor excepturi magnam maxime minus mollitia officiis perferendis, sed vel voluptatibus.
+	</div>
+
+	<div id="section">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consequatur iure maxime officia rem? Aspernatur assumenda atque consequatur deleniti, dolor excepturi magnam maxime minus mollitia officiis perferendis, sed vel voluptatibus.
+	</div>
 
 	<div id="footer">
 		@copyright adsafsa asdasd da
