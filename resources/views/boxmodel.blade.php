@@ -31,7 +31,7 @@
 #bloc2
 {
 	position: relative;
-	top: 100px;
+	top: -50px;
 	max-width: 600px;
 	margin: 0 auto;
 	padding: 50px;
