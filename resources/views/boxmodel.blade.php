@@ -12,9 +12,23 @@
 
 <style>
 
+#nav {
+	left: 0px;
+	max-width: 200px;
+	border: solid black 1px;
+}
+
+#section {
+	border: solid red 1px;
+}
+
+#footer{
+	border: solid blueviolet 1px;
+}
+
 </style>
 
-<div id="sidebar">
+<div id="nav">
 	<ul>
 		<li>Link 1</li>
 		<li>Link 2</li>
