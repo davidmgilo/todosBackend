@@ -18,6 +18,14 @@ form{
 	display: table;	
 }
 
+form div{
+	display: table-row;
+}
+
+form label, form input {
+	display: table-cell;
+}
+
 </style>
 
 <body>
