@@ -18,7 +18,12 @@ body {
 
 p{
     line-height: 1.5em;
-    word-spacing: 0.8rem;
+    word-spacing: 0.1rem;
+}
+
+img {
+    float: left;
+    margin-right: 30px;
 }
 
 </style>
@@ -33,6 +38,9 @@ p{
 
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aut dolore dolorum eaque hic labore magnam magni
     molestias mollitia nemo neque numquam ratione, rem, rerum sint totam ullam vel, voluptatibus!</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus autem, cumque delectus dolor eligendi error eum
+    excepturi iusto labore magnam magni, molestiae molestias placeat provident quaerat, quam soluta unde ut?</p>
 
 </body>
 </html>
