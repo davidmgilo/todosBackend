@@ -10,14 +10,14 @@
 
 <style>
 
-.article{
+section{
 	background-color: lightskyblue;
 	padding: 10px;
 	margin: 10px;
 	flex: 1;
 }
 
-.header {
+nav {
 	background-color: indianred;
 	padding: 10px;
 	margin: 10px;
@@ -26,7 +26,7 @@
 
 .container {
 	display: flex;
-/*	flex-direction: column; */
+	flex-direction: column;
 }
 
 </style>
@@ -37,13 +37,24 @@
 
 <div class="container">
 
-	<div class="header">Sample flexbox article</div>
+	<nav>
+		<ul>
+			<li>Link 1</li>
+			<li>Link 2</li>
+			<li>Link 3</li>
+			<li>Contact</li>
+			<li>About</li>
+		</ul>
+	</nav>
 
-	<div class="article"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</div>
+	<section> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</section>
 
-	<div class="article"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</div>
+	<section> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</section>
 
-	<div class="article"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</div>
+	<section> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</section>
+
+	<footer> @copyrigth grqwfwfq wefqwf qf</footer>
+
 </div>
 
 </body>
