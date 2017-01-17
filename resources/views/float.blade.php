@@ -26,21 +26,22 @@ img {
     margin-right: 30px;
 }
 
+.clearfix {
+       overflow: auto;
+}
+
 </style>
 <body>
 
 <h1>Simple float example</h1>
 
-<img src="http://lorempixel.com/200/200/food" alt="Imatge lorem">
+<div class="clearfix">
+    <img src="http://lorempixel.com/200/200/food" alt="Imatge lorem">
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi earum eveniet ex facere, incidunt molestiae nemo
-    nihil reiciendis sint voluptates. Blanditiis cum dicta eum incidunt rem! Enim impedit maxime ullam.</p>
+    <p>Lorem ipsum dolor</p>
+</div>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aut dolore dolorum eaque hic labore magnam magni
-    molestias mollitia nemo neque numquam ratione, rem, rerum sint totam ullam vel, voluptatibus!</p>
-
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus autem, cumque delectus dolor eligendi error eum
-    excepturi iusto labore magnam magni, molestiae molestias placeat provident quaerat, quam soluta unde ut?</p>
+<h2 class="clearfix">Prova</h2>
 
 </body>
 </html>
