@@ -10,39 +10,48 @@
 
 <style>
 
-section{
+article{
 	background-color: lightskyblue;
 	padding: 10px;
 	margin: 10px;
-	flex: 1;
+	min-width: 200px;
 }
 
 nav {
 	background-color: indianred;
 	padding: 10px;
 	margin: 10px;
-	flex: 3 100px;
+	flex: 1;
 }
 
-.container {
+section {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 }
 
 footer {
 	background-color: lightgreen;
-	padding: 10px;
-	margin: 10px;
-	flex: 1;
+	height:100px;
 }
+
+header {
+	background-color: purple;
+	height:100px;
+}
+	.flex-column {
+		display:flex;
+		flex-direction: column;
+	}
 
 </style>
 
 <body>
 
+<header>
+	Flexbox Sample
+</header>
 
-
-<div class="container">
+<section>
 
 	<nav>
 		<ul>
@@ -54,15 +63,41 @@ footer {
 		</ul>
 	</nav>
 
-	<section> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</section>
+	<section class="flex-column">
 
-	<section> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</section>
+	<article> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</article>
 
-	<section> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</section>
+	<article> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</article>
 
-	<footer> @copyrigth grqwfwfq wefqwf qf</footer>
+	<article> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</article>
 
-</div>
+	<article> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</article>
+
+	<article> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</article>
+
+	<article> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</article>
+
+	<article> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</article>
+
+	<article> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</article>
+
+	<article> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</article>
+
+	<article> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</article>
+
+	<article> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</article>
+
+	<article> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</article>
+
+	<article> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</article>
+
+	<article> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</article>
+
+	</section>
+
+</section>
+
+<footer> @copyright grqwfwfq wefqwf qf</footer>
 
 </body>
 </html>
