@@ -16,6 +16,11 @@ body {
     margin: 0 auto;
 }
 
+p{
+    line-height: 1.5em;
+    word-spacing: 0.8rem;
+}
+
 </style>
 <body>
 
