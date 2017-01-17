@@ -10,6 +10,18 @@
 
 <style>
 
+.article{
+	background-color: lightskyblue;
+	padding: 10px;
+	margin: 10px;
+}
+
+.header {
+	background-color: indianred;
+	padding: 10px;
+	margin: 10px;
+}
+
 </style>
 
 <body>
