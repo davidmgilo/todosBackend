@@ -7,7 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
+<style>
+
+</style>
+
 <body>
+
+<div class="header">Sample flexbox article</div>
+
+<div class="article"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</div>
+
+<div class="article"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</div>
+
+<div class="article"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</div>
 
 </body>
 </html>
