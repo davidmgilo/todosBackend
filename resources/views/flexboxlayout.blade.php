@@ -22,17 +22,23 @@
 	margin: 10px;
 }
 
+.container {
+	display: flex;
+}
+
 </style>
 
 <body>
 
 <div class="header">Sample flexbox article</div>
 
-<div class="article"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</div>
+<div class="container">
+	<div class="article"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</div>
 
-<div class="article"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</div>
+	<div class="article"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</div>
 
-<div class="article"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</div>
+	<div class="article"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</div>
+</div>
 
 </body>
 </html>
