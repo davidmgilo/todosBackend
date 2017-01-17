@@ -29,6 +29,13 @@ nav {
 	flex-direction: column;
 }
 
+footer {
+	background-color: lightgreen;
+	padding: 10px;
+	margin: 10px;
+	flex: 1;
+}
+
 </style>
 
 <body>
