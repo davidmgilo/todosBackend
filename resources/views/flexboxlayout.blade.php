@@ -21,7 +21,7 @@ nav {
 	background-color: indianred;
 	padding: 10px;
 	margin: 10px;
-	flex: 1;
+	width:	400px;
 }
 
 section {
@@ -38,17 +38,18 @@ header {
 	background-color: purple;
 	height:100px;
 }
-	.flex-column {
-		display:flex;
-		flex-direction: column;
-	}
+
+.flex-column {
+	display:flex;
+	flex-direction: column;
+}
 
 </style>
 
 <body>
 
 <header>
-	Flexbox Sample
+	Sample Flexbox Example
 </header>
 
 <section>
