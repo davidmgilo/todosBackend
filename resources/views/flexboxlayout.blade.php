@@ -14,26 +14,31 @@
 	background-color: lightskyblue;
 	padding: 10px;
 	margin: 10px;
+	flex: 1;
 }
 
 .header {
 	background-color: indianred;
 	padding: 10px;
 	margin: 10px;
+	flex: 3 100px;
 }
 
 .container {
 	display: flex;
-	flex-direction: column;
+/*	flex-direction: column; */
 }
 
 </style>
 
 <body>
 
-<div class="header">Sample flexbox article</div>
+
 
 <div class="container">
+
+	<div class="header">Sample flexbox article</div>
+
 	<div class="article"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</div>
 
 	<div class="article"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequatur culpa deserunt dicta dolorem eveniet fuga illum ipsam nulla officiis perspiciatis quasi rem, sequi tempora temporibus veniam voluptatibus voluptatum?</div>
