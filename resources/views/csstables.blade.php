@@ -1,21 +1,24 @@
-@extends('adminlte::page')
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
 
-@section('htmlheader_title')
-	Change Title here!
-@endsection
+<h1>Dades personals</h1>
+<form action="">
 
+	First name: <input type="text" name="name">
 
-@section('main-content')
-	<div class="container-fluid spark-screen">
-		<div class="row">
-			<div class="col-md-8 col-md-offset-2">
-				<div class="panel panel-default">
-					<div class="panel-heading">Change Header</div>
-					<div class="panel-body">
-						Change content here!
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-@endsection
+	Last name: <input type="text" name="lastname">
+
+	Age: <input type="text" name="age">
+
+</form>
+
+</body>
+</html>
