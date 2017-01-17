@@ -12,6 +12,8 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     #adminlte_routes
+    Route::get('bootstraplayout', 'BootstraplayoutController@index')->name('bootstraplayout');
+
     Route::get('flexboxlayout', 'FlexboxlayoutController@index')->name('flexboxlayout');
 
     Route::get('csstables', 'CsstablesController@index')->name('csstables');
