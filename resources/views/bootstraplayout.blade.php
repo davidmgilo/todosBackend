@@ -40,8 +40,7 @@
 	<div class="row debug">
 		<div class="col-md-12 debug">Column 1</div>
 	</div>
-	<div class="row debug">
-		<div class="col-md-5 debug">Column 1</div>
+	<div class="row debug">		<div class="col-md-5 debug">Column 1</div>
 		<div class="col-md-2 debug">Column 2</div>
 		<div class="col-md-5 debug">Column 3</div>
 	</div>
