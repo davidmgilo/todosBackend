@@ -12,11 +12,14 @@
 <h1>Dades personals</h1>
 <form action="">
 
-	First name: <input type="text" name="name">
+	<label for="name">First name:</label>
+	<input type="text" name="name">
 
-	Last name: <input type="text" name="lastname">
+	<label for="lastname">Last name: </label>
+	<input type="text" name="lastname">
 
-	Age: <input type="text" name="age">
+	<label for="age">Age: </label>
+	<input type="text" name="age">
 
 </form>
 
