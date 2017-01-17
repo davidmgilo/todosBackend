@@ -15,16 +15,35 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
+<style>
+	.debug {
+		border: solid black 1px;
+	}
+</style>
 <body>
 
-<div class="container">
+<div class="container-fluid">
 	<div class="jumbotron">
 		<h1>Prova</h1>
 	</div>
-	<div class="row">
-		<div class="col-md-4">Column 1</div>
-		<div class="col-md-4">Column 2</div>
-		<div class="col-md-4">Column 3</div>
+	<div class="row debug">
+		<div class="col-md-4 debug">Column 1</div>
+		<div class="col-md-4 debug">Column 2</div>
+		<div class="col-md-4 debug">Column 3</div>
+	</div>
+	<div class="row debug">
+		<div class="col-md-3 debug">Column 1</div>
+		<div class="col-md-3 debug">Column 2</div>
+		<div class="col-md-3 debug">Column 3</div>
+		<div class="col-md-3 debug">Column 4</div>
+	</div>
+	<div class="row debug">
+		<div class="col-md-12 debug">Column 1</div>
+	</div>
+	<div class="row debug">
+		<div class="col-md-5 debug">Column 1</div>
+		<div class="col-md-2 debug">Column 2</div>
+		<div class="col-md-5 debug">Column 3</div>
 	</div>
 
 </div>
