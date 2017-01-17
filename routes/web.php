@@ -14,6 +14,10 @@ Route::group(['middleware' => 'auth'], function () {
     #adminlte_routes
     Route::get('boxmodel', 'BoxmodelController@index')->name('boxmodel');
 
+    Route::get('float', function () {
+        return view('float');
+    });
+
     
 });
 
