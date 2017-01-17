@@ -15,6 +15,7 @@ article{
 	padding: 10px;
 	margin: 10px;
 	min-width: 200px;
+	flex: 200px;
 }
 
 nav {
@@ -41,7 +42,8 @@ header {
 
 .flex-column {
 	display:flex;
-	flex-direction: column;
+	flex-direction: row;
+	flex-wrap: wrap;
 }
 
 </style>
