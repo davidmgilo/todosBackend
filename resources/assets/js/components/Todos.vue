@@ -90,7 +90,7 @@
                         :current-page="page"
                         :items-per-page="perPage"
                         :total-items="total"
-                    @page-changed="eliminar"
+                    @page-changed="pageChanged"
                 ></pagination>
             </div>
         </div>
