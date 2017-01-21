@@ -18,8 +18,8 @@ use Illuminate\Http\Request;
 //})->middleware('auth:api');
 // Les APIs han de ser Stateless. Cada petició ha de ser autenticada. Auth.basic no ho fa del tot.
 Route::group(['prefix' => 'v1',
-   'middleware'       => ['cors','auth:api'],
-//    'middleware'       => 'cors',
+//   'middleware'       => ['cors','auth:api'],
+   'middleware'       => 'cors',
         ],
     function () {
         Route::resource('task', 'TasksController');
