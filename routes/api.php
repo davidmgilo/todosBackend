@@ -27,6 +27,6 @@ Route::group(['prefix' => 'v1',
         Route::resource('user.task', 'UserTasksController');
 //    Route::resource('task.user','TaskUserController');
         Route::get('/user',function (Request $request) {
-           return $request->user();
+           return Auth::user();
         });
     });
