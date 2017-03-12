@@ -31,7 +31,7 @@
         <td><span class="badge bg-red">55%</span></td>
         <td>
 
-            <span class="btn btn-md btn-info" @click="edittodo">
+            <span class="btn btn-md btn-info" @click="edittodo(index,todo)">
                 <i class="fa fa-fw fa-edit" ></i>
             </span>
             <button class="btn btn-md btn-warning" v-on:click=" deletetodo(index,todo.id)"><i class="fa fa-trash-o"></i></button>
@@ -111,8 +111,9 @@
                 todo.priority = this.bufferedTodopri;
                 this.editingPri = false;
             },
-            edittodo: function (){
-                console.log('TODO');
+            edittodo: function (index,todo){
+                this.canviaVisiPrioritat(index,todo);
+                this.canviaNom(index,todo)
             }
         },
         directives: {
