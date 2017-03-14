@@ -1,9 +1,10 @@
 <template>
 
 <form method="post" @submit.prevent="submit">
-        <div class="form-group has-feedback">
-            <input type="text" class="form-control" placeholder="" name="name" value="" v-model="name"/>
+        <div class="form-group has-feedback has-error">
+            <input type="text" class="form-control" placeholder="" name="name" value="" v-model="name" @keydown="errors.clear('name')"/>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            <span class="help-block" v-if="errors.has('name')" v-text="errors.get('name')"></span>
         </div>
         <div class="form-group has-feedback">
             <input type="email" class="form-control" placeholder="" name="email" value="" v-model="email"/>
@@ -42,6 +43,49 @@
 
 <script>
 
+//    import './Errors.js'
+
+class Errors {
+    /*
+     *  Constructor.
+     */
+    constructor(){
+        this.errors = {}
+    }
+
+    //API
+
+    has(field){
+        // Underscore | Lodash
+        return this.errors.hasOwnProperty(field)
+    }
+
+    /**
+     * Retrieve the error message for a field
+     *
+     * @param field
+     * @returns {*}
+     */
+    get(field){
+        if (this.errors[field]){
+            return this.errors[field][0]
+        }
+    }
+
+    record(errors){
+        this.errors = errors
+    }
+
+    clear(field){
+        if(field){
+
+        }
+    }
+    //TODO clear
+
+}
+
+
     export default {
         mounted() {
             console.log('Component register Form mounted.')
@@ -53,7 +97,7 @@
                 password: '',
                 password_confirmation: '',
                 terms: true,
-                errors : {}
+                errors : new Errors()
             }
         },
         methods: {
@@ -66,8 +110,9 @@
                 axios.post('/register',this.$data)
                 .then(response => {
                     console.log(response)
+                    //TODO redirect to home
                 }).catch(error => {
-                    this.errors = error.response.data
+                    this.errors.record(error.response.data)
                 })
                 // Arrow functions. ES6 només
             }
