@@ -2,13 +2,18 @@
   "private": true,
   "scripts": {
     "prod": "gulp --production",
-    "dev": "gulp watch"
+    "dev": "gulp watch",
+    "lint": "eslint --ext .js,.vue resources/assets/js"
   },
   "devDependencies": {
     "admin-lte": "^2.3.6",
     "axios": "^0.15.2",
     "bootstrap-less": "^3.3.8",
     "bootstrap-sass": "^3.3.7",
+    "eslint": "^3.17.1",
+    "eslint-config-standard": "^7.0.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^2.1.1",
     "font-awesome": "^4.6.3",
     "gulp": "^3.9.1",
     "icheck": "^1.0.2",
