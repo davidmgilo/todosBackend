@@ -52,7 +52,8 @@
                 email: '',
                 password: '',
                 password_confirmation: '',
-                terms: true
+                terms: true,
+                errors : {}
             }
         },
         methods: {
@@ -63,11 +64,12 @@
 //                let data = new FormData(document.querySelector("form"))
 //                console.log(data)
                 axios.post('/register',this.$data)
-                .then(function (response) {
-                        console.log(response)
-                }).catch(function (error) {
-                        console.log(error)
+                .then(response => {
+                    console.log(response)
+                }).catch(error => {
+                    this.errors = error.response.data
                 })
+                // Arrow functions. ES6 només
             }
         }
     }
