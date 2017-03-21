@@ -1,21 +1,21 @@
 <template>
 
-<form method="post" @submit.prevent="submit" @keydown="errors.clear($event.target.name)">
+<form method="post" @submit.prevent="submit" @keydown="form.errors.clear($event.target.name)">
         <div class="form-group has-feedback has-error">
-            <input type="text" class="form-control" placeholder="" name="name" value="" v-model="name"/>
+            <input type="text" class="form-control" placeholder="" name="name" value="" v-model="form.name"/>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
-            <span class="help-block" v-if="errors.has('name')" v-text="errors.get('name')"></span>
+            <span class="help-block" v-if="form.errors.has('name')" v-text="form.errors.get('name')"></span>
         </div>
         <div class="form-group has-feedback">
-            <input type="email" class="form-control" placeholder="" name="email" value="" v-model="email"/>
+            <input type="email" class="form-control" placeholder="" name="email" value="" v-model="form.email"/>
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-            <input type="password" class="form-control" placeholder="" name="password" v-model="password"/>
+            <input type="password" class="form-control" placeholder="" name="password" v-model="form.password"/>
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-            <input type="password" class="form-control" placeholder="" name="password_confirmation" v-model="password_confirmation"/>
+            <input type="password" class="form-control" placeholder="" name="password_confirmation" v-model="form.password_confirmation"/>
             <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
         </div>
         <div class="row">
@@ -23,7 +23,7 @@
                 <label>
                     <div class="checkbox_register icheck">
                         <label>
-                            <input type="checkbox" name="terms">
+                            <input type="checkbox" name="terms" v-model="form.terms">
                         </label>
                     </div>
                 </label>
@@ -34,7 +34,7 @@
                 </div>
             </div><!-- /.col -->
             <div class="col-xs-4 col-xs-push-1">
-                <button type="submit" class="btn btn-primary btn-block btn-flat" :disabled="errors.any()">Register</button>
+                <button type="submit" class="btn btn-primary btn-block btn-flat" :disabled="form.errors.any()">Register</button>
             </div><!-- /.col -->
         </div>
     </form>
@@ -44,6 +44,31 @@
 <script>
 
 //    import './Errors.js'
+
+class Form {
+
+    /*
+     *  Constructor.
+     */
+    constructor(originalFields){
+        this.fields = originalFields
+
+        for (let field in originalFields){
+            this[field] = originalFields[field]
+        }
+
+        this.errors = new Errors()
+    }
+
+    /**
+     *
+     * Buida tot el formulari
+     *
+     */
+    reset(){
+
+    }
+}
 
 class Errors {
     /*
@@ -113,12 +138,9 @@ class Errors {
         },
         data: function () {
             return {
-                name: '',
-                email: '',
-                password: '',
-                password_confirmation: '',
-                terms: true,
-                errors : new Errors()
+                form: new Form(
+                    new FormData(document.querySelector("form"))
+                )
             }
         },
         methods: {
@@ -133,7 +155,7 @@ class Errors {
                     console.log(response)
                     //TODO redirect to home
                 }).catch(error => {
-                    this.errors.record(error.response.data)
+                    this.form.errors.record(error.response.data)
                 })
                 // Arrow functions. ES6 només
             }
