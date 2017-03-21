@@ -1,8 +1,8 @@
 <template>
 
-<form method="post" @submit.prevent="submit">
+<form method="post" @submit.prevent="submit" @keydown="errors.clear($event.target.name)">
         <div class="form-group has-feedback has-error">
-            <input type="text" class="form-control" placeholder="" name="name" value="" v-model="name" @keydown="errors.clear('name')"/>
+            <input type="text" class="form-control" placeholder="" name="name" value="" v-model="name"/>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
             <span class="help-block" v-if="errors.has('name')" v-text="errors.get('name')"></span>
         </div>
@@ -34,7 +34,7 @@
                 </div>
             </div><!-- /.col -->
             <div class="col-xs-4 col-xs-push-1">
-                <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+                <button type="submit" class="btn btn-primary btn-block btn-flat" :disabled="errors.any()">Register</button>
             </div><!-- /.col -->
         </div>
     </form>
@@ -55,6 +55,13 @@ class Errors {
 
     //API
 
+    /**
+     * Determine if we have any errors
+     */
+    any(){
+      return Object.keys(this.errors).length > 0
+    }
+
     has(field){
         // Underscore | Lodash
         return this.errors.hasOwnProperty(field)
@@ -72,16 +79,30 @@ class Errors {
         }
     }
 
+    /**
+     * Return all errors
+     * @param field
+     * @returns {*}
+     */
+    getAllErrors(field){
+        if (this.errors[field]){
+            return this.errors[field]
+        }
+    }
+
     record(errors){
         this.errors = errors
     }
 
     clear(field){
         if(field){
+            delete this.errors[field]
 
+            return;
         }
+
+        this.errors = {};
     }
-    //TODO clear
 
 }
 
