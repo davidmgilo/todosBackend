@@ -69,7 +69,7 @@ class Form {
     reset(){
         this.fields={}
 
-        for (let field in originalFields){
+        for (let field in this.fields){
             this[field] = ''
         }
 
@@ -107,6 +107,7 @@ class Form {
     }
 
     onFail(error){
+        console.log(error)
         this.errors.record(error.response.data)
         this.submitting = false
     }
