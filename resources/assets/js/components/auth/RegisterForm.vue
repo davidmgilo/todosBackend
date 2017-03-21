@@ -23,7 +23,7 @@
                 <label>
                     <div class="checkbox_register icheck">
                         <label>
-                            <input type="checkbox" name="terms" v-model="form.terms">
+                            <input type="checkbox" name="terms" checked>
                         </label>
                     </div>
                 </label>
@@ -145,7 +145,13 @@ class Errors {
         data: function () {
             return {
                 form: new Form(
-                    new FormData(document.querySelector("form"))
+                    {
+                        name: '',
+                        email: '',
+                        password: '',
+                        password_confirmation:'',
+                        terms: true
+                    }
                 )
             }
         },
@@ -156,7 +162,7 @@ class Errors {
                 //Promise
 //                let data = new FormData(document.querySelector("form"))
 //                console.log(data)
-                axios.post('/register',this.$data)
+                axios.post('/register',this.form.fields)
                 .then(response => {
                     console.log(response)
                     //TODO redirect to home
