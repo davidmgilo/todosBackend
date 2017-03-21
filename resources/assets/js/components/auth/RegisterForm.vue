@@ -34,7 +34,7 @@
                 </div>
             </div><!-- /.col -->
             <div class="col-xs-4 col-xs-push-1">
-                <button type="submit" class="btn btn-primary btn-block btn-flat" :disabled="form.errors.any()">Register</button>
+                <button type="submit" class="btn btn-primary btn-block btn-flat" :disabled="form.errors.any()"><i class="fa fa-refresh fa-spin" v-if="form.submitting"></i>Register</button>
             </div><!-- /.col -->
         </div>
     </form>
@@ -58,6 +58,7 @@ class Form {
         }
 
         this.errors = new Errors()
+        this.submitting = false
     }
 
     /**
@@ -75,10 +76,20 @@ class Form {
         this.errors.clear()
     }
 
-    submit(requestType,url){
+    data() {
+        let data = {}
 
+        for (let field in this.fields){
+            data[field] = this[field]
+        }
+
+        return data
+    }
+
+    submit(requestType,url){
+        this.submitting = true
         return new Promise((resolve,reject) =>{
-            axios[requestType](url,this.fields)
+            axios[requestType](url,this.data())
                 .then( response =>{
                     this.onSuccess(response)
                     resolve(response)
@@ -92,10 +103,12 @@ class Form {
 
     onSuccess(response){
         this.reset()
+        this.submitting = false
     }
 
     onFail(error){
         this.errors.record(error.response.data)
+        this.submitting = false
     }
 }
 
