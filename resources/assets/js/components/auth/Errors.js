@@ -1,17 +1,17 @@
-class Errors {
+export default class Errors {
     /*
      *  Constructor.
      */
-    constructor(){
-        this.errors = {}
-    }
+  constructor () {
+    this.errors = {}
+  }
 
-    //API
+    // API
 
-    has(field){
+  has (field) {
         // Underscore | Lodash
-        return this.errors.hasOwnProperty(field)
-    }
+    return this.errors.hasOwnProperty(field)
+  }
 
     /**
      * Retrieve the error message for a field
@@ -19,20 +19,20 @@ class Errors {
      * @param field
      * @returns {*}
      */
-    get(field){
-        if (this.errors[field]){
-            return this.errors[field][0]
-        }
+  get (field) {
+    if (this.errors[field]) {
+      return this.errors[field][0]
     }
+  }
 
-    record(errors){
-        this.errors = errors
+  record (errors) {
+    this.errors = errors
+  }
+
+  clear (field) {
+    if (field) {
+
     }
-
-    clear(field){
-        if(field)
-    }
-    //TODO clear
-
+  }
+    // TODO clear
 }
-
