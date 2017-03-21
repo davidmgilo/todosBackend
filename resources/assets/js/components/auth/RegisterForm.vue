@@ -66,7 +66,13 @@ class Form {
      *
      */
     reset(){
+        this.fields={}
 
+        for (let field in originalFields){
+            this[field] = ''
+        }
+
+        this.errors.clear()
     }
 }
 
