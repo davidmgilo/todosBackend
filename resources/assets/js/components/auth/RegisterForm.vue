@@ -74,6 +74,29 @@ class Form {
 
         this.errors.clear()
     }
+
+    submit(requestType,url){
+
+        return new Promise((resolve,reject) =>{
+            axios[requestType](url,this.fields)
+                .then( response =>{
+                    this.onSuccess(response)
+                    resolve(response)
+                }).catch(error => {
+                this.onFail(error)
+                reject(error)
+            })
+        })
+
+    }
+
+    onSuccess(response){
+        this.reset()
+    }
+
+    onFail(error){
+        this.errors.record(error.response.data)
+    }
 }
 
 class Errors {
@@ -158,18 +181,14 @@ class Errors {
         methods: {
             submit() {
                 console.log('submitting')
-                //Client http
-                //Promise
-//                let data = new FormData(document.querySelector("form"))
-//                console.log(data)
-                axios.post('/register',this.form.fields)
-                .then(response => {
-                    console.log(response)
-                    //TODO redirect to home
-                }).catch(error => {
-                    this.form.errors.record(error.response.data)
-                })
-                // Arrow functions. ES6 només
+                this.form.submit('post','/register')
+                    .then(response => {
+                        console.log(response)
+                        //TODO redirect to home
+                    })
+                    .catch(error => {
+                      console.log(error.response.data)
+                    })
             }
         }
     }
