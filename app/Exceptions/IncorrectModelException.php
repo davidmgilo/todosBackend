@@ -6,7 +6,7 @@
  * Time: 15:59.
  */
 
-namespace App\Exceptions;
+namespace Davidmgilo\TodosBackend\Exceptions;
 
 /**
  * Class IncorrectModelException.

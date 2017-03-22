@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Policies;
+namespace Davidmgilo\TodosBackend\Policies;
 
-use App\User;
-use App\Task;
+use Davidmgilo\TodosBackend\User;
+use Davidmgilo\TodosBackend\Task;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 
@@ -14,7 +14,7 @@ class BasePolicy
     /**
      * Determine whether the user can list things.
      *
-     * @param  \App\User  $user
+     * @param  \Davidmgilo\TodosBackend\User  $user
      * @return mixed
      */
     public function show(User $user)
@@ -26,8 +26,8 @@ class BasePolicy
     /**
      * Determine whether the user can view things.
      *
-     * @param  \App\User  $user
-     * @param  \App\Task  $task
+     * @param  \Davidmgilo\TodosBackend\User  $user
+     * @param  \Davidmgilo\TodosBackend\Task  $task
      * @return mixed
      */
     public function view(User $user, Task $task)
@@ -39,7 +39,7 @@ class BasePolicy
     /**
      * Determine whether the user can create things.
      *
-     * @param  \App\User  $user
+     * @param  \Davidmgilo\TodosBackend\User  $user
      * @return mixed
      */
     public function create(User $user)
@@ -51,8 +51,8 @@ class BasePolicy
     /**
      * Determine whether the user can update things.
      *
-     * @param  \App\User  $user
-     * @param  \App\Task  $task
+     * @param  \Davidmgilo\TodosBackend\User  $user
+     * @param  \Davidmgilo\TodosBackend\Task  $task
      * @return mixed
      */
     public function update(User $user, Task $task)
@@ -64,8 +64,8 @@ class BasePolicy
     /**
      * Determine whether the user can delete things.
      *
-     * @param  \App\User  $user
-     * @param  \App\Task  $task
+     * @param  \Davidmgilo\TodosBackend\User  $user
+     * @param  \Davidmgilo\TodosBackend\Task  $task
      * @return mixed
      */
     public function delete(User $user, Task $task)

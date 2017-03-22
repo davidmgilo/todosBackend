@@ -6,9 +6,9 @@
  * Time: 15:48.
  */
 
-namespace App\Transformers;
+namespace Davidmgilo\TodosBackend\Transformers;
 
-use App\Transformers\Contracts\Transformer as TransformerContract;
+use Davidmgilo\TodosBackend\Transformers\Contracts\Transformer as TransformerContract;
 
 /**
  * Class Transformer.

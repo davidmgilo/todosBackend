@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Davidmgilo\TodosBackend\Http\Controllers;
 
-use App\Repositories\TaskRepository;
-use App\Task;
-use App\Transformers\TaskTransformer;
+use Davidmgilo\TodosBackend\Repositories\TaskRepository;
+use Davidmgilo\TodosBackend\Task;
+use Davidmgilo\TodosBackend\Transformers\TaskTransformer;
 use Auth;
 use Gate;
 use Illuminate\Http\Request;

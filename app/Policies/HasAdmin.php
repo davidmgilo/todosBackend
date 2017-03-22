@@ -6,7 +6,7 @@
  * Time: 21:41
  */
 
-namespace App\Policies;
+namespace Davidmgilo\TodosBackend\Policies;
 
 
 trait HasAdmin

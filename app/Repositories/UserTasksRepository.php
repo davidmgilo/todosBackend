@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Repositories;
+namespace Davidmgilo\TodosBackend\Repositories;
 
 
-use App\Task;
-use App\User;
+use Davidmgilo\TodosBackend\Task;
+use Davidmgilo\TodosBackend\User;
 
 /**
  * Class UserTasksRepository.

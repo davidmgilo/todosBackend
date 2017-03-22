@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Transformers;
+namespace Davidmgilo\TodosBackend\Transformers;
 
-use App\Exceptions\IncorrectModelException;
+use Davidmgilo\TodosBackend\Exceptions\IncorrectModelException;
 
 /**
  * Class TaskTransformer.
@@ -20,7 +20,7 @@ class TaskTransformer extends Transformer
      */
     public function transform($resource)
     {
-        if (!$resource instanceof \App\Task) {
+        if (!$resource instanceof \Davidmgilo\TodosBackend\Task) {
             throw new IncorrectModelException();
         }
 

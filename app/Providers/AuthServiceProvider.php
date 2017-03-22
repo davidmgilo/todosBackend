@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Davidmgilo\TodosBackend\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Laravel\Passport\Passport;
@@ -18,8 +18,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Task' => 'App\Policies\TaskPolicy',
-//        'App\User' => 'App\Policies\UserPolicy',
+        'Davidmgilo\TodosBackend\Task' => 'Davidmgilo\TodosBackend\Policies\TaskPolicy',
+//        'Davidmgilo\TodosBackend\User' => 'Davidmgilo\TodosBackend\Policies\UserPolicy',
     ];
 
     /**

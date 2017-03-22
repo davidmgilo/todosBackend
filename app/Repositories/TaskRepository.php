@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Repositories;
+namespace Davidmgilo\TodosBackend\Repositories;
 
-use App\Repositories\Contracts\Repository;
-use App\Task;
+use Davidmgilo\TodosBackend\Repositories\Contracts\Repository;
+use Davidmgilo\TodosBackend\Task;
 
 /**
  * Class TaskRepository.

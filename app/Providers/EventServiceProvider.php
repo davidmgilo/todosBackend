@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Davidmgilo\TodosBackend\Providers;
 
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
@@ -16,8 +16,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\SomeEvent' => [
-            'App\Listeners\EventListener',
+        'Davidmgilo\TodosBackend\Events\SomeEvent' => [
+            'Davidmgilo\TodosBackend\Listeners\EventListener',
         ],
     ];
 

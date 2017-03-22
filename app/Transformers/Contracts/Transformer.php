@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Transformers\Contracts;
+namespace Davidmgilo\TodosBackend\Transformers\Contracts;
 
 /**
  * Interface Transformer.

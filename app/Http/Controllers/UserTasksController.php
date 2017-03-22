@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Davidmgilo\TodosBackend\Http\Controllers;
 
-use App\Repositories\UserTasksRepository;
-use App\Task;
-use App\Transformers\TaskTransformer;
-use App\User;
+use Davidmgilo\TodosBackend\Repositories\UserTasksRepository;
+use Davidmgilo\TodosBackend\Task;
+use Davidmgilo\TodosBackend\Transformers\TaskTransformer;
+use Davidmgilo\TodosBackend\User;
 use Illuminate\Http\Request;
 
 /**

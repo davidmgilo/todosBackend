@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Transformers;
+namespace Davidmgilo\TodosBackend\Transformers;
 
-use App\Exceptions\IncorrectModelException;
+use Davidmgilo\TodosBackend\Exceptions\IncorrectModelException;
 
 /**
  * Class UserTransformer.
@@ -18,7 +18,7 @@ class UserTransformer extends Transformer
      */
     public function transform($resource)
     {
-        if (!$resource instanceof \App\User) {
+        if (!$resource instanceof \Davidmgilo\TodosBackend\User) {
             throw new IncorrectModelException();
         }
 

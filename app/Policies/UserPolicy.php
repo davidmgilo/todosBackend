@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Policies;
+namespace Davidmgilo\TodosBackend\Policies;
 
-use App\User;
-use App\Task;
+use Davidmgilo\TodosBackend\User;
+use Davidmgilo\TodosBackend\Task;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 
