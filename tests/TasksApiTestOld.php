@@ -17,7 +17,7 @@ class TasksApiTestOld extends TestCase
      */
     public function testShowAllTasks()
     {
-        factory(App\Task::class, 10)->create();
+        factory(Davidmgilo\TodosBackend\Task::class, 10)->create();
         $this->json('GET', $this->uri)
 //            ->dump();
                 ->seeJson();
@@ -36,7 +36,7 @@ class TasksApiTestOld extends TestCase
      */
     public function testShowOneTask()
     {
-        $task = factory(App\Task::class)->create();
+        $task = factory(Davidmgilo\TodosBackend\Task::class)->create();
         $this->json('GET', $this->uri.'/'.$task->id)
 //            ->dump();
             ->seeJsonStructure(

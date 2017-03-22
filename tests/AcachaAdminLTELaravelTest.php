@@ -55,7 +55,7 @@ class AcachaAdminLTELaravelTest extends TestCase
      */
     public function testLandingPageWithUserLogged()
     {
-        $user = factory(App\User::class)->create();
+        $user = factory(Davidmgilo\TodosBackend\User::class)->create();
 
         $this->actingAs($user)
             ->visit('/')
@@ -83,7 +83,7 @@ class AcachaAdminLTELaravelTest extends TestCase
      */
     public function testLogin()
     {
-        $user = factory(App\User::class)->create(['password' => Hash::make('passw0RD')]);
+        $user = factory(Davidmgilo\TodosBackend\User::class)->create(['password' => Hash::make('passw0RD')]);
 
         $this->visit('/login')
             ->type($user->email, 'email')
@@ -148,7 +148,7 @@ class AcachaAdminLTELaravelTest extends TestCase
      */
     public function testHomePageForAuthenticatedUsers()
     {
-        $user = factory(App\User::class)->create();
+        $user = factory(Davidmgilo\TodosBackend\User::class)->create();
 
         $this->actingAs($user)
             ->visit('/home')
@@ -162,7 +162,7 @@ class AcachaAdminLTELaravelTest extends TestCase
      */
     public function testLogout()
     {
-        $user = factory(App\User::class)->create();
+        $user = factory(Davidmgilo\TodosBackend\User::class)->create();
 
         $form = $this->actingAs($user)->visit('/home')->getForm('logout');
 
@@ -224,7 +224,7 @@ class AcachaAdminLTELaravelTest extends TestCase
      */
     public function testSendPasswordReset()
     {
-        $user = factory(App\User::class)->create();
+        $user = factory(Davidmgilo\TodosBackend\User::class)->create();
 
         $this->visit('password/reset')
             ->type($user->email, 'email')

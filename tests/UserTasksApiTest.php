@@ -44,7 +44,7 @@ class UsersTasksApiTest extends TestCase
      */
     protected function createTask($id)
     {
-        return factory(App\Task::class)->make(['user_id' => $id]);
+        return factory(Davidmgilo\TodosBackend\Task::class)->make(['user_id' => $id]);
     }
 
     /**
@@ -54,7 +54,7 @@ class UsersTasksApiTest extends TestCase
      */
     protected function createUser()
     {
-        return factory(App\User::class)->make();
+        return factory(Davidmgilo\TodosBackend\User::class)->make();
     }
 
     /**
@@ -84,7 +84,7 @@ class UsersTasksApiTest extends TestCase
      */
     protected function createAndPersistTask($id)
     {
-        return factory(App\Task::class)->create(['user_id' => $id]);
+        return factory(Davidmgilo\TodosBackend\Task::class)->create(['user_id' => $id]);
     }
 
     /**
@@ -94,7 +94,7 @@ class UsersTasksApiTest extends TestCase
      */
     protected function createAndPersistUser()
     {
-        return factory(App\User::class)->create();
+        return factory(Davidmgilo\TodosBackend\User::class)->create();
     }
 
     /**
@@ -111,7 +111,7 @@ class UsersTasksApiTest extends TestCase
 
     protected function login()
     {
-        $user = factory(App\User::class)->create();
+        $user = factory(Davidmgilo\TodosBackend\User::class)->create();
 
         $this->actingAs($user, 'api');
 
