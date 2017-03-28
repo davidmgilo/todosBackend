@@ -42,137 +42,136 @@
 </template>
 
 <script>
+    import Form from 'davidmgilo-forms'
 
-//    import './Errors.js'
+//class Form {
+//
+//    /*
+//     *  Constructor.
+//     */
+//    constructor(originalFields){
+//        this.fields = originalFields
+//
+//        for (let field in originalFields){
+//            this[field] = originalFields[field]
+//        }
+//
+//        this.errors = new Errors()
+//        this.submitting = false
+//    }
+//
+//    /**
+//     *
+//     * Buida tot el formulari
+//     *
+//     */
+//    reset(){
+//        this.fields={}
+//
+//        for (let field in this.fields){
+//            this[field] = ''
+//        }
+//
+//        this.errors.clear()
+//    }
+//
+//    data() {
+//        let data = {}
+//
+//        for (let field in this.fields){
+//            data[field] = this[field]
+//        }
+//
+//        return data
+//    }
+//
+//    submit(requestType,url){
+//        this.submitting = true
+//        return new Promise((resolve,reject) =>{
+//            axios[requestType](url,this.data())
+//                .then( response =>{
+//                    this.onSuccess(response)
+//                    resolve(response)
+//                }).catch(error => {
+//                this.onFail(error)
+//                reject(error)
+//            })
+//        })
+//
+//    }
+//
+//    onSuccess(response){
+//        this.reset()
+//        this.submitting = false
+//    }
+//
+//    onFail(error){
+//        console.log(error)
+//        this.errors.record(error.response.data)
+//        this.submitting = false
+//    }
+//}
 
-class Form {
-
-    /*
-     *  Constructor.
-     */
-    constructor(originalFields){
-        this.fields = originalFields
-
-        for (let field in originalFields){
-            this[field] = originalFields[field]
-        }
-
-        this.errors = new Errors()
-        this.submitting = false
-    }
-
-    /**
-     *
-     * Buida tot el formulari
-     *
-     */
-    reset(){
-        this.fields={}
-
-        for (let field in this.fields){
-            this[field] = ''
-        }
-
-        this.errors.clear()
-    }
-
-    data() {
-        let data = {}
-
-        for (let field in this.fields){
-            data[field] = this[field]
-        }
-
-        return data
-    }
-
-    submit(requestType,url){
-        this.submitting = true
-        return new Promise((resolve,reject) =>{
-            axios[requestType](url,this.data())
-                .then( response =>{
-                    this.onSuccess(response)
-                    resolve(response)
-                }).catch(error => {
-                this.onFail(error)
-                reject(error)
-            })
-        })
-
-    }
-
-    onSuccess(response){
-        this.reset()
-        this.submitting = false
-    }
-
-    onFail(error){
-        console.log(error)
-        this.errors.record(error.response.data)
-        this.submitting = false
-    }
-}
-
-class Errors {
-    /*
-     *  Constructor.
-     */
-    constructor(){
-        this.errors = {}
-    }
-
-    //API
-
-    /**
-     * Determine if we have any errors
-     */
-    any(){
-      return Object.keys(this.errors).length > 0
-    }
-
-    has(field){
-        // Underscore | Lodash
-        return this.errors.hasOwnProperty(field)
-    }
-
-    /**
-     * Retrieve the error message for a field
-     *
-     * @param field
-     * @returns {*}
-     */
-    get(field){
-        if (this.errors[field]){
-            return this.errors[field][0]
-        }
-    }
-
-    /**
-     * Return all errors
-     * @param field
-     * @returns {*}
-     */
-    getAllErrors(field){
-        if (this.errors[field]){
-            return this.errors[field]
-        }
-    }
-
-    record(errors){
-        this.errors = errors
-    }
-
-    clear(field){
-        if(field){
-            delete this.errors[field]
-
-            return;
-        }
-
-        this.errors = {};
-    }
-
-}
+//class Errors {
+//    /*
+//     *  Constructor.
+//     */
+//    constructor(){
+//        this.errors = {}
+//    }
+//
+//    //API
+//
+//    /**
+//     * Determine if we have any errors
+//     */
+//    any(){
+//      return Object.keys(this.errors).length > 0
+//    }
+//
+//    has(field){
+//        // Underscore | Lodash
+//        return this.errors.hasOwnProperty(field)
+//    }
+//
+//    /**
+//     * Retrieve the error message for a field
+//     *
+//     * @param field
+//     * @returns {*}
+//     */
+//    get(field){
+//        if (this.errors[field]){
+//            return this.errors[field][0]
+//        }
+//    }
+//
+//    /**
+//     * Return all errors
+//     * @param field
+//     * @returns {*}
+//     */
+//    getAllErrors(field){
+//        if (this.errors[field]){
+//            return this.errors[field]
+//        }
+//    }
+//
+//    record(errors){
+//        this.errors = errors
+//    }
+//
+//    clear(field){
+//        if(field){
+//            delete this.errors[field]
+//
+//            return;
+//        }
+//
+//        this.errors = {};
+//    }
+//
+//}
 
 
     export default {
