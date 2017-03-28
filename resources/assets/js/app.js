@@ -34,6 +34,11 @@ Vue.component(
     require('./components/passport/PersonalAccessTokens.vue')
 );
 
+// Vue.transition('bounce', {
+//   enterClass: 'bounceIn',
+//   leaveClass: 'bounceOut'
+// });
+
 const app = new Vue({
     el: '#app'
 });

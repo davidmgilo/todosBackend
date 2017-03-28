@@ -4,7 +4,10 @@
         <div class="form-group has-feedback has-error">
             <input type="text" class="form-control" placeholder="" name="name" value="" v-model="form.name" autofocus/>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
-            <transition name="fade">
+            <transition name="bounce"
+                        enter-active-class="animated bounceIn"
+                        leave-active-class="animated bounceOut"
+            >
                 <span class="help-block" v-if="form.errors.has('name')" v-text="form.errors.get('name')"></span>
             </transition>
         </div>
