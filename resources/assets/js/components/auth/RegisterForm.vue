@@ -4,7 +4,9 @@
         <div class="form-group has-feedback has-error">
             <input type="text" class="form-control" placeholder="" name="name" value="" v-model="form.name" autofocus/>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
-            <span class="help-block" v-if="form.errors.has('name')" v-text="form.errors.get('name')"></span>
+            <transition name="fade">
+                <span class="help-block" v-if="form.errors.has('name')" v-text="form.errors.get('name')"></span>
+            </transition>
         </div>
         <div class="form-group has-feedback">
             <input type="email" class="form-control" placeholder="" name="email" value="" v-model="form.email"/>
@@ -102,3 +104,13 @@
     }
 
 </script>
+<style>
+
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity 3s ease;
+    }
+
+    .fade-enter, .fade-leave-to {
+        opacity: 0;
+    }
+</style>
