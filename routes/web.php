@@ -26,6 +26,12 @@ Route::group(['middleware' => 'auth'], function () {
         return view('float');
     });
 
+    //Chat routes
+    Route::get('chat', 'ChatController@index')->name('chat');
+    Route::post('chat', 'ChatController@sendMessage');
+
+    Route::get('messages','ChatController@fetchMessages');
+
     
 });
 
