@@ -23,7 +23,7 @@
                 <label>
                     <div class="checkbox_register icheck">
                         <label>
-                            <input type="checkbox" name="terms" checked>
+                            <input type="checkbox" name="terms" v-model="form.terms">
                         </label>
                     </div>
                 </label>
@@ -48,6 +48,7 @@
     export default {
         mounted() {
             console.log('Component register Form mounted.')
+            this.initialitzeICheck()
         },
         data: function () {
             return {
@@ -57,12 +58,35 @@
                         email: '',
                         password: '',
                         password_confirmation:'',
-                        terms: true
+                        terms: ''
                     }
                 )
             }
         },
+        watch: {
+            'form.terms': function (value) {
+                if(value) {
+                    $('input').iCheck('check')
+                } else {
+                    $('input').iCheck('uncheck')
+                }
+            }
+        },
         methods: {
+            initialitzeICheck() {
+                var component = this
+                $('input').iCheck({
+                    checkboxClass: 'icheckbox_square-blue',
+                    radioClass: 'iradio_square-blue',
+                    increaseArea: '20%',
+                    inheritClass: true
+                }).on('ifChecked', function(event){
+                    component.form.set('terms',true)
+                    component.form.errors.clear('terms')
+                }).on('ifUnchecked', function(event){
+                    component.form.set('terms','')
+                });
+            },
             submit() {
                 console.log('submitting')
                 this.form.submit('post','/register')
