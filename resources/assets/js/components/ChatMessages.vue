@@ -19,7 +19,7 @@
         props: ['messages', 'user'],
         methods: {
             url: function (message) {
-                return 'http:' + gravatar.url(message.user.email)
+                return gravatar.url(message.user.email)
             },
             isFromUser: function(message){
                 return message.user.email == this.user.email
