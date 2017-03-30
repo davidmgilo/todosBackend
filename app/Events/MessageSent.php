@@ -24,7 +24,7 @@ class MessageSent implements ShouldBroadcast
      * @param $user
      * @param $message
      */
-    public function __construct(User $user, Message $message)
+    public function __construct($user, Message $message)
     {
         $this->user = $user;
         $this->message = $message;
