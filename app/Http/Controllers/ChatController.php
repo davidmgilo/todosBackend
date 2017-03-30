@@ -2,8 +2,8 @@
 
 namespace Davidmgilo\TodosBackend\Http\Controllers;
 
-use Davidmgilo\chat\Events\MessageSent;
-use Davidmgilo\chat\Message;
+use Davidmgilo\TodosBackend\Events\MessageSent;
+use Davidmgilo\TodosBackend\Message;
 use Auth;
 use Illuminate\Http\Request;
 
