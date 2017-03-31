@@ -52,7 +52,7 @@ const app = new Vue({
 
     created() {
         this.fetchMessages();
-        window.Echo.channel('chat')
+        Echo.channel('chat')
             .listen('MessageSent', (e) => {
                 this.messages.push({
                     message: e.message.message,
