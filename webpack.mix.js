@@ -23,7 +23,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
        'public/css/adminlte-app.css',
        'node_modules/icheck/skins/square/blue.css',
        'public/css/toastr.css',
-       './node_modules/animate.css/animate.css',
+       'node_modules/animate.css/animate.css',
    ], 'public/css/all.css')
    .combine([
        'public/css/bootstrap.css',
