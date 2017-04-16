@@ -5,14 +5,17 @@ namespace Davidmgilo\TodosBackend\Events;
 use Davidmgilo\TodosBackend\Message;
 use Davidmgilo\TodosBackend\User;
 use Illuminate\Broadcasting\Channel;
+use Illuminate\Notifications\Notification;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use NotificationChannels\Gcm\GcmChannel;
+use NotificationChannels\Gcm\GcmMessage;
 
-class MessageSent implements ShouldBroadcast
+class MessageSent extends Notification implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -39,5 +42,27 @@ class MessageSent implements ShouldBroadcast
     public function broadcastOn()
     {
         return new Channel('chat');
+    }
+
+    /**
+     * @param $notifiable
+     * @return array
+     */
+    public function via($notifiable)
+    {
+        return [GcmChannel::class];
+    }
+
+    /**
+     * @param $notifiable
+     * @return mixed
+     */
+    public function toGcm($notifiable)
+    {
+        return GcmMessage::create()
+            ->badge(1)
+            ->title($this->user->name)
+            ->message($this->message->message)
+            ->priority(GcmMessage::PRIORITY_HIGH);
     }
 }

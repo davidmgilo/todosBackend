@@ -6,6 +6,7 @@ use Davidmgilo\TodosBackend\Events\MessageSent;
 use Davidmgilo\TodosBackend\Message;
 use Auth;
 use Illuminate\Http\Request;
+use Davidmgilo\TodosBackend\Notifications\MessageSent as MessageSentNotification;
 
 /**
  * Class ChatController
@@ -41,6 +42,8 @@ class ChatController extends ChatBaseController
         //Broadcast
 
         broadcast(new MessageSent($user, $message))->toOthers();
+
+        $user->notify(new MessageSentNotification($user,$message));
 
         return ['status' => 'Message Sent!'];
     }

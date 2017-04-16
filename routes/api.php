@@ -26,7 +26,10 @@ Route::group(['prefix' => 'v1',
         Route::resource('user', 'UsersController');
         Route::resource('user.task', 'UserTasksController');
 //    Route::resource('task.user','TaskUserController');
-        Route::get('/user',function (Request $request) {
+        Route::get('/loguser',function (Request $request) {
            return Auth::user();
         });
+
+        Route::post('/user/gcmtoken', 'GcmTokensController@addToken');
+        Route::get('/user/messages', 'ChatController@fetchMessages');
     });

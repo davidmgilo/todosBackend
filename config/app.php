@@ -178,6 +178,9 @@ return [
         Laravel\Passport\PassportServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         NotificationChannels\Gcm\GcmServiceProvider::class,
+        NotificationChannels\OneSignal\OneSignalServiceProvider::class,
+        Laravel\Tinker\TinkerServiceProvider::class,
+        NotificationChannels\Telegram\TelegramServiceProvider::class,
 
         /*
          * Application Service Providers...
