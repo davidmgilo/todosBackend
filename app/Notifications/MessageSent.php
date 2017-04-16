@@ -96,6 +96,7 @@ class MessageSent extends Notification implements ShouldQueue
         $url = url('https://todosbackend.davidmartinez.2dam.acacha.org/');
         return TelegramMessage::create()
             ->to('@daviddam21617chat')
+            //TODO working on MY chat, left change for group chat
             ->content($this->message->message) // Markdown supported.
             ->button('Go to todosBackend', $url); // Inline Button
     }
