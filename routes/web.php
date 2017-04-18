@@ -32,6 +32,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('messages','ChatController@fetchMessages');
 
+    Route::post('/user/gcmtoken', 'GcmTokensController@addToken');
+    Route::get('/user/messages', 'ChatController@fetchMessages');
+
     
 });
 
