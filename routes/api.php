@@ -30,6 +30,7 @@ Route::group(['prefix' => 'v1',
            return Auth::user();
         });
 
-        Route::post('/user/gcmtoken', 'GcmTokensController@addToken');
-        Route::get('/user/messages', 'ChatController@fetchMessages');
+
     });
+Route::post('/user/gcmtoken', 'GcmTokensController@addToken');
+Route::get('/user/messages', 'ChatController@fetchMessages');
